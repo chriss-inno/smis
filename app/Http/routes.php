@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('layout.master');
 });
+
+//Process users
+Route::get('login','UserController@login');
+Route::post('login','UserController@processLogin');

@@ -98,8 +98,34 @@ $(document).ready(function() {
             }
         }
     });
-	
-	
+    $('#loginForm').bootstrapValidator({
+        message: 'This value is not valid',
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required and can\'t be empty'
+                    },
+
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required and can\'t be empty'
+                    }
+                }
+            }
+
+            }
+    });
+
 	//EXAMPLE CONTACT FORM
     $('#contactForm').bootstrapValidator({
         message: 'This value is not valid',
