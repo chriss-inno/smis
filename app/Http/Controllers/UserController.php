@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -87,12 +88,50 @@ class UserController extends Controller
     //Show login
     public function login()
     {
-        return view('user.login');
+        if (Auth::check())
+        {
+            // The user is logged in...
+            return redirect('home');
+        }
+        else
+        {
+            return view('user.login');
+        }
+
     }
     //Process login
     public function processLogin(UserRequest $request)
     {
+        $username=$request->username;
+        $password=$request->password;
 
+        if (Auth::attempt(['username' => $username, 'password' => $password]))
+        {
+            if(Auth::user()->block ==1)
+            {
+                Auth::logout();
+                return redirect()->back()->with('message', 'Login Failed you don\'t have Access to login please  Contact Administrator');
+            }
+            else
+            {
+                $user= \App\User::find(Auth::user()->id);
+                $user->last_login=date("Y-m-d h:i:s");
+                $user->save();
+
+                return redirect()->intended('home');
+            }
+
+        }
+        else
+        {
+            return redirect()->back()->with('message', 'Login Failed,Invalid username or password');
+        }
+    }
+    //Show home page
+
+    public function home()
+    {
+       return view('layout.master');
     }
 
 }

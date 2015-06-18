@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>GFXFree.Net</title>
+    <title>School Information System|Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="description" content="">
@@ -101,7 +101,7 @@
 <!-- Begin page -->
 <div class="container">
     <div class="full-content-center">
-        <p class="text-center"><a href="#">smis</a></p>
+        <p class="text-center"><a href="#"> {!! HTML::image("assets/img/logo.png")!!}</a></p>
         <div class="login-wrap animated flipInX">
             <div class="login-block">
                 <img src="images/users/default-user.png" class="img-circle not-logged-avatar">
