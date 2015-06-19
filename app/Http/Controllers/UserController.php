@@ -131,7 +131,11 @@ class UserController extends Controller
 
     public function home()
     {
-       return view('layout.master');
+        if(Auth::user()->role =="Superuser")
+        {
+            return view('user.admin_dashboard');
+        }
+
     }
 
 }

@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
         $user->name = 'Administrator';
         $user->email = 'admin@smis.com';
         $user->username = 'admin';
-        $user->role = 'Administrator';
+        $user->role = 'Superuser';
         $user->password = bcrypt('admin');
         $user->save();
     }

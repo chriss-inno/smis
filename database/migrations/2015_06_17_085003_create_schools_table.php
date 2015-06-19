@@ -19,12 +19,13 @@ class CreateSchoolsTable extends Migration
             $table->string('registered')->nullable();
             $table->string('registration_no')->nullable();
             $table->string('accredited')->nullable();
+            $table->string('SchoolProfile',4000)->nullable();
             $table->string('ownership_type')->nullable();
             $table->string('owner')->nullable();
             $table->string('region')->nullable();
             $table->string('district')->nullable();
             $table->string('postal_address')->nullable();
-            $table->string('phisical_address')->nullable();
+            $table->string('physical_address')->nullable();
             $table->string('school_head')->nullable();
             $table->string('mobile')->nullable();
             $table->string('telephone')->nullable();

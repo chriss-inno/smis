@@ -22,7 +22,11 @@ Route::get('home',['middleware' => 'auth', 'uses' =>'UserController@home']);
 
 Route::get('schools',['middleware' => 'auth', 'uses' =>'SchoolController@index']);
 Route::get('schools/add',['middleware' => 'auth', 'uses' =>'SchoolController@create']);
-Route::get('schools/{id}',['middleware' => 'auth', 'uses' =>'SchoolController@show']);
+Route::post('schools/add',['middleware' => 'auth', 'uses' =>'SchoolController@store']);
 Route::get('schools/edit/{id}',['middleware' => 'auth', 'uses' =>'SchoolController@edit']);
 Route::post('schools/edit/{id}',['middleware' => 'auth', 'uses' =>'SchoolController@update']);
 Route::get('schools/delete/{id}',['middleware' => 'auth', 'uses' =>'SchoolController@destroy']);
+Route::get('schools-manage',['middleware' => 'auth', 'uses' =>'SchoolController@manage']);
+Route::get('schools-reports',['middleware' => 'auth', 'uses' =>'SchoolController@schoolReports']);
+Route::post('schools-search',['middleware' => 'auth', 'uses' =>'SchoolController@search']);
+Route::get('schools/{id}',['middleware' => 'auth', 'uses' =>'SchoolController@show']);

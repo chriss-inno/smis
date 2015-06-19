@@ -25,9 +25,9 @@
                             </a>
                             <ul>
                                 <li><a href='{{url('schools/add')}} ' ><span>New School</span></a></li>
-                                <li><a href='{{url('schools')}}' class='active'><span>Available Schools</span></a></li>
+                                <li><a href='{{url('schools')}}'><span>Available Schools</span></a></li>
                                 <li><a href='{{url('schools-manage')}}'><span>Manage Schools</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><span>School general reports</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}' class='active'><span>School general reports</span></a></li>
 
                             </ul>
                         </li>
@@ -83,39 +83,6 @@
             </div>
             <div class="clearfix"></div>
             <div class="clearfix"></div><br><br><br>
-        </div>
-    </div>
-@stop
-@section('pageScript')
-    <!-- Page Specific JS Libraries -->
-    {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
-    {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
-    {!!HTML::script("assets/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js")!!}
-    {!!HTML::script("assets/js/pages/datatables.js")!!}
-    @stop
-@section('contents')
-    <!-- Page Heading Start -->
-    <div class="page-heading">
-        <h1>Schools page</h1>
-    </div>
-    <!-- Page Heading End-->
-    <div class="row">
-
-        <div class="col-md-12">
-            <div class="widget">
-                <div class="widget-header">
-                    <h2><strong>List of available schools</strong> </h2>
-                    <div class="additional-btn">
-                        <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
-                    </div>
-                </div>
-                <div class="widget-content">
-                    <br>
-                    <div class="table-responsive">
-                       @include('school.list')
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @stop

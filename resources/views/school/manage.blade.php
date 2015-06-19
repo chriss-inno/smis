@@ -1,4 +1,5 @@
 @extends('layout.master')
+@extends('layout.master')
 @section('menus')
     <div class="left side-menu">
         <div class="sidebar-inner slimscrollleft">
@@ -25,8 +26,8 @@
                             </a>
                             <ul>
                                 <li><a href='{{url('schools/add')}} ' ><span>New School</span></a></li>
-                                <li><a href='{{url('schools')}}' class='active'><span>Available Schools</span></a></li>
-                                <li><a href='{{url('schools-manage')}}'><span>Manage Schools</span></a></li>
+                                <li><a href='{{url('schools')}}' ><span>Available Schools</span></a></li>
+                                <li><a href='{{url('schools-manage')}}' class='active'><span>Manage Schools</span></a></li>
                                 <li><a href='{{url('schools-reports/')}}'><span>School general reports</span></a></li>
 
                             </ul>
@@ -86,13 +87,6 @@
         </div>
     </div>
 @stop
-@section('pageScript')
-    <!-- Page Specific JS Libraries -->
-    {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
-    {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
-    {!!HTML::script("assets/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js")!!}
-    {!!HTML::script("assets/js/pages/datatables.js")!!}
-    @stop
 @section('contents')
     <!-- Page Heading Start -->
     <div class="page-heading">
@@ -112,7 +106,7 @@
                 <div class="widget-content">
                     <br>
                     <div class="table-responsive">
-                       @include('school.list')
+                        @include('school.list')
                     </div>
                 </div>
             </div>
