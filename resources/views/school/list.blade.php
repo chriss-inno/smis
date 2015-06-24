@@ -43,3 +43,18 @@
         </tbody>
     </table>
 </form>
+<script>
+    $("#datatables-2 tfoot th").each( function ( i ) {
+        var select = $('<select class="form-control input-sm"><option value=""></option></select>')
+                .appendTo( $(this).empty() )
+                .on( 'change', function () {
+                    table.column( i )
+                            .search( '^'+$(this).val()+'$', true, false )
+                            .draw();
+                } );
+
+        table.column( i ).data().unique().sort().each( function ( d, j ) {
+            select.append( '<option value="'+d+'">'+d+'</option>' )
+        } );
+    } );
+</script>

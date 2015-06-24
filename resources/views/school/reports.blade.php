@@ -1,4 +1,11 @@
 @extends('layout.master')
+@section('pageScript')
+
+    <!-- Wizard-->
+    {!!HTML::script("assets/libs/jquery-wizard/jquery.easyWizard.js")!!}
+    {!!HTML::script("assets/js/pages/form-wizard.js")!!}
+
+@stop
 @section('menus')
     <div class="left side-menu">
         <div class="sidebar-inner slimscrollleft">
@@ -24,59 +31,14 @@
                             </span>
                             </a>
                             <ul>
-                                <li><a href='{{url('schools/add')}} ' ><span>New School</span></a></li>
+                                <li><a href='{{url('schools/add')}} ' class='active'><span>New School</span></a></li>
                                 <li><a href='{{url('schools')}}'><span>Available Schools</span></a></li>
                                 <li><a href='{{url('schools-manage')}}'><span>Manage Schools</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}' class='active'><span>School general reports</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><span>School general reports</span></a></li>
 
                             </ul>
                         </li>
                     @endif
-                    <li class='has_sub'>
-                        <a href='javascript:void(0);'><i class='icon-pencil-3'></i><span>Forms</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
-                        <ul>
-                            <li><a href='forms.html'><span>Form Elements</span></a></li>
-                            <li><a href='advanced-forms.html'><span>Advanced Forms</span></a></li>
-                            <li><a href='form-wizard.html'><span>Form Wizard</span></a></li>
-                            <li><a href='form-validation.html'><span>Form Validation</span></a></li>
-                            <li><a href='form-uploads.html'><span>File Uploads</span></a></li></ul></li>
-                    <li class='has_sub'><a href='javascript:void(0);'>
-                            <i class='fa fa-table'></i><span>Tables</span>
-                            <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
-                        <ul>
-                            <li><a href='tables.html'><span>Basic Tables</span></a></li>
-                            <li><a href='datatables.html'><span>Datatables</span></a></li>
-                        </ul>
-                    </li>
-                    <li class='has_sub'>
-                        <a href='javascript:void(0);'>
-                            <i class='fa fa-map-marker'></i>
-                            <span>Maps</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
-                        </a>
-                        <ul>
-                            <li><a href='google-maps.html'><span>Google Maps</span></a></li>
-                            <li><a href='vector-maps.html'><span>Vector Maps</span></a></li></ul></li>
-                    <li class='has_sub'><a href='javascript:void(0);'>
-                            <i class='fa fa-envelope'></i><span>Email</span>
-                            <span class="pull-right"><i class="fa fa-angle-down"></i>
-                            </span></a>
-                        <ul>
-                            <li><a href='inbox.html'><span>Inbox</span></a></li>
-                            <li><a href='read-message.html'><span>View Email</span></a></li>
-                            <li><a href='new-message.html'><span>New Message</span></a></li>
-                        </ul>
-                    </li>
-                    <li class='has_sub'><a href='javascript:void(0);'>
-                            <i class='icon-chart-line'></i><span>Charts</span>
-                            <span class="pull-right"><i class="fa fa-angle-down"></i>
-                            </span></a>
-                        <ul>
-                            <li><a href='sparkline-charts.html'><span>Sparkline Charts</span></a></li>
-                            <li><a href='morris-charts.html'><span>Morris Charts</span></a></li>
-
-                            <li><a href='rickshaw-charts.html'><span>Rickshaw Charts</span></a></li>
-                            <li><a href='other-charts.html'><span>Other Charts</span></a></li></ul>
-                    </li>
 
                 </ul>
                 <div class="clearfix"></div>
@@ -86,3 +48,11 @@
         </div>
     </div>
 @stop
+@section('contents')
+
+    <!-- Page Heading Start -->
+    <div class="page-heading">
+        <h1><i class='fa fa-magic'></i> School Report</h1></div>
+    <!-- Page Heading End-->
+@stop
+

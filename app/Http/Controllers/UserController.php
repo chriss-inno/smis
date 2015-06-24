@@ -134,6 +134,7 @@ class UserController extends Controller
         if(Auth::user()->role =="Superuser")
         {
             return view('user.admin_dashboard');
+
         }
 
     }

@@ -1,5 +1,10 @@
 @extends('layout.master')
-@extends('layout.master')
+@section('pageScript')
+    {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
+    {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
+    {!!HTML::script("assets/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js")!!}
+    {!!HTML::script("assets/js/pages/datatables.js")!!}
+@stop
 @section('menus')
     <div class="left side-menu">
         <div class="sidebar-inner slimscrollleft">
@@ -26,59 +31,13 @@
                             </a>
                             <ul>
                                 <li><a href='{{url('schools/add')}} ' ><span>New School</span></a></li>
-                                <li><a href='{{url('schools')}}' ><span>Available Schools</span></a></li>
+                                <li><a href='{{url('schools')}}'><span>Available Schools</span></a></li>
                                 <li><a href='{{url('schools-manage')}}' class='active'><span>Manage Schools</span></a></li>
                                 <li><a href='{{url('schools-reports/')}}'><span>School general reports</span></a></li>
 
                             </ul>
                         </li>
                     @endif
-                    <li class='has_sub'>
-                        <a href='javascript:void(0);'><i class='icon-pencil-3'></i><span>Forms</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
-                        <ul>
-                            <li><a href='forms.html'><span>Form Elements</span></a></li>
-                            <li><a href='advanced-forms.html'><span>Advanced Forms</span></a></li>
-                            <li><a href='form-wizard.html'><span>Form Wizard</span></a></li>
-                            <li><a href='form-validation.html'><span>Form Validation</span></a></li>
-                            <li><a href='form-uploads.html'><span>File Uploads</span></a></li></ul></li>
-                    <li class='has_sub'><a href='javascript:void(0);'>
-                            <i class='fa fa-table'></i><span>Tables</span>
-                            <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
-                        <ul>
-                            <li><a href='tables.html'><span>Basic Tables</span></a></li>
-                            <li><a href='datatables.html'><span>Datatables</span></a></li>
-                        </ul>
-                    </li>
-                    <li class='has_sub'>
-                        <a href='javascript:void(0);'>
-                            <i class='fa fa-map-marker'></i>
-                            <span>Maps</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
-                        </a>
-                        <ul>
-                            <li><a href='google-maps.html'><span>Google Maps</span></a></li>
-                            <li><a href='vector-maps.html'><span>Vector Maps</span></a></li></ul></li>
-                    <li class='has_sub'><a href='javascript:void(0);'>
-                            <i class='fa fa-envelope'></i><span>Email</span>
-                            <span class="pull-right"><i class="fa fa-angle-down"></i>
-                            </span></a>
-                        <ul>
-                            <li><a href='inbox.html'><span>Inbox</span></a></li>
-                            <li><a href='read-message.html'><span>View Email</span></a></li>
-                            <li><a href='new-message.html'><span>New Message</span></a></li>
-                        </ul>
-                    </li>
-                    <li class='has_sub'><a href='javascript:void(0);'>
-                            <i class='icon-chart-line'></i><span>Charts</span>
-                            <span class="pull-right"><i class="fa fa-angle-down"></i>
-                            </span></a>
-                        <ul>
-                            <li><a href='sparkline-charts.html'><span>Sparkline Charts</span></a></li>
-                            <li><a href='morris-charts.html'><span>Morris Charts</span></a></li>
-
-                            <li><a href='rickshaw-charts.html'><span>Rickshaw Charts</span></a></li>
-                            <li><a href='other-charts.html'><span>Other Charts</span></a></li></ul>
-                    </li>
-
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -90,23 +49,70 @@
 @section('contents')
     <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1>Schools page</h1>
+        <h1><i class='fa fa-table'></i> SCHOOLS</h1>
     </div>
-    <!-- Page Heading End-->
     <div class="row">
 
         <div class="col-md-12">
             <div class="widget">
                 <div class="widget-header">
-                    <h2><strong>List of available schools</strong> </h2>
+                    <h2>List of registered schools</h2>
                     <div class="additional-btn">
-                        <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                        <a class="btn btn-blue-1" style="color: #fff" href="{{url('schools/add')}}"><i class="fa fa-file-text-o"></i> New School </a>
+                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('schools')}}"><i class="fa fa-th-list"></i> View Schools </a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('schools-manage')}}"><i class="fa fa-cog"></i> Manage Schools </a>
+                        <a class="btn btn-green-3" style="color: #fff" href="{{url('schools-reports')}}"><i class="fa fa-bar-chart-o"></i> School Reports </a>
                     </div>
                 </div>
                 <div class="widget-content">
                     <br>
                     <div class="table-responsive">
-                        @include('school.list')
+                        <form class='form-horizontal' role='form'>
+                            <table id="datatables-4" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th>SNO</th>
+                                    <th>School Code</th>
+                                    <th>Name of the School</th>
+                                    <th>Registration Number</th>
+                                    <th>ownership</th>
+                                    <th>owner</th>
+                                    <th>Postal Address</th>
+                                    <th colspan="2">Action</th>
+
+                                </thead>
+
+                                <tfoot>
+                                <tr>
+                                    <th>SNO</th>
+                                    <th>School Code</th>
+                                    <th>Name of the School</th>
+                                    <th>Registration Number</th>
+                                    <th>ownership</th>
+                                    <th>owner</th>
+                                    <th>Postal Address</th>
+                                    <th colspan="2">Action</th>
+                                </tfoot>
+
+                                <tbody>
+                                <?php $c=1;?>
+                                @foreach($school as $sc)
+                                    <tr>
+                                        <td>{{$c}}</td>
+                                        <td>{{$sc->school_code}}</td>
+                                        <td>{{$sc->school_name}}</td>
+                                        <td>{{$sc->registration_no}}</td>
+                                        <td>{{$sc->ownership_type}}</td>
+                                        <td>{{$sc->owner}}</td>
+                                        <td>{{$sc->postal_address}}</td>
+                                        <td id="{{$sc->id}}" > <a href="#" class="text-primary" title="Edit"> <i class="fa fa-edit "></i></a></td>
+                                        <td id="{{$sc->id}}" ><a href="#" class="text-primary" title="Delete"> <i class="fa fa-trash-o "></i></a></td>
+                                    </tr>
+                                    <?php $c++;?>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </form>
                     </div>
                 </div>
             </div>

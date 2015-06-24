@@ -32,51 +32,7 @@
                             </ul>
                         </li>
                     @endif
-                    <li class='has_sub'>
-                        <a href='javascript:void(0);'><i class='icon-pencil-3'></i><span>Forms</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
-                        <ul>
-                            <li><a href='forms.html'><span>Form Elements</span></a></li>
-                            <li><a href='advanced-forms.html'><span>Advanced Forms</span></a></li>
-                            <li><a href='form-wizard.html'><span>Form Wizard</span></a></li>
-                            <li><a href='form-validation.html'><span>Form Validation</span></a></li>
-                            <li><a href='form-uploads.html'><span>File Uploads</span></a></li></ul></li>
-                    <li class='has_sub'><a href='javascript:void(0);'>
-                            <i class='fa fa-table'></i><span>Tables</span>
-                            <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
-                        <ul>
-                            <li><a href='tables.html'><span>Basic Tables</span></a></li>
-                            <li><a href='datatables.html'><span>Datatables</span></a></li>
-                        </ul>
-                    </li>
-                    <li class='has_sub'>
-                        <a href='javascript:void(0);'>
-                            <i class='fa fa-map-marker'></i>
-                            <span>Maps</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
-                        </a>
-                        <ul>
-                            <li><a href='google-maps.html'><span>Google Maps</span></a></li>
-                            <li><a href='vector-maps.html'><span>Vector Maps</span></a></li></ul></li>
-                    <li class='has_sub'><a href='javascript:void(0);'>
-                            <i class='fa fa-envelope'></i><span>Email</span>
-                            <span class="pull-right"><i class="fa fa-angle-down"></i>
-                            </span></a>
-                        <ul>
-                            <li><a href='inbox.html'><span>Inbox</span></a></li>
-                            <li><a href='read-message.html'><span>View Email</span></a></li>
-                            <li><a href='new-message.html'><span>New Message</span></a></li>
-                        </ul>
-                    </li>
-                    <li class='has_sub'><a href='javascript:void(0);'>
-                            <i class='icon-chart-line'></i><span>Charts</span>
-                            <span class="pull-right"><i class="fa fa-angle-down"></i>
-                            </span></a>
-                        <ul>
-                            <li><a href='sparkline-charts.html'><span>Sparkline Charts</span></a></li>
-                            <li><a href='morris-charts.html'><span>Morris Charts</span></a></li>
 
-                            <li><a href='rickshaw-charts.html'><span>Rickshaw Charts</span></a></li>
-                            <li><a href='other-charts.html'><span>Other Charts</span></a></li></ul>
-                    </li>
 
                 </ul>
                 <div class="clearfix"></div>
@@ -85,6 +41,24 @@
             <div class="clearfix"></div><br><br><br>
         </div>
     </div>
+    @stop
+@section('pageScript')
+    {!!HTML::script("assets/libs/d3/d3.v3.js")!!}
+    {!!HTML::script("assets/libs/rickshaw/rickshaw.min.js")!!}
+    {!!HTML::script("assets/libs/raphael/raphael-min.js")!!}
+    {!!HTML::script("assets/libs/morrischart/morris.min.js")!!}
+    {!!HTML::script("assets/libs/jquery-knob/jquery.knob.js")!!}
+    {!!HTML::script("assets/libs/jquery-jvectormap/js/jquery-jvectormap-1.2.2.min.js")!!}
+    {!!HTML::script("assets/libs/jquery-jvectormap/js/jquery-jvectormap-us-aea-en.js")!!}
+    {!!HTML::script("assets/libs/jquery-clock/clock.js")!!}
+    {!!HTML::script("assets/libs/jquery-easypiechart/jquery.easypiechart.min.js")!!}
+    {!!HTML::script("assets/libs/jquery-weather/jquery.simpleWeather-2.6.min.js")!!}
+    {!!HTML::script("assets/libs/bootstrap-xeditable/js/bootstrap-editable.min.js")!!}
+    {!!HTML::script("assets/libs/bootstrap-calendar/js/bic_calendar.min.js")!!}
+    {!!HTML::script("assets/js/apps/calculator.js")!!}
+    {!!HTML::script("assets/js/apps/todo.js")!!}
+    {!!HTML::script("assets/js/apps/notes.js")!!}
+    {!!HTML::script("assets/js/pages/index.js")!!}
     @stop
 @section('contents')
     <!-- Start info box -->
@@ -413,4 +387,6 @@
             </div>
         </div>
     </div>
+
+
 @stop

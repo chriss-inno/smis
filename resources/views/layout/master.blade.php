@@ -34,7 +34,10 @@
    {!!HTML::style("assets/libs/sortable/sortable-theme-bootstrap.css"  )!!}
    {!!HTML::style("assets/libs/jquery-weather/simpleweather.css"  )!!}
    {!!HTML::style("assets/libs/bootstrap-xeditable/css/bootstrap-editable.css"  )!!}
-   {!!HTML::style("assets/css/style.css"  )!!}
+    {!!HTML::style("assets/libs/jquery-datatables/css/dataTables.bootstrap.css"  )!!}
+    {!!HTML::style("assets/libs/jquery-datatables/extensions/TableTools/css/dataTables.tableTools.css" )!!}
+
+    {!!HTML::style("assets/css/style.css"  )!!}
     <!-- Extra CSS Libraries End -->
    {!!HTML::style("assets/css/style-responsive.css" )!!}
 
@@ -533,35 +536,9 @@
 
 <!-- Demo Specific JS Libraries -->
 {!!HTML::script("assets/libs/prettify/prettify.js")!!}
-
 {!!HTML::script("assets/js/init.js")!!}
 <!-- Page Specific JS Libraries -->
-{!!HTML::script("assets/libs/d3/d3.v3.js")!!}
-{!!HTML::script("assets/libs/rickshaw/rickshaw.min.js")!!}
-{!!HTML::script("assets/libs/raphael/raphael-min.js")!!}
-{!!HTML::script("assets/libs/morrischart/morris.min.js")!!}
-{!!HTML::script("assets/libs/jquery-knob/jquery.knob.js")!!}
-{!!HTML::script("assets/libs/jquery-jvectormap/js/jquery-jvectormap-1.2.2.min.js")!!}
-{!!HTML::script("assets/libs/jquery-jvectormap/js/jquery-jvectormap-us-aea-en.js")!!}
-{!!HTML::script("assets/libs/jquery-clock/clock.js")!!}
-{!!HTML::script("assets/libs/jquery-easypiechart/jquery.easypiechart.min.js")!!}
-{!!HTML::script("assets/libs/jquery-weather/jquery.simpleWeather-2.6.min.js")!!}
-{!!HTML::script("assets/libs/bootstrap-xeditable/js/bootstrap-editable.min.js")!!}
-{!!HTML::script("assets/libs/bootstrap-calendar/js/bic_calendar.min.js")!!}
-{!!HTML::script("assets/js/apps/calculator.js")!!}
-{!!HTML::script("assets/js/apps/todo.js")!!}
-{!!HTML::script("assets/js/apps/notes.js")!!}
-{!!HTML::script("assets/js/pages/index.js")!!}
-<!-- Demo Specific JS Libraries -->
-{!!HTML::script("assets/libs/prettify/prettify.js")!!}
-{!!HTML::script("assets/js/init.js")!!}
 
 @yield('pageScript')
-<!-- Validations-->
-{!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
-{!!HTML::script("assets/js/pages/form-validation.js")!!}
-
-
-
 </body>
 </html>
