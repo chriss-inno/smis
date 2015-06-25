@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Validator;
 use App\School;
 use App\User;
 use App\Http\Requests\UserRequest;
+use App\Audit;
+use App\Http\Controllers\Auth;
+
 class SchoolController extends Controller
 {
     /**
@@ -68,6 +71,14 @@ class SchoolController extends Controller
         $sc->created_date=date('Y-m-d');
         $sc->save();
 
+
+        //Process Aud train
+        $audit=new Audit;
+        $audit->user_id =Auth::user()->id;
+        $audit->activity="Register new School named ".$request->school_name ." with school ID ". $sc->id;
+        $audit->module="School Management";
+        $audit->activity_when=date("Y-m-d H:i:s");
+        $audit->save();
         return redirect('schools');
     }
 
@@ -93,7 +104,7 @@ class SchoolController extends Controller
     public function edit($id)
     {
         //
-        $school=School::find($id);
+        $school=School::find($id)->first();
         return view('school.edit',compact('school'));
     }
 
@@ -103,9 +114,41 @@ class SchoolController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(SchoolRequest $request)
     {
         //
+        $sc= School::find($request->id);
+        $sc->school_code=$request->school_code;
+        $sc->school_name=$request->school_name;
+        $sc->registered=$request->registered;
+        $sc->registration_no=$request->registration_no;
+        $sc->accredited=$request->accredited;
+        $sc->SchoolProfile=$request->SchoolProfile;
+        $sc->ownership_type=$request->ownership_type;
+        $sc->owner=$request->owner;
+        $sc->region=$request->region;
+        $sc->district=$request->district;
+        $sc->postal_address=$request->postal_address;
+        $sc->physical_address=$request->physical_address;
+        $sc->school_head=$request->school_head;
+        $sc->mobile=$request->mobile;
+        $sc->telephone=$request->telephone;
+        $sc->fax=$request->fax;
+        $sc->email=$request->email;
+        $sc->website=$request->website;
+        $sc->start_date=date('Y-m-d',strtotime($request->start_date));
+        $sc->status=$request->status;
+        $sc->created_date=date('Y-m-d');
+        $sc->save();
+
+        //Process Aud train
+        $audit=new Audit;
+        $audit->user_id =Auth::user()->id;
+        $audit->activity="Update School named ".$request->school_name ." with school ID ". $sc->id;
+        $audit->module="School Management";
+        $audit->activity_when=date("Y-m-d H:i:s");
+        $audit->save();
+        return redirect('schools');
     }
 
     /**
@@ -117,8 +160,22 @@ class SchoolController extends Controller
     public function destroy($id)
     {
         //
-        $school=School::find($id)->delete;
-        return redirect('schools');
+        $school=School::find($id);
+        foreach( $school->users as $us)
+        {
+            $us->delete();
+        }
+
+
+        //Process Aud train
+        $audit=new Audit;
+        $audit->user_id =Auth::user()->id;
+        $audit->activity="Delete School named ".$school->school_name ." with school ID ". $school->id;
+        $audit->module="School Management";
+        $audit->activity_when=date("Y-m-d H:i:s");
+        $audit->save();
+
+        $school->delete(); //Finish deleteing school
     }
     public function schoolReports()
     {
@@ -157,6 +214,17 @@ class SchoolController extends Controller
         $user->role ='Administrator';
         $user->status ='active';
         $user->save();
+
+        //Process Aud train
+        $school=School::find($request->school_id);
+
+        $audit=new Audit;
+        $audit->user_id =Auth::user()->id;
+        $audit->activity="Addedd new user for school  ".$school->school_name ." with school ID ". $school->id. " User with user name ".$request->username ."and User ID ".$user->id ;
+        $audit->module="School Management";
+        $audit->activity_when=date("Y-m-d H:i:s");
+        $audit->save();
+
 
         $user=User::where('school_id','=',$request->school_id)->where('role','=','Administrator')->get();
        echo '   <p>Registered users for this school</p>';

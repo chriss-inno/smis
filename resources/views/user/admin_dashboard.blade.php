@@ -15,23 +15,187 @@
                         <a href='{{url('home')}}' class='active'>
                             <i class='icon-home-3'></i><span>Dashboard</span> <span class="pull-right"></span></a>
                     </li>
-                    @if(Auth::user()->role =="Superuser")
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,1) )
                         <li class='has_sub'><a href='javascript:void(0);'>
-                                <i class='icon-feather'></i>
-                                <span>Manage Schools</span>
+                                <span><i class="fa fa-building"></i> Schools</span>
                             <span class="pull-right">
                                 <i class="fa fa-angle-down"></i>
                             </span>
                             </a>
                             <ul>
-                                <li><a href='{{url('schools/add')}}'><span>New School</span></a></li>
-                                <li><a href='{{url('schools')}}'><span>Available Schools</span></a></li>
-                                <li><a href='{{url('schools-manage')}}'><span>Manage Schools</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><span>School general reports</span></a></li>
+                                <li><a href='{{url('schools/add')}}'><span><i class="fa fa-arrow-right"></i>New School</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Available Schools</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
 
                             </ul>
                         </li>
                     @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-graduation-cap"></i> Students </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Register new Students</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List students</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><i class="fa fa-arrow-right"></i><span>Search Student</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>Students Reports</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-users"></i> Staff </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Register new Staff</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List staff</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><i class="fa fa-arrow-right"></i><span>Search staff</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>Students staff</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-newspaper-o"></i> News and Announcements </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Add News/Announcement</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Current News</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>News Archive</span></a></li>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Search News</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span> <i class="fa fa-book"></i> Courses </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Register new course</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List Courses</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><i class="fa fa-arrow-right"></i><span>Courses Management</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>Courses Asignment </span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-newspaper-o"></i> Academic</span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Student Progress</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Assessments</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>Enrollement</span></a></li>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Examination Period</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-graduation-cap"></i> Students </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Register new Students</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List students</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><i class="fa fa-arrow-right"></i><span>Search Student</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>Students Reports</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-calendar"></i> Calendar </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Calendar</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><i class="fa fa-arrow-right"></i><span>My Calendar</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>My Events</span></a></li>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>School Events</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-money"></i> Accountant </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Finances</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Fee Payments</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><i class="fa fa-arrow-right"></i><span>Search Payments</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>Budget</span></a></li>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Budget Setup</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-cogs"></i> Clases </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Add new class</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List classes</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><i class="fa fa-arrow-right"></i><span></span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>Enlorement</span></a></li>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Examination Period</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-cogs"></i> General Setup </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Academic Year</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Test Setting</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><i class="fa fa-arrow-right"></i><span>Class Levels</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>Enlorement</span></a></li>
+                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Examination Period</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+
 
 
                 </ul>

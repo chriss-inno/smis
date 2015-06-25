@@ -12,7 +12,9 @@
         "phpoffice/phpword": "dev-master",
         "barryvdh/laravel-snappy": "0.2.x",
         "illuminate/html": "5.*",
-        "bllim/laravalid": "*"
+        "bllim/laravalid": "*",
+        "composer-plugin-api": "* 1.0.0",
+        "composer/composer": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

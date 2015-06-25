@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
-
+use App\UserRight;
 class UserController extends Controller
 {
     /**
@@ -134,9 +134,27 @@ class UserController extends Controller
         if(Auth::user()->role =="Superuser")
         {
             return view('user.admin_dashboard');
-
+        }
+        else
+        {
+            return view('user.admin_dashboard');
         }
 
     }
 
+    //Process access rights
+    public static function checkAccessRights($user_id,$module)
+    {
+        $usr=UserRight::where('user_id','=',$user_id)->where('module','=',$module)->where('can_access','=','Y')->get();
+        if(count($usr)>0) {
+            return true;} else {return false;}
+    }
+
+    //Check Edit Rights
+    public static function checkEditRights($user_id,$module)
+    {
+        $usr=UserRight::where('user_id','=',$user_id)->where('module','=',$module)->where('can_edit','=','Y')->get();
+        if(count($usr)>0) {
+            return true;} else {return false;}
+    }
 }

@@ -24,17 +24,17 @@
                     </li>
                     @if(Auth::user()->role =="Superuser")
                         <li class='has_sub'><a href='javascript:void(0);'>
-                                <i class='icon-feather'></i>
+                                <i class="fa fa-delicious"></i>
                                 <span>Manage Schools</span>
                             <span class="pull-right">
                                 <i class="fa fa-angle-down"></i>
                             </span>
                             </a>
                             <ul>
-                                <li><a href='{{url('schools/add')}} ' class='active'><span>New School</span></a></li>
-                                <li><a href='{{url('schools')}}'><span>Available Schools</span></a></li>
-                                <li><a href='{{url('schools-manage')}}'><span>Manage Schools</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><span>School general reports</span></a></li>
+                                <li><a href='{{url('schools/add')}} ' class='active'><span><i class="fa fa-arrow-right"></i>New School</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Available Schools</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
 
                             </ul>
                         </li>
