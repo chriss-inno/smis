@@ -4908,7 +4908,7 @@ section.step {
   font-size: 12px;
 }
 .modal {
-  direction: rtl;
+  direction: ltr;
   overflow-y: auto;
 }
 .modal .modal-dialog {

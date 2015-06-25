@@ -98,6 +98,143 @@ $(document).ready(function() {
             }
         }
     });
+   //USER REGISTER FORM
+    $('#schoolUserRegistration').bootstrapValidator({
+        message: 'This value is not valid',
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required and can\'t be empty'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'The username must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    },
+                    different: {
+                        field: 'password',
+                        message: 'The username and password can\'t be the same as each other'
+                    }
+                }
+            },
+            other_name: {
+                message: 'The username is not valid',
+                validators: {
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The Other Name can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            surname: {
+                message: 'The Surname is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The Surname is required and can\'t be empty'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The Surname can only consist of alphabetical, number, dot and underscore'
+                    }
+
+                }
+            },
+            first_name: {
+                message: 'The First Name is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The First Name is required and can\'t be empty'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The First Name can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required and can\'t be empty'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required and can\'t be empty'
+                    },
+                    identical: {
+                        field: 'confirmPassword',
+                        message: 'The password and its confirm are not the same'
+                    }
+                }
+            },
+            confirmPassword: {
+                validators: {
+                    notEmpty: {
+                        message: 'The confirm password is required and can\'t be empty'
+                    },
+                    identical: {
+                        field: 'password',
+                        message: 'The password and its confirm are not the same'
+                    },
+                    different: {
+                        field: 'username',
+                        message: 'The password can\'t be the same as username'
+                    }
+                }
+            },
+            phone: {
+                validators: {
+                    digits: {
+                        message: 'The value can contain only digits'
+                    }
+                }
+            }
+        },
+        submitHandler: function(form) {
+            $("#output").html("<h3><span class='text-info'><i class='fa fa-spinner fa-spin'></i> Making changes please wait...</span><h3>");
+            var postData = $('#schoolUserRegistration').serializeArray();
+            var formURL = $('#schoolUserRegistration').attr("action");
+            $.ajax(
+                {
+                    url : formURL,
+                    type: "POST",
+                    data : postData,
+                    success:function(data)
+                    {
+                        console.log(data);
+                        //data: return data from server
+                        $("#display").html(data);
+                        $("#output").html('');
+
+                        setTimeout(function() {
+                            $("#myModal").modal("hide");
+                        }, 3000);
+                    },
+                    error: function(data)
+                    {
+                        console.log(data.responseJSON);
+                        //in the responseJSON you get the form validation back.
+                        $("#output").html("<h3><span class='text-info'><i class='fa fa-spinner fa-spin'></i> Error in processing data try again...</span><h3>");
+                        $("#display").html(data);
+                        setTimeout(function() {
+                            $("#myModal").modal("hide");
+                        }, 3000);
+                    }
+                });
+        }
+
+    });
     $('#loginForm').bootstrapValidator({
         message: 'This value is not valid',
         fields: {

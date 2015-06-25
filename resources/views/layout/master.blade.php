@@ -247,7 +247,7 @@
                         </li>
                         <li class="dropdown iconify hide-phone"><a href="#" onclick="javascript:toggle_fullscreen()"><i class="icon-resize-full-2"></i></a></li>
                         <li class="dropdown topbar-profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="rounded-image topbar-profile-image"><img src="images/users/user-35.jpg"></span><strong> {{Auth::user()->name}}</strong> <i class="fa fa-caret-down"></i></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="rounded-image topbar-profile-image"><img src="images/users/user-35.jpg"></span><strong> {{Auth::user()->surname}}</strong> <i class="fa fa-caret-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">My Profile</a></li>
                                 <li><a href="#">Change Password</a></li>
@@ -523,8 +523,6 @@
 {!!HTML::script("assets/libs/bootstrap-bootbox/bootbox.min.js")!!}
 {!!HTML::script("assets/libs/jquery-slimscroll/jquery.slimscroll.js")!!}
 {!!HTML::script("assets/libs/jquery-sparkline/jquery-sparkline.js")!!}
-{!!HTML::script("assets/libs/nifty-modal/js/classie.js")!!}
-{!!HTML::script("assets/libs/nifty-modal/js/modalEffects.js")!!}
 {!!HTML::script("assets/libs/sortable/sortable.min.js")!!}
 {!!HTML::script("assets/libs/bootstrap-fileinput/bootstrap.file-input.js")!!}
 {!!HTML::script("assets/libs/bootstrap-select/bootstrap-select.min.js")!!}
@@ -542,3 +540,4 @@
 @yield('pageScript')
 </body>
 </html>
+@yield('modals')

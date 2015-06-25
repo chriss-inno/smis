@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
         User::truncate();
 
         $user=new User;
-        $user->name = 'Administrator';
+        $user->surname = 'Administrator';
         $user->email = 'admin@smis.com';
         $user->username = 'admin';
         $user->role = 'Superuser';

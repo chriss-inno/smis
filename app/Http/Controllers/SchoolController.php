@@ -9,7 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SchoolRequest;
 use Illuminate\Support\Facades\Validator;
 use App\School;
-
+use App\User;
+use App\Http\Requests\UserRequest;
 class SchoolController extends Controller
 {
     /**
@@ -62,7 +63,7 @@ class SchoolController extends Controller
         $sc->fax=$request->fax;
         $sc->email=$request->email;
         $sc->website=$request->website;
-        $sc->start_date=$request->start_date;
+        $sc->start_date=date('Y-m-d',strtotime($request->start_date));
         $sc->status=$request->status;
         $sc->created_date=date('Y-m-d');
         $sc->save();
@@ -135,5 +136,82 @@ class SchoolController extends Controller
     {
 
     }
+
+    public  function addUser($id)
+    {
+        $user=User::where('school_id','=',$id)->where('role','=','Administrator')->get();
+        return view('school.addUser',compact('user','id'));
+    }
+    public  function saveUser(UserRequest $request)
+    {
+
+        $user=new User;
+        $user->first_name =$request->first_name;
+        $user->other_name =$request->other_name;
+        $user->surname =$request->surname;
+        $user->email =$request->email;
+        $user->phone =$request->phone;
+        $user->username =$request->username;
+        $user->password =bcrypt($request->password);
+        $user->school_id =$request->school_id;
+        $user->role ='Administrator';
+        $user->status ='active';
+        $user->save();
+
+        $user=User::where('school_id','=',$request->school_id)->where('role','=','Administrator')->get();
+       echo '   <p>Registered users for this school</p>';
+       echo ' <table  class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>SNO</th>
+                                <th>First Name</th>
+                                <th>Surname</th>
+                                <th>Other Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Action</th>
+                            </thead>
+
+                            <tfoot>
+                            <tr>
+                            <tr>
+                                <th>SNO</th>
+                                <th>First Name</th>
+                                <th>Surname</th>
+                                <th>Other Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Action</th>
+                            </tfoot>
+
+                            <tbody>
+                            ';
+
+                             $c=1;
+            foreach($user as $sc)
+            {
+            echo '<tr>
+                <td>'.$c.'</td>
+                <td>'.$sc->first_name.'</td>
+                <td>'.$sc->surname.'</td>
+                <td>'.$sc->other_name.'</td>
+                <td>'.$sc->email.'</td>
+                <td>'.$sc->phone.'</td>
+                <td id="$sc->id" style="align-content: center" >
+                    <div class="col-md-6" id="$sc->id">
+                        <a href="#" title="Edit" class="editapp "><i class="fa fa-pencil-square-o text-info"></i> edit</a>&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="col-md-6" id="'.$sc->id.'">
+                        <a href="#b" title="Delete" class="deleteapp "><i class="fa fa-trash-o text-danger"></i> delete </a>
+                    </div>
+                </td>
+            </tr>';
+            $c++;
+           }
+           echo ' </tbody>
+            </table>';
+    }
+
+
 
 }

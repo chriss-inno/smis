@@ -52,7 +52,7 @@
 
     <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-magic'></i> School Information</h1></div>
+        <h1><i class='fa fa-magic'></i> Update School Information</h1></div>
     <!-- Page Heading End-->
     <div class="row">
         <div class="row">
