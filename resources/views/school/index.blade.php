@@ -80,7 +80,7 @@
                                      <th>ownership</th>
                                      <th>owner</th>
                                      <th>Postal Address</th>
-                                     <th>Users</th>
+                                     <th>Physical Address</th>
                                  </thead>
 
                                  <tfoot>
@@ -92,7 +92,7 @@
                                      <th>ownership</th>
                                      <th>owner</th>
                                      <th>Postal Address</th>
-                                     <th>Users</th>
+                                     <th>Physical Address</th>
                                  </tfoot>
 
                                  <tbody>
@@ -105,8 +105,8 @@
                                          <td>{{$sc->registration_no}}</td>
                                          <td>{{$sc->ownership_type}}</td>
                                          <td>{{$sc->owner}}</td>
-                                         <td>{{$sc->postal_address}}</td>
-                                         <td id="{{$sc->id}}" ></td>
+                                         <td><?php echo $sc->postal_address;?></td>
+                                         <td><?php echo$sc->physical_address;?></td>
                                      </tr>
                                      <?php $c++;;?>
                                  @endforeach

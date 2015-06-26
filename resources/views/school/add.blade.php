@@ -4,7 +4,14 @@
     <!-- Wizard-->
     {!!HTML::script("assets/libs/jquery-wizard/jquery.easyWizard.js")!!}
     {!!HTML::script("assets/js/pages/form-wizard.js")!!}
-
+    <script>
+        $("#region").change(function () {
+            var id1 = this.value;
+            $.get("<?php echo url('getDistricts') ?>/"+id1,function(data){
+                $("#district").html(data);
+            });
+        });
+    </script>
 @stop
 @section('menus')
     <div class="left side-menu">
@@ -49,10 +56,20 @@
     </div>
 @stop
 @section('contents')
-
+    {!!HTML::script("assets/js/tinymce/tinymce.min.js")!!}
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea",
+            plugins: [
+                "advlist autolink lists   charmap   anchor",
+                "insertdatetime  contextmenu paste"
+            ],
+            toolbar: " undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent "
+        });
+    </script>
     <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-magic'></i> School Information</h1></div>
+        <h1><i class='fa fa-building'></i> School Information</h1></div>
     <!-- Page Heading End-->
     <div class="row">
         <div class="row">
@@ -60,7 +77,7 @@
             <div class="col-md-12">
                 <div class="widget">
                     <div class="widget-header">
-                        <h2>Register New School</h2>
+                        <h2>School Registration</h2>
                         <div class="additional-btn">
                             <a class="btn btn-blue-1" style="color: #fff" href="{{url('schools/add')}}"><i class="fa fa-file-text-o"></i> New School </a>
                             <a class="btn btn-blue-3" style="color: #fff" href="{{url('schools')}}"><i class="fa fa-th-list"></i> View Schools </a>
@@ -100,14 +117,7 @@
                                             <label>Start Date</label>
                                             <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="start_date">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Website</label>
-                                            <input type="text" class="form-control" name="website">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>School Profile</label>
-                                            <textarea class="form-control" name="SchoolProfile" style="height: 140px; resize: none;"></textarea>
-                                        </div>
+
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="notes">
@@ -139,6 +149,7 @@
                                                 <option>Government</option>
                                                 <option>Private</option>
                                                 <option>FBO</option>
+                                                <option>Other</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -148,6 +159,14 @@
                                         <div class="form-group">
                                             <label>Head/Principal of school</label>
                                             <input type="text" class="form-control" name="school_head">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Website</label>
+                                            <input type="text" class="form-control" name="website">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>School Profile</label>
+                                            <textarea class="form-control" name="SchoolProfile" style="height: 140px; resize: none;"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -182,25 +201,23 @@
                                             <textarea class="form-control" name="physical_address"> </textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label>Phisical Address</label>
-                                            <textarea class="form-control" name="phisical_address"> </textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Region</label>
-                                            <select name="region" class="form-control">
-                                                <option value="">--Select Ownership Detail--</option>
-                                                <option>Government</option>
-                                                <option>Private</option>
-                                                <option>FBO</option>
+                                            <label for="region">Region</label>
+                                            <?php
+                                            $reg=array(''=>'--Select Region--');
+                                            $reg=\App\Region::all(); ?>
+
+                                            <select id="region" name="region" class="form-control">
+                                                <option value="" selected="selected">--Select Region--</option>
+                                                 @foreach($reg as $rg)
+                                                     <option value="{{$rg->id}}">{{$rg->region_name}}</option>
+                                                     @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>District</label>
-                                            <select name="district" class="form-control">
-                                                <option value="">--Select Ownership Detail--</option>
-                                                <option>Government</option>
-                                                <option>Private</option>
-                                                <option>FBO</option>
+                                            <label>District</label>
+                                            <select name="district" id="district" class="form-control">
+                                                <option value="">--Select District--</option>
                                             </select>
                                         </div>
                                         <div class="form-group">

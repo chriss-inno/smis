@@ -32,6 +32,8 @@ Route::post('schools-search',['middleware' => 'auth', 'uses' =>'SchoolController
 Route::get('schools/{id}',['middleware' => 'auth', 'uses' =>'SchoolController@show']);
 Route::get('school/user/add/{id}',['middleware' => 'auth', 'uses' =>'SchoolController@addUser']);
 Route::post('school/user/add',['middleware' => 'auth', 'uses' =>'SchoolController@saveUser']);
+Route::post('school/user/edit',['middleware' => 'auth', 'uses' =>'SchoolController@updateUser']);
+Route::get('school/user/edit/{id}',['middleware' => 'auth', 'uses' =>'SchoolController@showUserEdit']);
 
 //Region and districts controller
 Route::get('getDistricts/{id}',['middleware' => 'auth', 'uses' =>'RegionController@getDistricts']);

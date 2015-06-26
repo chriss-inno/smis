@@ -12,7 +12,7 @@ use App\School;
 use App\User;
 use App\Http\Requests\UserRequest;
 use App\Audit;
-use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class SchoolController extends Controller
 {
@@ -265,9 +265,9 @@ class SchoolController extends Controller
                 <td>'.$sc->other_name.'</td>
                 <td>'.$sc->email.'</td>
                 <td>'.$sc->phone.'</td>
-                <td id="$sc->id" style="align-content: center" >
-                    <div class="col-md-6" id="$sc->id">
-                        <a href="#" title="Edit" class="editapp "><i class="fa fa-pencil-square-o text-info"></i> edit</a>&nbsp;&nbsp;&nbsp;
+                <td id="'.$sc->id.'" style="align-content: center" >
+                    <div class="col-md-6" id="'.$sc->id.'">
+                        <a href="#" title="Edit" class="edituser" id="btn edituser"><i class="fa fa-pencil-square-o text-info"></i> edit</a>&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="col-md-6" id="'.$sc->id.'">
                         <a href="#b" title="Delete" class="deleteapp "><i class="fa fa-trash-o text-danger"></i> delete </a>
@@ -280,6 +280,95 @@ class SchoolController extends Controller
             </table>';
     }
 
+    //Show user editor
+    public function showUserEdit($id)
+    {
+        $user =User::find($id);
+        return view('school.editUser',compact('user'));
+
+    }
+
+    //Update user
+
+    public function updateUser(UserRequest $request)
+    {
+        $user= User::find($request->user_id);
+        $user->first_name =$request->first_name;
+        $user->other_name =$request->other_name;
+        $user->surname =$request->surname;
+        $user->email =$request->email;
+        $user->phone =$request->phone;
+        $user->username =$request->username;
+        $user->password =bcrypt($request->password);
+        $user->school_id =$request->school_id;
+        $user->role ='Administrator';
+        $user->status ='active';
+        $user->save();
+
+        //Process Aud train
+        $school=School::find($request->school_id);
+
+        $audit=new Audit;
+        $audit->user_id =Auth::user()->id;
+        $audit->activity="Update  user for school  ".$school->school_name ." with school ID ". $school->id. " User with user name ".$request->username ."and User ID ".$user->id ;
+        $audit->module="School Management";
+        $audit->activity_when=date("Y-m-d H:i:s");
+        $audit->save();
+
+
+        $user=User::where('school_id','=',$request->school_id)->where('role','=','Administrator')->get();
+        echo '   <p>Registered users for this school</p>';
+        echo ' <table  class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>SNO</th>
+                                <th>First Name</th>
+                                <th>Surname</th>
+                                <th>Other Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Action</th>
+                            </thead>
+
+                            <tfoot>
+                            <tr>
+                            <tr>
+                                <th>SNO</th>
+                                <th>First Name</th>
+                                <th>Surname</th>
+                                <th>Other Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Action</th>
+                            </tfoot>
+
+                            <tbody>
+                            ';
+
+        $c=1;
+        foreach($user as $sc)
+        {
+            echo '<tr>
+                <td>'.$c.'</td>
+                <td>'.$sc->first_name.'</td>
+                <td>'.$sc->surname.'</td>
+                <td>'.$sc->other_name.'</td>
+                <td>'.$sc->email.'</td>
+                <td>'.$sc->phone.'</td>
+                <td id="$sc->id" style="align-content: center" >
+                    <div class="col-md-6" id="$sc->id">
+                        <a href="#" title="Edit" class="editapp "><i class="fa fa-pencil-square-o text-info"></i> edit</a>&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="col-md-6" id="'.$sc->id.'">
+                        <a href="#b" title="Delete" class="deleteapp "><i class="fa fa-trash-o text-danger"></i> delete </a>
+                    </div>
+                </td>
+            </tr>';
+            $c++;
+        }
+        echo ' </tbody>
+            </table>';
+    }
 
 
 }

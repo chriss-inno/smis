@@ -193,10 +193,22 @@ $district="";
                                             $reg=array(''=>'--Select Region--');
                                             $reg=\App\Region::lists('region_name','id'); ?>
                                             {!! Form::select('region',$reg,$region,array('class'=>'form-control','id'=>'region')) !!}
+                                            <select id="region" name="region" class="form-control">
+                                                @if($region =="")
+                                                <option value="" selected="selected">--Select Region--</option>
+                                                @else
+                                                    <option value="" selected="selected">--Select Region--</option>
+                                                    @endif
+                                                @foreach($reg as $rg)
+                                                    <option value="{{$rg->id}}">{{$rg->region_name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>District</label>
-                                            <select name="district" id="district" class="form-control"></select>
+                                            <select name="district" id="district" class="form-control">
+                                                <option value="">--Select District--</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Mobile</label>

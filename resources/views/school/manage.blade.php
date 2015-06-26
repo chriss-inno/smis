@@ -158,7 +158,7 @@
                                         <td>{{$sc->registration_no}}</td>
                                         <td>{{$sc->ownership_type}}</td>
                                         <td>{{$sc->owner}}</td>
-                                        <td>{{$sc->postal_address}}</td>
+                                        <td><?php echo $sc->postal_address;?></td>
                                         <td  id="{{$sc->school_name}}" style="align-content: center"> <div class="col-md-12" id="{{$sc->id}}">
                                                 <a href="#" title="Add Users" class="adduser "><i class="fa fa-users text-success"></i> View</a>&nbsp;&nbsp;&nbsp;
                                             </div></td>

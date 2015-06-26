@@ -216,20 +216,14 @@ $(document).ready(function() {
                         //data: return data from server
                         $("#display").html(data);
                         $("#output").html('');
-
-                        setTimeout(function() {
-                            $("#myModal").modal("hide");
-                        }, 3000);
                     },
                     error: function(data)
                     {
                         console.log(data.responseJSON);
                         //in the responseJSON you get the form validation back.
-                        $("#output").html("<h3><span class='text-info'><i class='fa fa-spinner fa-spin'></i> Error in processing data try again...</span><h3>");
+                        $("#output").html("<h3><span class='text-info'> Error in processing data try again...</span><h3>");
                         $("#display").html(data);
-                        setTimeout(function() {
-                            $("#myModal").modal("hide");
-                        }, 3000);
+
                     }
                 });
         }
