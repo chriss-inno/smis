@@ -96,7 +96,7 @@ class RegionController extends Controller
     {
         //
         $ds=District::where('region_id','=',$id)->get();
-        echo '<option value="">--Select District--</option>';
+        echo '<option value="">----</option>';
          foreach($ds as $d)
            echo '<option value="'.$d->id.'">'.$d->district_name.'</option>';
     }

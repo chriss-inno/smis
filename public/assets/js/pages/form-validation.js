@@ -6,28 +6,14 @@ $(document).ready(function() {
     $('#captchaOperation').html([randomNumber(1, 20), '+', randomNumber(1, 30), '='].join(' '));
 	
 	
-	//EXAMPLE REGISTER FORM
-    $('#registerForm').bootstrapValidator({
+	//Validation of School registration form
+    $('#myWizard').bootstrapValidator({
         message: 'This value is not valid',
         fields: {
-            username: {
-                message: 'The username is not valid',
+            school_code: {
                 validators: {
                     notEmpty: {
-                        message: 'The username is required and can\'t be empty'
-                    },
-                    stringLength: {
-                        min: 6,
-                        max: 30,
-                        message: 'The username must be more than 6 and less than 30 characters long'
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z0-9_\.]+$/,
-                        message: 'The username can only consist of alphabetical, number, dot and underscore'
-                    },
-                    different: {
-                        field: 'password',
-                        message: 'The username and password can\'t be the same as each other'
+                        message: 'The school code is required and can\'t be empty'
                     }
                 }
             },
@@ -41,58 +27,66 @@ $(document).ready(function() {
                     }
                 }
             },
-            password: {
+            school_name: {
                 validators: {
                     notEmpty: {
-                        message: 'The password is required and can\'t be empty'
-                    },
-                    identical: {
-                        field: 'confirmPassword',
-                        message: 'The password and its confirm are not the same'
-                    },
-                    different: {
-                        field: 'username',
-                        message: 'The password can\'t be the same as username'
+                        message: 'The school name is required and can\'t be empty'
                     }
                 }
             },
-            confirmPassword: {
+            registered: {
                 validators: {
                     notEmpty: {
-                        message: 'The confirm password is required and can\'t be empty'
-                    },
-                    identical: {
-                        field: 'password',
-                        message: 'The password and its confirm are not the same'
-                    },
-                    different: {
-                        field: 'username',
-                        message: 'The password can\'t be the same as username'
+                        message: 'The registered is required and can\'t be empty'
                     }
                 }
             },
-            phoneNumber: {
+            owner: {
+                validators: {
+                    notEmpty: {
+                        message: 'The owner is required and can\'t be empty'
+                    }
+                }
+            },
+            ownership_type: {
+                validators: {
+                    notEmpty: {
+                        message: 'The ownership type is required and can\'t be empty'
+                    }
+                }
+            },
+            school_head: {
+                validators: {
+                    notEmpty: {
+                        message: 'The school head/Principal is required and can\'t be empty'
+                    }
+                }
+            },
+            mobile: {
                 validators: {
                     digits: {
                         message: 'The value can contain only digits'
                     }
                 }
             },
-            acceptTerms: {
+            telephone: {
                 validators: {
-                    notEmpty: {
-                        message: 'You have to accept the terms and policies'
+                    digits: {
+                        message: 'The value can contain only digits'
                     }
                 }
             },
-            captcha: {
+            fax: {
                 validators: {
-                    callback: {
-                        message: 'Wrong answer',
-                        callback: function(value, validator) {
-                            var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
-                            return value == sum;
-                        }
+                    digits: {
+                        message: 'The value can contain only digits'
+                    }
+                }
+            },
+            telephone: {
+                validators: {
+                    digits: {
+                        message: 'The value can contain only digits'
                     }
                 }
             }

@@ -4,6 +4,8 @@
     <!-- Wizard-->
     {!!HTML::script("assets/libs/jquery-wizard/jquery.easyWizard.js")!!}
     {!!HTML::script("assets/js/pages/form-wizard.js")!!}
+    {!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
+    {!!HTML::script("assets/js/pages/form-validation.js")!!}
  <script>
      $("#region").change(function () {
          var id1 = this.value;
@@ -56,6 +58,18 @@
     </div>
 @stop
 @section('contents')
+
+    {!!HTML::script("assets/js/tinymce/tinymce.min.js")!!}
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea",
+            plugins: [
+                "advlist autolink lists   charmap   anchor",
+                "insertdatetime  contextmenu paste"
+            ],
+            toolbar: " undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent "
+        });
+    </script>
 <?php
 $school_code="";
 $school_name="";
@@ -117,8 +131,13 @@ $district="";
                             {!! Form::open(array('url' => 'schools/edit/update','id'=>'myWizard')) !!}
 
                             <section class="step" data-step-title="Basic School Information">
+                                <div class="row" style=" margin-bottom: 10px; padding-bottom: 5px">
+                                    <div class="col-sm-12">
+                                        <span class="h2 text-info" style="border-bottom: 2px solid #7A868F;"> School Registration: Basic School Information</span>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>School Code</label>
                                             <input type="text" class="form-control" name="school_code" value="{{$school_code}}">
@@ -128,12 +147,30 @@ $district="";
                                             <input type="text" class="form-control" name="school_name" value="{{$school_name}}">
                                         </div>
                                         <div class="form-group">
-                                            <label>Is Shool registered</label>
-                                            <input type="text" class="form-control" name="registered" value="{{$registered}}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Registration Number</label>
-                                            <input type="text" class="form-control" name="registration_no" value="{{$registration_no}}">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label>Is School registered</label>
+
+                                                    <select class="form-control" name="registered" onchange="showRegistration(this);">
+                                                        @if($registered !="")
+                                                            <option  selected="selected">{{$registered}}</option>
+                                                        @else
+                                                            <option value="" selected="selected">-----</option>
+                                                            @endif
+                                                        <option value="">-----</option>
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-8" id="registrationField" >
+                                                    @if($registered =="Yes")
+                                                        <label>Registration Number</label>
+                                                        <input type="text" class="form-control" name="registration_no" value="{{$registration_no}}">
+                                                        @else
+                                                        <input type="hidden" class="form-control" name="registration_no" value="">
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Accredited</label>
@@ -143,21 +180,19 @@ $district="";
                                             <label>Start Date</label>
                                             <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="start_date" value="{{$start_date}}">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Website</label>
-                                            <input type="text" class="form-control" name="website" value="{{$website}}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>School Profile</label>
-                                            <textarea class="form-control" name="SchoolProfile" style="height: 140px; resize: none;"></textarea>
-                                        </div>
+
                                     </div>
 
                                 </div>
                             </section>
                             <section class="step" data-step-title="Ownership Details">
+                                <div class="row" style=" margin-bottom: 10px; padding-bottom: 5px">
+                                    <div class="col-sm-12">
+                                        <span class="h2 text-info" style="border-bottom: 2px solid #7A868F;"> School Registration: Ownership Details</span>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>Ownership Type</label>
                                             <?php $dt=array(''=>'--Select--','Government'=>'Government','Private'=>'Private','FBO'=>'FBO','Other'=>'Other');?>
@@ -172,13 +207,26 @@ $district="";
                                             <label>Head/Principal of school</label>
                                             <input type="text" class="form-control" name="school_head" value="{{$school_head}}">
                                         </div>
+                                        <div class="form-group">
+                                            <label>Website</label>
+                                            <input type="text" class="form-control" name="website" value="{{$website}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>School Profile</label>
+                                            <textarea class="form-control" name="SchoolProfile" style="height: 140px; resize: none;"></textarea>
+                                        </div>
                                     </div>
 
                                 </div>
                             </section>
                             <section class="step" data-step-title="School location/Address">
+                                <div class="row" style=" margin-bottom: 10px; padding-bottom: 5px">
+                                    <div class="col-sm-12">
+                                        <span class="h2 text-info" style="border-bottom: 2px solid #7A868F;"> School Registration: Address</span>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>Postal Address</label>
                                             <textarea class="form-control" name="postal_address">{{$postal_address}} </textarea>
@@ -193,21 +241,13 @@ $district="";
                                             $reg=array(''=>'--Select Region--');
                                             $reg=\App\Region::lists('region_name','id'); ?>
                                             {!! Form::select('region',$reg,$region,array('class'=>'form-control','id'=>'region')) !!}
-                                            <select id="region" name="region" class="form-control">
-                                                @if($region =="")
-                                                <option value="" selected="selected">--Select Region--</option>
-                                                @else
-                                                    <option value="" selected="selected">--Select Region--</option>
-                                                    @endif
-                                                @foreach($reg as $rg)
-                                                    <option value="{{$rg->id}}">{{$rg->region_name}}</option>
-                                                @endforeach
-                                            </select>
+
                                         </div>
                                         <div class="form-group">
                                             <label>District</label>
+
                                             <select name="district" id="district" class="form-control">
-                                                <option value="">--Select District--</option>
+                                                <option >{{$district}}</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -239,5 +279,17 @@ $district="";
             </div>
         </div>
     </div>
+    <script>
+        function showRegistration(choice)
+        {
+            if(choice.value =="Yes")
+            {
+                document.getElementById("registrationField").innerHTML ="<label>Registration Number</label> <input type='text' class='form-control' name='registration_no'>";
+            }else
+            {
+                document.getElementById("registrationField").innerHTML ="<input type='hidden' class='form-control' value='' name='registration_no'>";
+            }
+        }
+    </script>
 @stop
 

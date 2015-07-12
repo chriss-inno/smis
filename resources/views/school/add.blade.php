@@ -4,6 +4,8 @@
     <!-- Wizard-->
     {!!HTML::script("assets/libs/jquery-wizard/jquery.easyWizard.js")!!}
     {!!HTML::script("assets/js/pages/form-wizard.js")!!}
+    {!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
+    {!!HTML::script("assets/js/pages/form-validation.js")!!}
     <script>
         $("#region").change(function () {
             var id1 = this.value;
@@ -91,8 +93,13 @@
                             {!! Form::open(array('url' => 'schools/add','id'=>'myWizard')) !!}
 
                             <section class="step" data-step-title="Basic School Information">
+                               <div class="row" style=" margin-bottom: 10px; padding-bottom: 5px">
+                                   <div class="col-sm-12">
+                                       <span class="h2 text-info" style="border-bottom: 2px solid #7A868F;"> School Registration: Basic School Information</span>
+                                   </div>
+                               </div>
                                 <div class="row">
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>School Code</label>
                                             <input type="text" class="form-control" name="school_code">
@@ -102,13 +109,22 @@
                                             <input type="text" class="form-control" name="school_name">
                                         </div>
                                         <div class="form-group">
-                                            <label>Is Shool registered</label>
-                                            <input type="text" class="form-control" name="registered">
+                                            <div class="row">
+                                            <div class="col-sm-4">
+                                                   <label>Is School registered</label>
+
+                                                    <select class="form-control" name="registered" onchange="showRegistration(this);">
+                                                        <option value="">-----</option>
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                            </div>
+                                                <div class="col-sm-8" id="registrationField" >
+
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Registration Number</label>
-                                            <input type="text" class="form-control" name="registration_no">
-                                        </div>
+
                                         <div class="form-group">
                                             <label>Accredited</label>
                                             <input type="text" class="form-control" name="accredited">
@@ -119,33 +135,21 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="notes">
-                                            <h4><strong>About School Information</strong></h4>
-                                            <p style="text-align: justify">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                                            </p>
-                                            <ol>
-                                                <li>Duis autem vel eum iriure dolor in hendrerit in vulputate</li>
-                                                <li>Lorem ipsum dolor sit amet</li>
-                                                <li>Sed diam nonummy nibh euismod tincidunt</li>
-                                                <li>Sonsectetuer adipiscing elit</li>
-                                                <li>Tincidunt ut laoreet dolore magna aliquam erat volutpat</li>
-                                            </ol>
-                                            <p style="text-align: justify">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                                            </p>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </section>
                             <section class="step" data-step-title="Ownership Details">
+                                <div class="row" style=" margin-bottom: 10px; padding-bottom: 5px">
+                                    <div class="col-sm-12">
+                                        <span class="h2 text-info" style="border-bottom: 2px solid #7A868F;"> School Registration: Ownership Details</span>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>Ownership Type</label>
                                             <select name="ownership_type" class="form-control">
-                                                <option value="">--Select Ownership Detail--</option>
+                                                <option value="">----</option>
                                                 <option>Government</option>
                                                 <option>Private</option>
                                                 <option>FBO</option>
@@ -166,32 +170,19 @@
                                         </div>
                                         <div class="form-group">
                                             <label>School Profile</label>
-                                            <textarea class="form-control" name="SchoolProfile" style="height: 140px; resize: none;"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="notes">
-                                            <h4><strong>Ownership Details</strong> note</h4>
-                                            <p style="text-align: justify">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                                            </p>
-                                            <ol>
-                                                <li>Duis autem vel eum iriure dolor in hendrerit in vulputate</li>
-                                                <li>Lorem ipsum dolor sit amet</li>
-                                                <li>Sed diam nonummy nibh euismod tincidunt</li>
-                                                <li>Sonsectetuer adipiscing elit</li>
-                                                <li>Tincidunt ut laoreet dolore magna aliquam erat volutpat</li>
-                                            </ol>
-                                            <p style="text-align: justify">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                                            </p>
+                                            <textarea class="form-control" name="SchoolProfile"  rows="20" style="height: 140px; resize: none;"></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </section>
                             <section class="step" data-step-title="School location/Address">
+                                <div class="row" style=" margin-bottom: 10px; padding-bottom: 5px">
+                                    <div class="col-sm-12">
+                                        <span class="h2 text-info" style="border-bottom: 2px solid #7A868F;"> School Registration: Address</span>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>Postal Address</label>
                                             <textarea class="form-control" name="postal_address"> </textarea>
@@ -207,7 +198,7 @@
                                             $reg=\App\Region::all(); ?>
 
                                             <select id="region" name="region" class="form-control">
-                                                <option value="" selected="selected">--Select Region--</option>
+                                                <option value="" selected="selected">----</option>
                                                  @foreach($reg as $rg)
                                                      <option value="{{$rg->id}}">{{$rg->region_name}}</option>
                                                      @endforeach
@@ -217,7 +208,7 @@
                                             <label>District</label>
                                             <label>District</label>
                                             <select name="district" id="district" class="form-control">
-                                                <option value="">--Select District--</option>
+                                                <option value="">----</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -237,33 +228,29 @@
                                             <input type="text" class="form-control" name="email">
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="notes">
-                                            <h4><strong>Address</strong> note</h4>
-                                            <p style="text-align: justify">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                                            </p>
-                                            <ol>
-                                                <li>Duis autem vel eum iriure dolor in hendrerit in vulputate</li>
-                                                <li>Lorem ipsum dolor sit amet</li>
-                                                <li>Sed diam nonummy nibh euismod tincidunt</li>
-                                                <li>Sonsectetuer adipiscing elit</li>
-                                                <li>Tincidunt ut laoreet dolore magna aliquam erat volutpat</li>
-                                            </ol>
-                                            <p style="text-align: justify">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                                            </p>
-                                        </div>
-                                    </div>
+
 
                                 </div>
                             </section>
                             {!!Form::close() !!}
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function showRegistration(choice)
+        {
+            if(choice.value =="Yes")
+            {
+                document.getElementById("registrationField").innerHTML ="<label>Registration Number</label> <input type='text' class='form-control' name='registration_no'>";
+            }else
+            {
+                document.getElementById("registrationField").innerHTML ="<input type='hidden' class='form-control' value='' name='registration_no'>";
+            }
+        }
+    </script>
 @stop
 
