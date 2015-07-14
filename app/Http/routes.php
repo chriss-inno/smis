@@ -17,6 +17,9 @@ Route::get('/',['middleware' => 'auth', 'uses' => 'UserController@login']);
 Route::get('login','UserController@login');
 Route::post('login','UserController@processLogin');
 Route::get('home',['middleware' => 'auth', 'uses' =>'UserController@home']);
+Route::get('logout',['middleware' => 'auth', 'uses' =>'UserController@logout']);
+Route::get('lockscreen',['middleware' => 'auth', 'uses' =>'UserController@lockscreen']);
+Route::post('lockscreen','UserController@unlockscreen');
 
 //School routes
 

@@ -290,15 +290,15 @@ EOT
 
         // handler Ctrl+C for unix-like systems
         if (function_exists('pcntl_signal')) {
-            declare(ticks = 100);
-            pcntl_signal(SIGINT, function() use ($directory) {
+            declare (ticks = 100);
+            pcntl_signal(SIGINT, function () use ($directory) {
                 $fs = new Filesystem();
                 $fs->removeDirectory($directory);
                 exit(130);
             });
         }
 
-        $io->writeError('<info>Installing ' . $package->getName() . ' (' . VersionParser::formatVersion($package, false) . ')</info>');
+        $io->writeError('<info>Installing ' . $package->getName() . ' (' . $package->getFullPrettyVersion(false) . ')</info>');
 
         if ($disablePlugins) {
             $io->writeError('<info>Plugins have been disabled.</info>');

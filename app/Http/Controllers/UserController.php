@@ -127,6 +127,61 @@ class UserController extends Controller
             return redirect()->back()->with('message', 'Login Failed,Invalid username or password');
         }
     }
+
+    //function logout
+    public function logout()
+    {
+        if (Auth::check())
+        {
+            $user= \App\User::find(Auth::user()->id);
+            $user->last_logout=date("Y-m-d h:i:s");
+            $user->save();
+        }
+
+        Auth::logout();
+        return view('user.login');
+    }
+    //lockscreen
+    public function lockscreen()
+    {
+        if (Auth::check())
+        {
+            $user= \App\User::find(Auth::user()->id);
+            $user->last_logout=date("Y-m-d h:i:s");
+            $user->save();
+        }
+
+        Auth::logout();
+        return view('user.lockscreen');
+    }
+    //Unlock screen
+    public function unlockscreen(UserRequest $request)
+    {
+        $username=$request->username;
+        $password=$request->password;
+
+        if (Auth::attempt(['username' => $username, 'password' => $password]))
+        {
+            if(Auth::user()->block ==1)
+            {
+                Auth::logout();
+                return redirect()->back()->with('message', 'Login Failed you don\'t have Access to login please  Contact Administrator');
+            }
+            else
+            {
+                $user= \App\User::find(Auth::user()->id);
+                $user->last_login=date("Y-m-d h:i:s");
+                $user->save();
+
+                return redirect()->intended('home');
+            }
+
+        }
+        else
+        {
+            return redirect()->back()->with('message', 'Login Failed,Invalid username or password');
+        }
+    }
     //Show home page
 
     public function home()

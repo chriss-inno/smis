@@ -104,22 +104,19 @@
         <p class="text-center"><a href="#"> {!! HTML::image("assets/img/logo.png")!!}</a></p>
         <div class="login-wrap animated flipInX">
             <div class="login-block">
-                <img src="images/users/default-user.png" class="img-circle not-logged-avatar">
+
                 {!! Form::open(array('url' => 'login','id'=>'loginForm')) !!}
                     <div class="form-group login-input">
                         <i class="fa fa-user overlay"></i>
-                        <input  name="username" type="text" class="form-control text-input" placeholder="Username" value="{{old('username')}}">
+                        <input  name="username" type="text" class="form-control text-input" placeholder="Username" value="{{old('username')}}" autocomplete=off>
                     </div>
                     <div class="form-group login-input">
                         <i class="fa fa-key overlay"></i>
-                        <input name="password" type="password" class="form-control text-input" placeholder="********">
+                        <input name="password" type="password" class="form-control text-input" placeholder="********" autocomplete=off>
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm-6">
+                    <div class="form-group login-input">
                             <button type="submit" class="btn btn-success btn-block">LOGIN</button>
-                        </div>
-
                     </div>
                 {!!Form::close() !!}
 

@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="description" content="">
     <meta name="keywords" content="smis bootstrap template, smis admin, bootstrap,admin template, bootstrap admin,">
-    <meta name="author" content="Innocent Christopher">
+    <meta name="author" content="Innocent Christopher Kilogha">
 
     <!-- Base Css Files -->
    {!!HTML::style("assets/libs/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css" )!!}
@@ -104,7 +104,7 @@
             <p class="text-center">Are you sure want to logout from this awesome system?</p>
             <p class="text-center">
                 <button class="btn btn-danger md-close">Nope!</button>
-                <a href="login.html" class="btn btn-success md-close">Yeah, I'm sure</a>
+                <a href="{{url('logout')}}" class="btn btn-success md-close">Yeah, I'm sure</a>
             </p>
         </div>
     </div>
@@ -254,8 +254,8 @@
                                 <li><a href="#">Account Setting</a></li>
                                 <li class="divider"></li>
                                 <li><a href="#"><i class="icon-help-2"></i> Help</a></li>
-                                <li><a href="lockscreen.html"><i class="icon-lock-1"></i> Lock me</a></li>
-                                <li><a class="md-trigger" data-modal="logout-modal"><i class="icon-logout-1"></i> Logout</a></li>
+                                <li><a href="{{url('lockscreen')}}"><i class="icon-lock-1"></i> Lock me</a></li>
+                                <li><a class="md-trigger" href="{{url('logout')}}"><i class="icon-logout-1"></i> Logout</a></li>
                             </ul>
                         </li>
                         <li class="right-opener">
