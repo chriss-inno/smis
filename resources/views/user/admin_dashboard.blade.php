@@ -26,6 +26,7 @@
                                 <li><a href='{{url('schools/add')}}'><span><i class="fa fa-arrow-right"></i>School Registration</span></a></li>
                                 <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List Schools</span></a></li>
                                 <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
+                                <li><a href='{{url('system/users')}}'><span><i class="fa fa-arrow-right"></i>School Users</span></a></li>
                                 <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
 
                             </ul>
@@ -255,7 +256,7 @@
                         <i class="icon-bag"></i>
                     </div>
                     <div class="text-box">
-                        <p class="maindata">TOTAL <b>STAFF</b></p>
+                        <p class="maindata">TOTAL <b>STAFFS</b></p>
                         <h2><span class="animate-number" data-value="6399" data-duration="3000">0</span></h2>
 
                         <div class="clearfix"></div>

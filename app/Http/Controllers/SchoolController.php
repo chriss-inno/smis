@@ -13,6 +13,7 @@ use App\User;
 use App\Http\Requests\UserRequest;
 use App\Audit;
 use Illuminate\Support\Facades\Auth;
+use App\UserRight;
 
 class SchoolController extends Controller
 {
@@ -215,6 +216,15 @@ class SchoolController extends Controller
         $user->status ='active';
         $user->save();
 
+        for($i=1; $i<= 5; $i++)
+        {
+            $user_right=new UserRight;
+            $user_right->user_id=$user->id;
+            $user_right->module=$i;
+            $user_right->can_access='Y';
+            $user_right->can_edit='Y';
+            $user_right->save();
+        }
         //Process Aud train
         $school=School::find($request->school_id);
 
@@ -369,6 +379,11 @@ class SchoolController extends Controller
         echo ' </tbody>
             </table>';
     }
-
-
+  //Get school name
+    public static function getSchoolNameById($school_id)
+    {
+        $sc=School::find($school_id);
+        if(count($sc)>0) {
+            return $sc-> school_name;} else {return "";}
+    }
 }

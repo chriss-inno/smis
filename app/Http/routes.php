@@ -20,6 +20,8 @@ Route::get('home',['middleware' => 'auth', 'uses' =>'UserController@home']);
 Route::get('logout',['middleware' => 'auth', 'uses' =>'UserController@logout']);
 Route::get('lockscreen',['middleware' => 'auth', 'uses' =>'UserController@lockscreen']);
 Route::post('lockscreen','UserController@unlockscreen');
+Route::get('system/users',['middleware' => 'auth', 'uses' =>'UserController@index']);
+
 
 //School routes
 

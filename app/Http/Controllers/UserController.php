@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use App\UserRight;
+use App\User;
 class UserController extends Controller
 {
     /**
@@ -19,6 +20,8 @@ class UserController extends Controller
     public function index()
     {
         //
+        $users=User::all();
+        return view('user.index',compact('users'));
     }
 
     /**

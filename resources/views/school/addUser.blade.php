@@ -139,7 +139,11 @@ if(old('school_id') !="")
         ?>
                         </table>
                     </div>
-
+                    <div class="row" style="margin-top: 10px; margin-bottom: 10px">
+                        <div class="col-md-2 pull-right">
+                            <a href="#" data-dismiss="modal" class="btn btn-success btn-block"> <i class="fa-o"></i>Close</a>
+                        </div>
+                    </div>
                 </div>
                 {!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
                 {!!HTML::script("assets/js/pages/form-validation.js")!!}
