@@ -10,6 +10,9 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use App\UserRight;
 use App\User;
+use App\Audit;
+use Illuminate\Support\Facades\Validator;
+
 class UserController extends Controller
 {
     /**
@@ -32,6 +35,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('user.add');
     }
 
     /**
@@ -39,9 +43,28 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(UserRequest $request)
     {
         //
+        $user=new User;
+        $user->first_name =$request->first_name;
+        $user->other_name =$request->other_name;
+        $user->surname =$request->surname;
+        $user->email =$request->email;
+        $user->phone =$request->phone;
+        $user->username =$request->username;
+        $user->password =bcrypt($request->password);
+        $user->school_id =$request->school;
+        $user->role ='Administrator';
+        $user->status ='active';
+        $user->save();
+
+        $audit=new Audit;
+        $audit->user_id =Auth::user()->id;
+        $audit->activity="Added new user for the system with school ID ". $request->school. " User with user name ".$request->username ." and User ID ".$user->id ;
+        $audit->module="School Management";
+        $audit->activity_when=date("Y-m-d H:i:s");
+        $audit->save();
     }
 
     /**
@@ -64,6 +87,15 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user=User::find($id);
+        if(count($user) >0)
+        {
+            return view('user.edit',compact('user'));
+        }
+        else{
+            return view('user.add');
+        }
+
     }
 
     /**
@@ -72,9 +104,28 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(UserRequest $request)
     {
         //
+        $user= User::find($request->id);
+        $user->first_name =$request->first_name;
+        $user->other_name =$request->other_name;
+        $user->surname =$request->surname;
+        $user->email =$request->email;
+        $user->phone =$request->phone;
+        $user->username =$request->username;
+        $user->password =bcrypt($request->password);
+        $user->school_id =$request->school;
+        $user->role ='Administrator';
+        $user->status ='active';
+        $user->save();
+
+        $audit=new Audit;
+        $audit->user_id =Auth::user()->id;
+        $audit->activity="Update user for the system with school ID ". $request->school. " User with user name ".$request->username ." and User ID ".$user->id ;
+        $audit->module="School Management";
+        $audit->activity_when=date("Y-m-d H:i:s");
+        $audit->save();
     }
 
     /**
@@ -86,8 +137,21 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user=User::find($id);
+        //Remove user rights
+           foreach($user as $us)
+           {
+               $us->userRights()->delete();
+           }
+        $user->delete();
+
     }
 
+     //User reports
+    public function report()
+    {
+
+    }
     //Show login
     public function login()
     {
@@ -103,7 +167,7 @@ class UserController extends Controller
 
     }
     //Process login
-    public function processLogin(UserRequest $request)
+    public function processLogin(Request $request)
     {
         $username=$request->username;
         $password=$request->password;
@@ -117,7 +181,7 @@ class UserController extends Controller
             }
             else
             {
-                $user= \App\User::find(Auth::user()->id);
+                $user= User::find(Auth::user()->id);
                 $user->last_login=date("Y-m-d h:i:s");
                 $user->save();
 

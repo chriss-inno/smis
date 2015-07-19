@@ -32,4 +32,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    function userRights()
+    {
+        $this->hasMany('\App\UserRight','user_id','id');
+    }
 }

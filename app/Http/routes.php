@@ -20,7 +20,27 @@ Route::get('home',['middleware' => 'auth', 'uses' =>'UserController@home']);
 Route::get('logout',['middleware' => 'auth', 'uses' =>'UserController@logout']);
 Route::get('lockscreen',['middleware' => 'auth', 'uses' =>'UserController@lockscreen']);
 Route::post('lockscreen','UserController@unlockscreen');
-Route::get('system/users',['middleware' => 'auth', 'uses' =>'UserController@index']);
+Route::get('users',['middleware' => 'auth', 'uses' =>'UserController@index']);
+Route::get('users/create',['middleware' => 'auth', 'uses' =>'UserController@create']);
+Route::post('users/create',['middleware' => 'auth', 'uses' =>'UserController@store']);
+Route::get('users/edit/{id}',['middleware' => 'auth', 'uses' =>'UserController@edit']);
+Route::post('users/edit',['middleware' => 'auth', 'uses' =>'UserController@update']);
+Route::get('users/reports',['middleware' => 'auth', 'uses' =>'UserController@report']);
+
+//Academic Main menu
+Route::get('academic/current-year',['middleware' => 'auth', 'uses' =>'AcademicSetupController@currentYear']);
+Route::get('academic/classes',['middleware' => 'auth', 'uses' =>'AcademicSetupController@classes']);
+Route::get('academic/grade',['middleware' => 'auth', 'uses' =>'AcademicSetupController@grade']);
+Route::get('academic/examination-types',['middleware' => 'auth', 'uses' =>'AcademicSetupController@examinationTypes']);
+Route::get('academic/examination-period',['middleware' => 'auth', 'uses' =>'AcademicSetupController@examinationPeriod']);
+Route::get('academic/academic-calendar',['middleware' => 'auth', 'uses' =>'AcademicSetupController@academicCalendar']);
+Route::get('academic/subject-allocation',['middleware' => 'auth', 'uses' =>'AcademicSetupController@subjectAllocation']);
+Route::get('academic/class-allocation',['middleware' => 'auth', 'uses' =>'AcademicSetupController@classAllocation']);
+
+
+//Current Year
+Route::post('academic/current-year',['middleware' => 'auth', 'uses' =>'AcademicSetupController@store']);
+Route::get('getYear/{id}',['middleware' => 'auth', 'uses' =>'AcademicSetupController@getYear']);
 
 
 //School routes

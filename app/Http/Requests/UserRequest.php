@@ -25,8 +25,7 @@ class UserRequest extends Request
     {
         return [
             //
-            'username'=>'required',
-            'password'=>'required'
+
         ];
     }
 }

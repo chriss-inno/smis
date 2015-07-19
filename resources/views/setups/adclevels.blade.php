@@ -47,7 +47,7 @@
             <div class="clearfix"></div><br><br><br>
         </div>
     </div>
-    @stop
+@stop
 @section('modals')
     <script>
         //Delete Application

@@ -23,4 +23,13 @@ class School extends Model
     {
         return  $this::hasMany('App\Staff','school_id','id');
     }
+
+    public function academicSetups()
+    {
+        return $this::hasOne('\App\AcademicSetup','school_id','id');
+    }
+    public function classes()
+    {
+        return $this::hasMany('\App\ClassLevel','school_id','id');
+    }
 }

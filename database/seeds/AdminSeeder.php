@@ -26,7 +26,7 @@ class AdminSeeder extends Seeder
 
         UserRight::truncate();
 
-        for($i=1; $i<= 5; $i++)
+        for($i=1; $i<= 20; $i++)
         {
             $user_right=new UserRight;
             $user_right->user_id=$user->id;

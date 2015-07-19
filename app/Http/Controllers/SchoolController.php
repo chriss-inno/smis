@@ -225,12 +225,12 @@ class SchoolController extends Controller
             $user_right->can_edit='Y';
             $user_right->save();
         }
-        //Process Aud train
+        //Process Audit trail
         $school=School::find($request->school_id);
 
         $audit=new Audit;
         $audit->user_id =Auth::user()->id;
-        $audit->activity="Addedd new user for school  ".$school->school_name ." with school ID ". $school->id. " User with user name ".$request->username ."and User ID ".$user->id ;
+        $audit->activity="Added new user for school  ".$school->school_name ." with school ID ". $school->id. " User with user name ".$request->username ."and User ID ".$user->id ;
         $audit->module="School Management";
         $audit->activity_when=date("Y-m-d H:i:s");
         $audit->save();
