@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\ClassLevel;
+USE App\ClassStream;
 
 class ClassLevelController extends Controller
 {
@@ -17,6 +19,8 @@ class ClassLevelController extends Controller
     public function index()
     {
         //
+        $classes=ClassLevel::all();
+        return view('classes.index',compact('classes'));
     }
 
     /**

@@ -16,11 +16,12 @@ class CreateClassLevelsTable extends Migration
             $table->increments('id');
             $table->integer('school_id');
             $table->string('level_name');
+            $table->string('level_descriptions')->nullable();
             $table->string('input_by');
             $table->string('authorized_by');
             $table->dateTime('authorized_date');
             $table->string('current_year');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

@@ -29,7 +29,6 @@ Route::get('users/reports',['middleware' => 'auth', 'uses' =>'UserController@rep
 
 //Academic Main menu
 Route::get('academic/current-year',['middleware' => 'auth', 'uses' =>'AcademicSetupController@currentYear']);
-Route::get('academic/classes',['middleware' => 'auth', 'uses' =>'AcademicSetupController@classes']);
 Route::get('academic/grade',['middleware' => 'auth', 'uses' =>'AcademicSetupController@grade']);
 Route::get('academic/examination-types',['middleware' => 'auth', 'uses' =>'AcademicSetupController@examinationTypes']);
 Route::get('academic/examination-period',['middleware' => 'auth', 'uses' =>'AcademicSetupController@examinationPeriod']);
@@ -41,6 +40,9 @@ Route::get('academic/class-allocation',['middleware' => 'auth', 'uses' =>'Academ
 //Current Year
 Route::post('academic/current-year',['middleware' => 'auth', 'uses' =>'AcademicSetupController@store']);
 Route::get('getYear/{id}',['middleware' => 'auth', 'uses' =>'AcademicSetupController@getYear']);
+
+//
+Route::get('academic/classes',['middleware' => 'auth', 'uses' =>'ClassLevelController@index']);
 
 
 //School routes
