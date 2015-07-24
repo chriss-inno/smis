@@ -20,7 +20,7 @@ class ClassLevelController extends Controller
     {
         //
         $classes=ClassLevel::all();
-        return view('classes.index',compact('classes'));
+        return view('CLevels.index',compact('classes'));
     }
 
     /**
@@ -31,6 +31,7 @@ class ClassLevelController extends Controller
     public function create()
     {
         //
+        return view('CLevels.create');
     }
 
     /**

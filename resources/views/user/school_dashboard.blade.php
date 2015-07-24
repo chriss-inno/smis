@@ -1,5 +1,7 @@
 @extends('layout.master')
-
+@section('page-title')
+    School Information System|Users
+@stop
 @section('menus')
     <div class="left side-menu">
         <div class="sidebar-inner slimscrollleft">

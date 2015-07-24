@@ -1,4 +1,5 @@
 @extends('layout.master')
+@section('title')School Information System|Accademic Setup@stop
 @section('pageScript')
     {!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
     {!!HTML::script("assets/js/pages/form-validation.js")!!}

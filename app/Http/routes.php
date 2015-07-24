@@ -41,8 +41,11 @@ Route::get('academic/class-allocation',['middleware' => 'auth', 'uses' =>'Academ
 Route::post('academic/current-year',['middleware' => 'auth', 'uses' =>'AcademicSetupController@store']);
 Route::get('getYear/{id}',['middleware' => 'auth', 'uses' =>'AcademicSetupController@getYear']);
 
-//
+//Classess sections
 Route::get('academic/classes',['middleware' => 'auth', 'uses' =>'ClassLevelController@index']);
+Route::get('academic/classes/create',['middleware' => 'auth', 'uses' =>'ClassLevelController@create']);
+Route::get('academic/classes/remove/{id}',['middleware' => 'auth', 'uses' =>'ClassLevelController@destroy']);
+
 
 
 //School routes

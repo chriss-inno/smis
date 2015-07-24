@@ -48,6 +48,9 @@
         </div>
     </div>
 @stop
+@section('page-title')
+    School Information System|Schools
+@stop
  @section('contents')
      <!-- Page Heading Start -->
      <div class="page-heading">

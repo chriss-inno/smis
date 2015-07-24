@@ -1,4 +1,7 @@
 @extends('layout.master')
+@section('page-title')
+    School Information System|Users
+@stop
 @section('pageScript')
     {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
     {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}

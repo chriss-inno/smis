@@ -1,4 +1,5 @@
 @extends('layout.master')
+@section('title')School Information System|Accademic Setup@stop
 @section('pageScript')
     {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
     {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
@@ -22,21 +23,21 @@
             });
             $("#yes").click(function(){
                 $(this).parent().html("<br><i class='icon-spinner icon-spin'></i>deleting...");
-                $.get("<?php echo url('schools/delete/') ?>/"+id1,function(data){
+                $.get("<?php echo url('academic/classes/remove') ?>/"+id1,function(data){
                     btn.hide("slow").next("hr").hide("slow");
                 });
             });
         });
         //adding school user
         $(".addClass").click(function(){
-            var name = $(this).parent().parent().attr('id');
+
             var id1 = $(this).parent().attr('id');
             var modal = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
             modal+= '<div class="modal-dialog" style="width:80%;margin-right: 10% ;margin-left: 10%">';
             modal+= '<div class="modal-content">';
             modal+= '<div class="modal-header">';
             modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-            modal+= '<h2 class="modal-title" id="myModalLabel">Class streams For '+name+'</h2>';
+            modal+= '<h2 class="modal-title" id="myModalLabel">School Classes and Levels</h2>';
             modal+= '</div>';
             modal+= '<div class="modal-body">';
             modal+= ' </div>';
@@ -47,7 +48,7 @@
             $("body").append(modal);
             $("#myModal").modal("show");
             $(".modal-body").html("<h3><i class='fa fa-spin fa-spinner '></i><span>loading...</span><h3>");
-            $(".modal-body").load("<?php echo url("school/user/add") ?>/"+id1);
+            $(".modal-body").load("<?php echo url("academic/classes/create") ?>");
             $("#myModal").on('hidden.bs.modal',function(){
                 $("#myModal").remove();
             })
@@ -55,14 +56,13 @@
         });
         //Edit class streams
         $(".editClass").click(function(){
-            var name = $(this).parent().parent().attr('id');
             var id1 = $(this).parent().attr('id');
             var modal = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
             modal+= '<div class="modal-dialog" style="width:80%;margin-right: 10% ;margin-left: 10%">';
             modal+= '<div class="modal-content">';
             modal+= '<div class="modal-header">';
             modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-            modal+= '<h2 class="modal-title" id="myModalLabel">Class streams For '+name+'</h2>';
+            modal+= '<h2 class="modal-title" id="myModalLabel">School Classes and Levels</h2>';
             modal+= '</div>';
             modal+= '<div class="modal-body">';
             modal+= ' </div>';
@@ -73,7 +73,7 @@
             $("body").append(modal);
             $("#myModal").modal("show");
             $(".modal-body").html("<h3><i class='fa fa-spin fa-spinner '></i><span>loading...</span><h3>");
-            $(".modal-body").load("<?php echo url("school/user/add") ?>/"+id1);
+            $(".modal-body").load("<?php echo url("academic/classes/edit") ?>/"+id1);
             $("#myModal").on('hidden.bs.modal',function(){
                 $("#myModal").remove();
             })
@@ -128,7 +128,7 @@
     @section('contents')
             <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-table'></i> MANAGE SCHOOLS</h1>
+        <h1><i class='fa fa-table'></i> MANAGE SCHOOLS CLASSES</h1>
     </div>
     <div class="row">
 
