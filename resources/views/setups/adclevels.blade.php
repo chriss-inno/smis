@@ -1,5 +1,7 @@
 @extends('layout.master')
-@section('title')School Information System|Accademic Setup@stop
+@section('page-title')
+    School Information System| Accademic Setup
+@stop
 @section('pageScript')
     {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
     {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}

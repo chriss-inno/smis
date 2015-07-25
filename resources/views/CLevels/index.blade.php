@@ -1,12 +1,12 @@
 @extends('layout.master')
-@section('title')School Information System|Accademic Setup@stop
+@section('page-title')
+    School Information System| Accademic Setup
+@stop
 @section('pageScript')
     {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
     {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
     {!!HTML::script("assets/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js")!!}
     {!!HTML::script("assets/js/pages/datatables.js")!!}
-
-
 
 @stop
 @section('modals')
@@ -37,7 +37,7 @@
             modal+= '<div class="modal-content">';
             modal+= '<div class="modal-header">';
             modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-            modal+= '<h2 class="modal-title" id="myModalLabel">School Classes and Levels</h2>';
+            modal+= '<h2 class="modal-title text-center" id="myModalLabel">School Classes and Levels</h2>';
             modal+= '</div>';
             modal+= '<div class="modal-body">';
             modal+= ' </div>';
@@ -128,19 +128,19 @@
     @section('contents')
             <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-table'></i> MANAGE SCHOOLS CLASSES</h1>
+        <h1><i class='fa fa-table'></i> CLASSES</h1>
     </div>
     <div class="row">
 
         <div class="col-md-12">
             <div class="widget">
                 <div class="widget-header">
-                    <h2>List of registered schools</h2>
+                    <h2>List of registered classes</h2>
                     <div class="additional-btn">
                         <a class="addClass btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Class </a>
-                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('schools')}}"><i class="fa fa-th-list"></i> View Classes </a>
-                        <a class="btn btn-red-1" style="color: #fff" href="{{url('schools-manage')}}"><i class="fa fa-cog"></i> Manage Classes </a>
-                        <a class="btn btn-green-3" style="color: #fff" href="{{url('schools-reports')}}"><i class="fa fa-bar-chart-o"></i> Classes Reports </a>
+                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/classes')}}"><i class="fa fa-th-list"></i> View Classes </a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/manage')}}"><i class="fa fa-cog"></i> Manage Classes </a>
+                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/reports')}}"><i class="fa fa-bar-chart-o"></i> Classes Reports </a>
                     </div>
                 </div>
                 <div class="widget-content">
@@ -156,7 +156,7 @@
                                     <th>Remarks</th>
                                     <th>Status</th>
                                     <th>Class streams</th>
-                                    <th>Action</th>
+
                                 </thead>
 
                                 <tfoot>
@@ -167,7 +167,7 @@
                                     <th>Remarks</th>
                                     <th>Status</th>
                                     <th>Class streams</th>
-                                    <th>Action</th>
+
                                 </tfoot>
 
                                 <tbody>
@@ -182,14 +182,7 @@
                                         <td  id="{{$sc->level_name}}" style="align-content: center"> <div class="col-md-12" id="{{$sc->id}}">
                                                 <a href="#" title="Add Streams" class="adduser "><i class="fa fa-users text-success"></i> View</a>&nbsp;&nbsp;&nbsp;
                                             </div></td>
-                                        <td id="{{$sc->id}}" style="align-content: center" >
-                                            <div class="col-md-6" id="{{$sc->id}}">
-                                                <a href="#" title="Edit" class="editClass "><i class="fa fa-pencil-square-o text-info"></i> edit</a>&nbsp;&nbsp;&nbsp;
-                                            </div>
-                                            <div class="col-md-6" id="{{$sc->id}}">
-                                                <a href="#b" title="Delete" class="deleteClass "><i class="fa fa-trash-o text-danger"></i> delete </a>
-                                            </div>
-                                        </td>
+
                                     </tr>
                                     <?php $c++;;?>
                                 @endforeach

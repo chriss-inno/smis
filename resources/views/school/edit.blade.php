@@ -1,5 +1,7 @@
 @extends('layout.master')
-@section('title')School Information System|Schools@stop
+@section('page-title')
+    School Information System| Update School Information
+    @stop
 @section('pageScript')
 
     <!-- Wizard-->

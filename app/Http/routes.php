@@ -43,6 +43,7 @@ Route::get('getYear/{id}',['middleware' => 'auth', 'uses' =>'AcademicSetupContro
 
 //Classess sections
 Route::get('academic/classes',['middleware' => 'auth', 'uses' =>'ClassLevelController@index']);
+Route::get('academic/manage',['middleware' => 'auth', 'uses' =>'ClassLevelController@manage']);
 Route::get('academic/classes/create',['middleware' => 'auth', 'uses' =>'ClassLevelController@create']);
 Route::get('academic/classes/remove/{id}',['middleware' => 'auth', 'uses' =>'ClassLevelController@destroy']);
 

@@ -89,4 +89,10 @@ class ClassLevelController extends Controller
     {
         //
     }
+
+    public function manage()
+    {
+        $classes=ClassLevel::all();
+        return view('CLevels.manage',compact('classes'));
+    }
 }

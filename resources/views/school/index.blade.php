@@ -1,10 +1,14 @@
 @extends('layout.master')
+@section('page-title')
+    School Information System| List  Schools
+@stop
 @section('pageScript')
     {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
     {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
     {!!HTML::script("assets/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js")!!}
     {!!HTML::script("assets/js/pages/datatables.js")!!}
     @stop
+
 @section('menus')
     <div class="left side-menu">
         <div class="sidebar-inner slimscrollleft">
