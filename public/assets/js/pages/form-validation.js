@@ -69,13 +69,6 @@ $(document).ready(function() {
                     }
                 }
             },
-            telephone: {
-                validators: {
-                    digits: {
-                        message: 'The value can contain only digits'
-                    }
-                }
-            },
             fax: {
                 validators: {
                     digits: {
@@ -93,6 +86,67 @@ $(document).ready(function() {
         }
     });
 
+    $('#classLevels').bootstrapValidator({
+        message: 'This value is not valid',
+        fields: {
+            level_name: {
+                message: 'The level name is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The level name is required and can\'t be empty'
+                    }
+                }
+            },
+            school_id: {
+            message: 'The school is not valid',
+                validators: {
+                notEmpty: {
+                    message: 'The school is required and can\'t be empty'
+                }
+            }
+        },
+            status: {
+                message: 'The status is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The status is required and can\'t be empty'
+                    }
+                }
+            }
+        },
+        submitHandler: function(form) {
+            $("#output").html("<h3><span class='text-info'><i class='fa fa-spinner fa-spin'></i> Making changes please wait...</span><h3>");
+            var postData = $('#classLevels').serializeArray();
+            var formURL = $('#classLevels').attr("action");
+            $.ajax(
+                {
+                    url : formURL,
+                    type: "POST",
+                    data : postData,
+                    success:function(data)
+                    {
+                        console.log(data);
+                        //data: return data from server
+                        $("#output").html(data);
+                        setTimeout(function() {
+                            $("#output").html("");
+                        }, 2000);
+
+                    },
+                    error: function(data)
+                    {
+                        console.log(data.responseJSON);
+                        //in the responseJSON you get the form validation back.
+                        $("#output").html("<h3><span class='text-info'> Error in processing data try again...</span><h3>");
+                        setTimeout(function() {
+                            $("#output").html(data);
+                        }, 2000);
+
+                    }
+                });
+        }
+
+    });
 
     $('#formacyear').bootstrapValidator({
         message: 'This value is not valid',
@@ -134,7 +188,7 @@ $(document).ready(function() {
                         //data: return data from server
                         $("#output").html(data);
                         setTimeout(function() {
-                            $("#output").html(data);
+                            $("#output").html("");
                         }, 2000);
 
                     },

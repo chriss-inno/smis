@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\ClassLevel;
-USE App\ClassStream;
+use App\ClassStream;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\School;
 
 class ClassLevelController extends Controller
 {
@@ -21,6 +24,8 @@ class ClassLevelController extends Controller
         //
         $classes=ClassLevel::all();
         return view('CLevels.index',compact('classes'));
+
+
     }
 
     /**
@@ -31,7 +36,17 @@ class ClassLevelController extends Controller
     public function create()
     {
         //
-        return view('CLevels.create');
+
+        if(Auth::user()->role =="Superuser")
+        {
+            $schools=School::all();
+            return view('CLevels.admcreate',compact('schools'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            return view('CLevels.create',compact('school_id'));
+        }
     }
 
     /**
@@ -43,6 +58,41 @@ class ClassLevelController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = Validator::make($request->all(), [
+            'level_name' => 'required',
+            'status' => 'required',
+        ]);
+        if ($validator->fails()) {
+
+            $errors=$validator->errors();
+
+            if (count($errors) > 0){
+                echo ' <div class="alert alert-danger">' ;
+                echo '<ul>' ;
+                foreach ($errors->all() as $error)
+                {
+                    echo ' <li>{{ $error }}</li>';
+                }
+
+                echo '</ul>';
+                echo '</div>';
+            }
+        }
+        else
+        {
+            $cl=new ClassLevel;
+            $cl->school_id=$request->school_id;
+            $cl->level_name=$request->level_name;
+            $cl->level_descriptions=$request->level_descriptions;
+            $cl->input_by=Auth::user()->id;
+            $cl->current_year=$request->current_year;
+            $cl->remarks=$request->remarks;
+            $cl->status=$request->status;
+            $cl->save();
+        }
+
+
+
     }
 
     /**
@@ -65,6 +115,8 @@ class ClassLevelController extends Controller
     public function edit($id)
     {
         //
+        $class=ClassLevel::find($id);
+        return view('CLevels.edit',compact('class'));
     }
 
     /**
@@ -77,6 +129,39 @@ class ClassLevelController extends Controller
     public function update(Request $request, $id)
     {
         //
+        //
+        $validator = Validator::make($request->all(), [
+            'level_name' => 'required',
+            'status' => 'required',
+        ]);
+        if ($validator->fails()) {
+
+            $errors=$validator->errors();
+
+            if (count($errors) > 0){
+                echo ' <div class="alert alert-danger">' ;
+                echo '<ul>' ;
+                foreach ($errors->all() as $error)
+                {
+                    echo ' <li>{{ $error }}</li>';
+                }
+
+                echo '</ul>';
+                echo '</div>';
+            }
+        }
+        else
+        {
+            $cl=ClassLevel::find($request->id);
+            $cl->school_id=$request->school_id;
+            $cl->level_name=$request->level_name;
+            $cl->level_descriptions=$request->level_descriptions;
+            $cl->input_by=Auth::user()->id;
+            $cl->current_year=$request->current_year;
+            $cl->remarks=$request->remarks;
+            $cl->status=$request->status;
+            $cl->save();
+        }
     }
 
     /**

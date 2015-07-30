@@ -45,6 +45,9 @@ Route::get('getYear/{id}',['middleware' => 'auth', 'uses' =>'AcademicSetupContro
 Route::get('academic/classes',['middleware' => 'auth', 'uses' =>'ClassLevelController@index']);
 Route::get('academic/manage',['middleware' => 'auth', 'uses' =>'ClassLevelController@manage']);
 Route::get('academic/classes/create',['middleware' => 'auth', 'uses' =>'ClassLevelController@create']);
+Route::post('academic/classes/create',['middleware' => 'auth', 'uses' =>'ClassLevelController@store']);
+Route::get('academic/classes/edit/{id}',['middleware' => 'auth', 'uses' =>'ClassLevelController@edit']);
+Route::post('academic/classes/update',['middleware' => 'auth', 'uses' =>'ClassLevelController@update']);
 Route::get('academic/classes/remove/{id}',['middleware' => 'auth', 'uses' =>'ClassLevelController@destroy']);
 
 

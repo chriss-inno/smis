@@ -14,17 +14,25 @@
 {!!HTML::script("assets/js/pages/form-validation.js")!!}
 
 <div class="container">
-
-    {!! Form::open(array('url' => 'academic/classes/update','id'=>'classLevels','role'=>'form')) !!}
+    {!! Form::open(array('url' => 'academic/classes/create','id'=>'classLevels','role'=>'form')) !!}
     <div class="row" style="margin-top: 20px">
         <div class="col-sm-12">
             <div class="form-group">
+                    <label>Select School</label>
+                    <select name="school_id" class="form-control" id="school_id">
+                        <option value="">----</option>
+                        @foreach($schools as $sc)
+                            <option value="{{$sc->id}}">{{$sc->school_name}}</option>
+                        @endforeach
+                    </select>
+            </div>
+            <div class="form-group">
                 <label>Class Level Name</label>
-                <input type="text" class="form-control" name="level_name" value="{{$class->level_name}}">
+                <input type="text" class="form-control" name="level_name">
             </div>
             <div class="form-group">
                 <label>Descriptions</label>
-                <textarea class="form-control" name="level_descriptions">{{$class->level_descriptions}}</textarea>
+                <textarea class="form-control" name="level_descriptions"> </textarea>
             </div>
             <div class="form-group">
                 <label>Remarks</label>
@@ -44,8 +52,6 @@
                 </div>
                 <div class="col-sm-2 pull-right">
                     <input type="submit" name="btnSubmit" value="Save" class="btn btn-blue-3 btn-block">
-                    <input  type="hidden" value="{{$class->school_id}}" name="school_id">
-                    <input  type="hidden" value="{{$class->id}}" name="id">
                 </div>
                 <div class="col-sm- pull-right" id="output">
 

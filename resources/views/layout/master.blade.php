@@ -48,7 +48,7 @@
     {!!HTML::script("https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js")!!}
     <![endif]-->
 
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}">
 
 </head>
 <body class="fixed-left">
