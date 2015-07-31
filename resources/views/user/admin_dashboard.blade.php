@@ -124,6 +124,7 @@
                             </a>
                             <ul>
                                 <li><a href='{{url('academic/current-year')}}'><span><i class="fa fa-arrow-right"></i>Current Year</span></a></li>
+                                <li><a href='{{url('academic/edu-levels')}}'><span><i class="fa fa-arrow-right"></i>Education Levels</span></a></li>
                                 <li><a href='{{url('academic/classes')}}'><span><i class="fa fa-arrow-right"></i>Classes and Streams</span></a></li>
                                 <li><a href='{{url('academic/grade')}}'><span><i class="fa fa-arrow-right"></i>Grade setup</span></a></li>
                                 <li><a href='{{url('academic/examination-types')}}'><i class="fa fa-arrow-right"></i><span>Examination types</span></a></li>

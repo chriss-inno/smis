@@ -32,4 +32,8 @@ class School extends Model
     {
         return $this::hasMany('\App\ClassLevel','school_id','id');
     }
+    public function educationLevels()
+    {
+        return $this::hasMany('\App\EducationLevel','school_id','id');
+    }
 }

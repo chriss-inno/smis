@@ -41,7 +41,10 @@ Route::get('academic/class-allocation',['middleware' => 'auth', 'uses' =>'Academ
 Route::post('academic/current-year',['middleware' => 'auth', 'uses' =>'AcademicSetupController@store']);
 Route::get('getYear/{id}',['middleware' => 'auth', 'uses' =>'AcademicSetupController@getYear']);
 
-//Classess sections
+//Education Levels
+Route::get('academic/edu-levels',['middleware' => 'auth', 'uses' =>'EducationLevelController@index']);
+
+//Classes sections
 Route::get('academic/classes',['middleware' => 'auth', 'uses' =>'ClassLevelController@index']);
 Route::get('academic/manage',['middleware' => 'auth', 'uses' =>'ClassLevelController@manage']);
 Route::get('academic/classes/create',['middleware' => 'auth', 'uses' =>'ClassLevelController@create']);

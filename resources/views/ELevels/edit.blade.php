@@ -19,15 +19,6 @@
     <div class="row" style="margin-top: 20px">
         <div class="col-sm-12">
             <div class="form-group">
-                <label>Education Level</label>
-                <select name="school_id" class="form-control" id="school_id">
-                    <option value="">----</option>
-                    @foreach($schools->educationLevels as $sc)
-                        <option value="{{$sc->id}}">{{$sc->level_name}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
                 <label>Class Level Name</label>
                 <input type="text" class="form-control" name="class_name" value="{{$class->class_name}}">
             </div>

@@ -82,8 +82,8 @@ class ClassLevelController extends Controller
         {
             $cl=new ClassLevel;
             $cl->school_id=$request->school_id;
-            $cl->level_name=$request->level_name;
-            $cl->level_descriptions=$request->level_descriptions;
+            $cl->class_name=$request->class_name;
+            $cl->class_descriptions=$request->class_descriptions;
             $cl->input_by=Auth::user()->id;
             $cl->current_year=$request->current_year;
             $cl->remarks=$request->remarks;
@@ -131,7 +131,7 @@ class ClassLevelController extends Controller
         //
         //
         $validator = Validator::make($request->all(), [
-            'level_name' => 'required',
+            'class_name' => 'required',
             'status' => 'required',
         ]);
         if ($validator->fails()) {
@@ -154,8 +154,8 @@ class ClassLevelController extends Controller
         {
             $cl=ClassLevel::find($request->id);
             $cl->school_id=$request->school_id;
-            $cl->level_name=$request->level_name;
-            $cl->level_descriptions=$request->level_descriptions;
+            $cl->class_name=$request->class_name;
+            $cl->class_descriptions=$request->class_descriptions;
             $cl->input_by=Auth::user()->id;
             $cl->current_year=$request->current_year;
             $cl->remarks=$request->remarks;
