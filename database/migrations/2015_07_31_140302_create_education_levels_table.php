@@ -22,6 +22,7 @@ class CreateEducationLevelsTable extends Migration
             $table->dateTime('authorized_date');
             $table->string('current_year');
             $table->string('remarks')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }

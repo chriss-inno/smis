@@ -14,16 +14,16 @@
 {!!HTML::script("assets/js/pages/form-validation.js")!!}
 
 <div class="container">
-    {!! Form::open(array('url' => 'academic/classes/create','id'=>'classLevels','role'=>'form')) !!}
+    {!! Form::open(array('url' => 'academic/edu-levels/create','id'=>'classLevels','role'=>'form')) !!}
         <div class="row" style="margin-top: 20px">
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label>Class Name</label>
+                    <label>Level Name</label>
                     <input type="text" class="form-control" name="level_name">
                 </div>
                 <div class="form-group">
                     <label>Descriptions</label>
-                    <textarea class="form-control" name="class_descriptions"> </textarea>
+                    <textarea class="form-control" name="level_descriptions"> </textarea>
                 </div>
                 <div class="form-group">
                     <label>Remarks</label>

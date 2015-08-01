@@ -71,7 +71,7 @@ class ClassLevelController extends Controller
                 echo '<ul>' ;
                 foreach ($errors->all() as $error)
                 {
-                    echo ' <li>{{ $error }}</li>';
+                    echo ' <li>$error</li>';
                 }
 
                 echo '</ul>';

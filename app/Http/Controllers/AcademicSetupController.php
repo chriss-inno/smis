@@ -181,7 +181,7 @@ class AcademicSetupController extends Controller
     {
         //
     }
-    public function getYear($id)
+    public static function getYear($id)
     {
         $academicsetup=AcademicSetup::where("school_id",'=',$id)->first();
         if(count($academicsetup)>0) {

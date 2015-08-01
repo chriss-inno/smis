@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\EducationLevel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\School;
 
 class EducationLevelController extends Controller
 {
@@ -30,6 +33,8 @@ class EducationLevelController extends Controller
     public function create()
     {
         //
+        $school_id=Auth::user()->school_id;
+        return view('ELevels.create',compact('school_id'));
     }
 
     /**
@@ -41,6 +46,39 @@ class EducationLevelController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = Validator::make($request->all(), [
+            'level_name' => 'required',
+            'status' => 'required',
+        ]);
+        if ($validator->fails()) {
+
+            $errors=$validator->errors();
+
+            if (count($errors) > 0){
+                echo ' <div class="alert alert-danger">' ;
+                echo '<ul>' ;
+                foreach ($errors->all() as $error)
+                {
+                    echo ' <li>$error</li>';
+                }
+
+                echo '</ul>';
+                echo '</div>';
+            }
+        }
+        else
+        {
+            $getYear =AcademicSetupController::getYear($request->school_id);
+            $cl=new EducationLevel;
+            $cl->school_id=$request->school_id;
+            $cl->level_name=$request->level_name;
+            $cl->level_descriptions=$request->level_descriptions;
+            $cl->input_by=Auth::user()->id;
+            $cl->current_year=$getYear;
+            $cl->remarks=$request->remarks;
+            $cl->status=$request->status;
+            $cl->save();
+        }
     }
 
     /**
