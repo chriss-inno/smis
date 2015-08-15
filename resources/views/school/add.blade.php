@@ -9,59 +9,63 @@
     {!!HTML::script("assets/js/pages/form-wizard.js")!!}
     {!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
     {!!HTML::script("assets/js/pages/form-validation.js")!!}
-    <script>
-        $("#region").change(function () {
-            var id1 = this.value;
-            $.get("<?php echo url('getDistricts') ?>/"+id1,function(data){
-                $("#district").html(data);
-            });
-        });
-    </script>
-@stop
-@section('menus')
-    <div class="left side-menu">
-        <div class="sidebar-inner slimscrollleft">
-            <div class="clearfix"></div>
-            <!--- Divider -->
-            <div class="clearfix"></div>
-            <hr class="divider" />
-            <div class="clearfix"></div>
-            <!--- Divider -->
-            <div id="sidebar-menu">
-                <ul>
-                    <li>
-                        <a href='{{url('home')}}' >
-                            <i class='icon-home-3'></i><span>Dashboard</span> <span class="pull-right"></span>
-                        </a>
-                    </li>
-                    @if(Auth::user()->role =="Superuser")
-                        <li class='has_sub'><a href='javascript:void(0);'>
-                                <i class="fa fa-delicious"></i>
-                                <span>Manage Schools</span>
-                            <span class="pull-right">
-                                <i class="fa fa-angle-down"></i>
-                            </span>
-                            </a>
-                            <ul>
-                                <li><a href='{{url('schools/add')}} ' class='active'><span><i class="fa fa-arrow-right"></i>New School</span></a></li>
-                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Available Schools</span></a></li>
-                                <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
+    {!!HTML::script("assets/libs/bootstrap-select/bootstrap-select.min.js" )!!}
+    {!!HTML::script("assets/libs/bootstrap-inputmask/inputmask.js" )!!}
+    {!!HTML::script("assets/libs/summernote/summernote.js" )!!}
+    {!!HTML::script("assets/js/pages/forms.js" )!!}
+     <script>
+         $("#region").change(function () {
+             var id1 = this.value;
+             $.get("<?php echo url('getDistricts') ?>/"+id1,function(data){
+                 $("#district").html(data);
+             });
+         });
+     </script>
+ @stop
+ @section('menus')
+     <div class="left side-menu">
+         <div class="sidebar-inner slimscrollleft">
+             <div class="clearfix"></div>
+             <!--- Divider -->
+             <div class="clearfix"></div>
+             <hr class="divider" />
+             <div class="clearfix"></div>
+             <!--- Divider -->
+             <div id="sidebar-menu">
+                 <ul>
+                     <li>
+                         <a href='{{url('home')}}' >
+                             <i class='icon-home-3'></i><span>Dashboard</span> <span class="pull-right"></span>
+                         </a>
+                     </li>
+                     @if(Auth::user()->role =="Superuser")
+                         <li class='has_sub'><a href='javascript:void(0);'>
+                                 <i class="fa fa-delicious"></i>
+                                 <span>Manage Schools</span>
+                             <span class="pull-right">
+                                 <i class="fa fa-angle-down"></i>
+                             </span>
+                             </a>
+                             <ul>
+                                 <li><a href='{{url('schools/add')}} ' class='active'><span><i class="fa fa-arrow-right"></i>New School</span></a></li>
+                                 <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Available Schools</span></a></li>
+                                 <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
+                                 <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
 
-                            </ul>
-                        </li>
-                    @endif
+                             </ul>
+                         </li>
+                     @endif
 
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="clearfix"></div><br><br><br>
-        </div>
-    </div>
-@stop
-@section('contents')
-    {!!HTML::script("assets/js/tinymce/tinymce.min.js")!!}
+                 </ul>
+                 <div class="clearfix"></div>
+             </div>
+             <div class="clearfix"></div>
+             <div class="clearfix"></div><br><br><br>
+         </div>
+     </div>
+ @stop
+ @section('contents')
+     {!!HTML::script("assets/js/tinymce/tinymce.min.js")!!}
     <script type="text/javascript">
         tinymce.init({
             selector: "textarea",
@@ -133,8 +137,12 @@
                                             <input type="text" class="form-control" name="accredited">
                                         </div>
                                         <div class="form-group">
-                                            <label>Start Date</label>
-                                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="start_date">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                <label>Start Date</label>
+                                                <input type="text" class="form-control" data-mask="9999" placeholder="YYYY ie 2015" name="start_date">
+                                            </div>
+                                            </div>
                                         </div>
 
                                     </div>

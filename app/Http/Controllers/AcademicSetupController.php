@@ -46,6 +46,8 @@ class AcademicSetupController extends Controller
         {
             $acs=AcademicSetup::where('school_id','=',$request->school)->get()->first();
             $acs->current_year=$request->current_year;
+            $acs->start_date=date("Y-m-d",strtotime($request->startdate));
+            $acs->end_date=date("Y-m-d",strtotime($request->enddate));
             $acs->input_by=Auth::user()->id;
             $acs->save();
         }
@@ -54,6 +56,8 @@ class AcademicSetupController extends Controller
             $acs=new AcademicSetup;
             $acs->school_id=$request->school;
             $acs->current_year=$request->current_year;
+            $acs->start_date=date("Y-m-d",strtotime($request->startdate));
+            $acs->end_date=date("Y-m-d",strtotime($request->enddate));
             $acs->input_by=Auth::user()->id;
             $acs->save();
         }
@@ -187,5 +191,12 @@ class AcademicSetupController extends Controller
         if(count($academicsetup)>0) {
             echo $academicsetup->current_year;
            } else { echo "";}
+    }
+    public static function getCYear($id)
+    {
+        $academicsetup=AcademicSetup::where("school_id",'=',$id)->first();
+        if(count($academicsetup)>0) {
+            return $academicsetup->current_year;
+        } else { return "";}
     }
 }

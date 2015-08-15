@@ -153,7 +153,7 @@
                     @endif
                     @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,9) )
                         <li class='has_sub'><a href='javascript:void(0);'>
-                                <span><i class="fa fa-newspaper-o"></i>Assets</span>
+                                <span><i class="fa fa-newspaper-o"></i> Assets</span>
                             <span class="pull-right">
                                 <i class="fa fa-angle-down"></i>
                             </span>

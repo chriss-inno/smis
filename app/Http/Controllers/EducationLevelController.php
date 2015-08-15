@@ -24,6 +24,12 @@ class EducationLevelController extends Controller
         $elevels=EducationLevel::all();
         return view('ELevels.index',compact('elevels'));
     }
+    public function manage()
+    {
+        //
+        $elevels=EducationLevel::all();
+        return view('ELevels.manage',compact('elevels'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -68,7 +74,7 @@ class EducationLevelController extends Controller
         }
         else
         {
-            $getYear =AcademicSetupController::getYear($request->school_id);
+            $getYear =AcademicSetupController::getCYear($request->school_id);
             $cl=new EducationLevel;
             $cl->school_id=$request->school_id;
             $cl->level_name=$request->level_name;
@@ -78,6 +84,7 @@ class EducationLevelController extends Controller
             $cl->remarks=$request->remarks;
             $cl->status=$request->status;
             $cl->save();
+
         }
     }
 

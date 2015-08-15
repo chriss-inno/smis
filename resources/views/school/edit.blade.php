@@ -9,6 +9,10 @@
     {!!HTML::script("assets/js/pages/form-wizard.js")!!}
     {!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
     {!!HTML::script("assets/js/pages/form-validation.js")!!}
+    {!!HTML::script("assets/libs/bootstrap-select/bootstrap-select.min.js" )!!}
+    {!!HTML::script("assets/libs/bootstrap-inputmask/inputmask.js" )!!}
+    {!!HTML::script("assets/libs/summernote/summernote.js" )!!}
+    {!!HTML::script("assets/js/pages/forms.js" )!!}
  <script>
      $("#region").change(function () {
          var id1 = this.value;
@@ -180,8 +184,12 @@ $district="";
                                             <input type="text" class="form-control" name="accredited" value="{{$accredited}}">
                                         </div>
                                         <div class="form-group">
-                                            <label>Start Date</label>
-                                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="start_date" value="{{$start_date}}">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label>Start Date</label>
+                                                    <input type="text" class="form-control datepicker-input" data-mask="9999" placeholder="YYYY ie 2015" name="start_date" value="{{$start_date}}">
+                                                </div>
+                                            </div>
                                         </div>
 
                                     </div>

@@ -67,7 +67,7 @@ class SchoolController extends Controller
         $sc->fax=$request->fax;
         $sc->email=$request->email;
         $sc->website=$request->website;
-        $sc->start_date=date('Y-m-d',strtotime($request->start_date));
+        $sc->start_date=$request->start_date;
         $sc->status=$request->status;
         $sc->created_date=date('Y-m-d');
         $sc->save();
@@ -137,7 +137,7 @@ class SchoolController extends Controller
         $sc->fax=$request->fax;
         $sc->email=$request->email;
         $sc->website=$request->website;
-        $sc->start_date=date('Y-m-d',strtotime($request->start_date));
+        $sc->start_date=$request->start_date;
         $sc->status=$request->status;
         $sc->created_date=date('Y-m-d');
         $sc->save();
@@ -216,7 +216,7 @@ class SchoolController extends Controller
         $user->status ='active';
         $user->save();
 
-        for($i=1; $i<= 5; $i++)
+        for($i=1; $i<= 16; $i++)
         {
             $user_right=new UserRight;
             $user_right->user_id=$user->id;

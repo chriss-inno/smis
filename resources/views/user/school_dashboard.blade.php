@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('page-title')
-    School Information System|Users
+    School Information System|Welcome
 @stop
 @section('menus')
     <div class="left side-menu">
@@ -19,56 +19,251 @@
                     </li>
                     @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,1) )
                         <li class='has_sub'><a href='javascript:void(0);'>
-                                <i class="fa fa-delicious"></i>
-                                <span>Manage Schools</span>
+                                <span><i class="fa fa-newspaper-o"></i> News and Announcements </span>
                             <span class="pull-right">
                                 <i class="fa fa-angle-down"></i>
                             </span>
                             </a>
                             <ul>
-                                <li><a href='{{url('schools/add')}}'><span><i class="fa fa-arrow-right"></i>New School</span></a></li>
-                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Available Schools</span></a></li>
-                                <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
+                                <li><a href='{{url('news/create')}}'><span><i class="fa fa-arrow-right"></i>Create</span></a></li>
+                                <li><a href='{{url('news')}}'><span><i class="fa fa-arrow-right"></i>List News</span></a></li>
+                                <li><a href='{{url('news/archive')}}'><i class="fa fa-arrow-right"></i><span>News Archive</span></a></li>
+                                <li><a href='{{url('news/search')}}'><span><i class="fa fa-arrow-right"></i>Search</span></a></li>
 
                             </ul>
                         </li>
                     @endif
                     @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,2) )
                         <li class='has_sub'><a href='javascript:void(0);'>
-                                <span><i class="fa fa-delicious"></i> Students </span>
+                                <span><i class="fa fa-building"></i> Schools</span>
                             <span class="pull-right">
                                 <i class="fa fa-angle-down"></i>
                             </span>
                             </a>
                             <ul>
-                                <li><a href='{{url('student/admission')}}'><span><i class="fa fa-arrow-right"></i>Admission</span></a></li>
-                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Available Schools</span></a></li>
-                                <li><a href='{{url('schools-manage')}}'><i class="fa fa-arrow-right"></i><span>Manage Schools</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>School general reports</span></a></li>
+                                <li><a href='{{url('schools/add')}}'><span><i class="fa fa-arrow-right"></i>School Registration</span></a></li>
+                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List Schools</span></a></li>
+                                <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
+                                <li><a href='{{url('users')}}'><span><i class="fa fa-arrow-right"></i>School Users</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
 
                             </ul>
                         </li>
                     @endif
-
-                @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,3) )
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,3) )
                         <li class='has_sub'><a href='javascript:void(0);'>
-                                <span><i class="fa fa-delicious"></i> Courses</span>
+                                <span><i class="fa fa-graduation-cap"></i>Admission </span>
                             <span class="pull-right">
                                 <i class="fa fa-angle-down"></i>
                             </span>
                             </a>
                             <ul>
-                                <li><a href='{{url('schools/add')}}'><span><i class="fa fa-arrow-right"></i>New School</span></a></li>
-                                <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>Available Schools</span></a></li>
-                                <li><a href='{{url('schools-manage')}}'><i class="fa fa-arrow-right"></i><span>Manage Schools</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><i class="fa fa-arrow-right"></i><span>School general reports</span></a></li>
+                                <li><a href='{{url('admission/create')}}'><span><i class="fa fa-arrow-right"></i>Upload Students</span></a></li>
+                                <li><a href='{{url('admission')}}'><span><i class="fa fa-arrow-right"></i>List students</span></a></li>
+                                <li><a href='{{url('admission/search')}}'><i class="fa fa-arrow-right"></i><span>Search Student</span></a></li>
+                                <li><a href='{{url('admission/reports/')}}'><i class="fa fa-arrow-right"></i><span>Students Reports</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,4) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-graduation-cap"></i> Students </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('students/create')}}'><span><i class="fa fa-arrow-right"></i>Register new Students</span></a></li>
+                                <li><a href='{{url('students')}}'><span><i class="fa fa-arrow-right"></i>List students</span></a></li>
+                                <li><a href='{{url('students/search')}}'><i class="fa fa-arrow-right"></i><span>Search Student</span></a></li>
+                                <li><a href='{{url('students/reports/')}}'><i class="fa fa-arrow-right"></i><span>Students Reports</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,5) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-users"></i> Staff </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('staff/create')}}'><span><i class="fa fa-arrow-right"></i>Register new Staff</span></a></li>
+                                <li><a href='{{url('staff')}}'><span><i class="fa fa-arrow-right"></i>List staff</span></a></li>
+                                <li><a href='{{url('staff/search')}}'><i class="fa fa-arrow-right"></i><span>Search staff</span></a></li>
+                                <li><a href='{{url('staff/reports/')}}'><i class="fa fa-arrow-right"></i><span>Staff reports</span></a></li>
 
                             </ul>
                         </li>
                     @endif
 
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,6) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span> <i class="fa fa-book"></i> Courses/Subjects </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('courses/create')}}'><span><i class="fa fa-arrow-right"></i>Register new course</span></a></li>
+                                <li><a href='{{url('courses')}}'><span><i class="fa fa-arrow-right"></i>List Courses</span></a></li>
+                                <li><a href='{{url('courses/search')}}'><i class="fa fa-arrow-right"></i><span>Search Courses</span></a></li>
+                                <li><a href='{{url('courses/reports/')}}'><i class="fa fa-arrow-right"></i><span>Courses reports</span></a></li>
 
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,7) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-newspaper-o"></i> Academic Setup</span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('academic/current-year')}}'><span><i class="fa fa-arrow-right"></i>Current Year</span></a></li>
+                                <li><a href='{{url('academic/edu-levels')}}'><span><i class="fa fa-arrow-right"></i>Education Levels</span></a></li>
+                                <li><a href='{{url('academic/classes')}}'><span><i class="fa fa-arrow-right"></i>Classes and Streams</span></a></li>
+                                <li><a href='{{url('academic/grade')}}'><span><i class="fa fa-arrow-right"></i>Grade setup</span></a></li>
+                                <li><a href='{{url('academic/examination-types')}}'><i class="fa fa-arrow-right"></i><span>Examination types</span></a></li>
+                                <li><a href='{{url('academic/examination-period')}}'><span><i class="fa fa-arrow-right"></i>Examination Period</span></a></li>
+                                <li><a href='{{url('academic/academic-calendar')}}'><span><i class="fa fa-arrow-right"></i>Academic Calendar</span></a></li>
+                                <li><a href='{{url('academic/subject-allocation')}}'><span><i class="fa fa-arrow-right"></i>Subject Allocation</span></a></li>
+                                <li><a href='{{url('academic/class-allocation')}}'><span><i class="fa fa-arrow-right"></i>Class Allocation</span></a></li>
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,8) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-newspaper-o"></i> Academic</span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('academics/student-progress')}}'><span><i class="fa fa-arrow-right"></i>Student Progress</span></a></li>
+                                <li><a href='{{url('academics/assessments')}}'><span><i class="fa fa-arrow-right"></i>Assessments</span></a></li>
+                                <li><a href='{{url('academics/myclasses')}}'><i class="fa fa-arrow-right"></i><span>My Classes and Subjects</span></a></li>
+                                <li><a href='{{url('academics/results')}}'><span><i class="fa fa-arrow-right"></i>Examination Results</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,9) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-newspaper-o"></i> Assets</span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('academic/asset-types')}}'><span><i class="fa fa-arrow-right"></i>Asset Types</span></a></li>
+                                <li><a href='{{url('academic/asset-reports')}}'><span><i class="fa fa-arrow-right"></i>Asset Reports</span></a></li>
+                                <li><a href='{{url('academic/subject-allocation')}}'><span><i class="fa fa-arrow-right"></i>Asset Allocation</span></a></li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,10) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-newspaper-o"></i> Examination</span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('examination/admission')}}'><span><i class="fa fa-arrow-right"></i>View Results</span></a></li>
+                                <li><a href='{{url('examination/approve-results')}}'><span><i class="fa fa-arrow-right"></i>Approve results</span></a></li>
+                                <li><a href='{{url('examination/publish-results')}}'><i class="fa fa-arrow-right"></i><span>Publish results</span></a></li>
+                                <li><a href='{{url('examination/search')}}'><span><i class="fa fa-arrow-right"></i>Examination results search</span></a></li>
+                                <li><a href='{{url('examination/reports')}}'><span><i class="fa fa-arrow-right"></i>Examination results reports</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,11) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-calendar"></i> Calendar </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('calendar')}}'><span><i class="fa fa-arrow-right"></i>Calendar</span></a></li>
+                                <li><a href='{{url('calendar/my-calendar')}}'><i class="fa fa-arrow-right"></i><span>My Calendar</span></a></li>
+                                <li><a href='{{url('calendar/my-events')}}'><i class="fa fa-arrow-right"></i><span>My Events</span></a></li>
+                                <li><a href='{{url('calendar/events')}}'><span><i class="fa fa-arrow-right"></i>School Events</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,12) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-money"></i> Accountant </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('accountant/finances')}}'><span><i class="fa fa-arrow-right"></i>Finances</span></a></li>
+                                <li><a href='{{url('accountant/fee-payments')}}'><span><i class="fa fa-arrow-right"></i>Fee Payments</span></a></li>
+                                <li><a href='{{url('accountant/search-payments')}}'><i class="fa fa-arrow-right"></i><span>Search Payments</span></a></li>
+                                <li><a href='{{url('accountant/budget')}}'><i class="fa fa-arrow-right"></i><span>Budget</span></a></li>
+                                <li><a href='{{url('accountant/budget-setup')}}'><span><i class="fa fa-arrow-right"></i>Budget Setup</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,13) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-cogs"></i> Classes </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('classes/admission')}}'><span><i class="fa fa-arrow-right"></i>Add new class</span></a></li>
+                                <li><a href='{{url('classes')}}'><span><i class="fa fa-arrow-right"></i>List classes</span></a></li>
+                                <li><a href='{{url('student/class-allocation')}}'><span><i class="fa fa-arrow-right"></i>Class Allocation</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,14) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-cogs"></i> My Profile </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('profile/admission')}}'><span><i class="fa fa-arrow-right"></i>Profile</span></a></li>
+                                <li><a href='{{url('profile/pass-change')}}'><span><i class="fa fa-arrow-right"></i>Change Password</span></a></li>
+                                <li><a href='{{url('logout')}}'><span><i class="fa fa-arrow-right"></i>Sign Out</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
+                    @if( \App\Http\Controllers\UserController::checkAccessRights(Auth::user()->id,15) )
+                        <li class='has_sub'><a href='javascript:void(0);'>
+                                <span><i class="fa fa-money"></i> E-mail </span>
+                            <span class="pull-right">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul>
+                                <li><a href='{{url('emails/compose')}}'><span><i class="fa fa-arrow-right"></i>Compose</span></a></li>
+                                <li><a href='{{url('emails/inbox')}}'><span><i class="fa fa-arrow-right"></i>Inbox</span></a></li>
+                                <li><a href='{{url('emails/sent')}}'><i class="fa fa-arrow-right"></i><span>Sent</span></a></li>
+                                <li><a href='{{url('emails/outbox')}}'><i class="fa fa-arrow-right"></i><span>Outbox</span></a></li>
+                                <li><a href='{{url('emails/trash')}}'><span><i class="fa fa-arrow-right"></i>Trash</span></a></li>
+
+                            </ul>
+                        </li>
+                    @endif
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -76,8 +271,8 @@
             <div class="clearfix"></div><br><br><br>
         </div>
     </div>
-@stop
-@section('pageScript')
+    @stop
+    @section('pageScript')
     {!!HTML::script("assets/libs/d3/d3.v3.js")!!}
     {!!HTML::script("assets/libs/rickshaw/rickshaw.min.js")!!}
     {!!HTML::script("assets/libs/raphael/raphael-min.js")!!}
@@ -94,9 +289,9 @@
     {!!HTML::script("assets/js/apps/todo.js")!!}
     {!!HTML::script("assets/js/apps/notes.js")!!}
     {!!HTML::script("assets/js/pages/index.js")!!}
-@stop
-@section('contents')
-    <!-- Start info box -->
+    @stop
+    @section('contents')
+            <!-- Start info box -->
     <div class="row top-summary">
         <div class="col-lg-3 col-md-6">
             <div class="widget green-1 animated fadeInDown">
@@ -128,7 +323,7 @@
                         <i class="icon-bag"></i>
                     </div>
                     <div class="text-box">
-                        <p class="maindata">TOTAL <b>STAFF</b></p>
+                        <p class="maindata">TOTAL <b>STAFFS</b></p>
                         <h2><span class="animate-number" data-value="6399" data-duration="3000">0</span></h2>
 
                         <div class="clearfix"></div>
@@ -195,68 +390,8 @@
     <!-- End of info box -->
 
     <div class="row">
-        <div class="col-lg-8 portlets">
-            <div id="website-statistics1" class="widget">
-                <div class="widget-header transparent">
-                    <h2><i class="icon-chart-line"></i> <strong>Website</strong> Statistics</h2>
-                    <div class="additional-btn">
-                        <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
-                        <a class="hidden" id="dropdownMenu1" data-toggle="dropdown">
-                            <i class="fa fa-cogs"></i>
-                        </a>
-                        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                        <a href="#" class="widget-popout hidden tt" title="Pop Out/In"><i class="icon-publish"></i></a>
-                        <a href="#" class="widget-maximize hidden"><i class="icon-resize-full-1"></i></a>
-                        <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
-                        <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
-                    </div>
-                </div>
-                <div class="widget-content">
-                    <div id="website-statistic" class="statistic-chart">
-                        <div class="row stacked">
-                            <div class="col-sm-12">
-                                <div class="toolbar">
-                                    <div class="pull-left">
-                                        <div class="btn-group">
-                                            <a href="#" class="btn btn-default btn-xs">Daily</a>
-                                            <a href="#" class="btn btn-default btn-xs active">Monthly</a>
-                                            <a href="#" class="btn btn-default btn-xs">Yearly</a>
-                                        </div>
-                                    </div>
-                                    <div class="pull-right">
-                                        <div class="btn-group">
-                                            <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                                Export <i class="icon-down-open-2"></i>
-                                            </a>
-                                            <ul class="dropdown-menu pull-right" role="menu">
-                                                <li><a href="#">Export as PDF</a></li>
-                                                <li><a href="#">Export as CSV</a></li>
-                                                <li><a href="#">Export as PNG</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Separated link</a></li>
-                                            </ul>
-                                        </div>
-                                        <a href="#" class="btn btn-primary btn-xs"><i class="icon-cog-2"></i></a>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div id="morris-home" class="morris-chart" style="height: 270px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-
-        </div>
-        <div class="col-lg-4 portlets">
+        <div class="col-lg-4 portlets pull-right">
             <div class="row">
                 <div class="col-sm-12">
                     <div id="todo-app" class="widget">
@@ -330,64 +465,9 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-8 portlets">
-            <div class="widget">
-                <div class="widget-header">
-                    <h2><i class="icon-chart-pie-1"></i> <strong>Sales</strong> Report</h2>
-                    <div class="additional-btn">
-                        <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
-                        <a class="hidden" id="dropdownMenu1" data-toggle="dropdown">
-                            <i class="fa fa-cogs"></i>
-                        </a>
-                        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                        <a href="#" class="widget-popout hidden tt" title="Pop Out/In"><i class="icon-publish"></i></a>
-                        <a href="#" class="widget-maximize hidden"><i class="icon-resize-full-1"></i></a>
-                        <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
-                        <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
-                    </div>
-                </div>
-                <div class="widget-content">
-                    <div class="row stacked">
-                        <div class="col-sm-5 mini-stats">
-                            <div id="morris-bar-home" class="morris-chart" style="height: 170px;"></div>
-                            <div class="sales-report-data">
-                                <span class="pull-left">Completed Sales</span><span class="pull-right">65 / 174</span>
-                                <div class="progress progress-xs">
-                                    <div style="width: 38%;" class="progress-bar bg-blue-1"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <span class="pull-left">Return(s) Processed</span><span class="pull-right">22 / 25</span>
-                                <div class="progress progress-xs">
-                                    <div style="width: 88%;" class="progress-bar bg-lightblue-1"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <span class="pull-left">Shipped Products</span><span class="pull-right">418 / 624</span>
-                                <div class="progress progress-xs">
-                                    <div style="width: 58%;" class="progress-bar"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <span class="pull-left">Overall Product Stock</span><span class="pull-right">19%</span>
-                                <div class="progress progress-xs">
-                                    <div style="width: 19%;" class="progress-bar bg-pink-1"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <div id="vector-map" style="height:370px"></div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-lg-4 portlets">
+
+        <div class="col-lg-4 portlets pull-right">
             <div class="row">
                 <div class="col-sm-12">
                     <div id="notes-app" class="widget">

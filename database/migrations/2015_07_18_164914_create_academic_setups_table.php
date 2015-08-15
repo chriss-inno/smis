@@ -15,6 +15,8 @@ class CreateAcademicSetupsTable extends Migration
         Schema::create('academic_setups', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('current_year');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->string('school_id');
             $table->string('input_by');
             $table->string('approved');

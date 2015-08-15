@@ -403,7 +403,7 @@
                                     <tr>
                                         <td>{{$c}}</td>
                                         <td>{{$sc->level_name}}</td>
-                                        <td>{{$sc->level_descriptions}}</td>
+                                        <td><?php echo $sc->level_descriptions;?></td>
                                         <td>{{$sc->remarks}}</td>
                                         <td>{{$sc->status}}</td>
                                         <td  id="{{$sc->level_name}}" style="align-content: center"> <div class="col-md-12" id="{{$sc->id}}">

@@ -19,9 +19,6 @@ $(document).ready(function() {
             },
             email: {
                 validators: {
-                    notEmpty: {
-                        message: 'The email address is required and can\'t be empty'
-                    },
                     emailAddress: {
                         message: 'The input is not a valid email address'
                     }
@@ -39,6 +36,17 @@ $(document).ready(function() {
                     notEmpty: {
                         message: 'The registered is required and can\'t be empty'
                     }
+                }
+            },
+            start_date: {
+                validators: {
+                    notEmpty: {
+                        message: 'The school start date is required and can\'t be empty'
+                    },
+                    digits: {
+                        message: 'The value can contain only digits'
+                    }
+
                 }
             },
             owner: {
@@ -152,7 +160,6 @@ $(document).ready(function() {
         message: 'This value is not valid',
         fields: {
             school: {
-                message: 'The username is not valid',
                 validators: {
                     notEmpty: {
                         message: 'The school is required and can\'t be empty'
@@ -160,7 +167,6 @@ $(document).ready(function() {
                 }
             },
             current_year: {
-                message: 'The Year is not valid',
                 validators: {
                     notEmpty: {
                         message: 'The Year is required and can\'t be empty'
@@ -168,6 +174,22 @@ $(document).ready(function() {
                     regexp: {
                         regexp: /^[0-9_\.]+$/,
                         message: 'The Year can only consist of number'
+                    }
+
+                }
+            },
+            startdate: {
+                validators: {
+                    notEmpty: {
+                        message: 'The start date is required and can\'t be empty'
+                    }
+
+                }
+            },
+            enddate: {
+                validators: {
+                    notEmpty: {
+                        message: 'The end date is required and can\'t be empty'
                     }
 
                 }
