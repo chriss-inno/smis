@@ -21,15 +21,62 @@ class EducationLevelController extends Controller
     public function index()
     {
         //
-        $elevels=EducationLevel::all();
-        return view('ELevels.index',compact('elevels'));
+
+        if(Auth::user()->role =="Superuser")
+        {
+            $elevels=EducationLevel::all();
+            return view('ELevels.index',compact('elevels'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            $elevels=EducationLevel::where('school_id','=',$school_id)->get();
+            return view('ELevels.index',compact('elevels'));
+        }
     }
     public function manage()
     {
         //
-        $elevels=EducationLevel::all();
-        return view('ELevels.manage',compact('elevels'));
+        if(Auth::user()->role =="Superuser") {
+            $elevels = EducationLevel::all();
+            return view('ELevels.manage', compact('elevels'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            $elevels = EducationLevel::where('school_id','=',$school_id)->get();
+            return view('ELevels.manage', compact('elevels'));
+        }
     }
+    public function listLevels()
+    {
+        //
+        if(Auth::user()->role =="Superuser") {
+            $elevels = EducationLevel::all();
+            return view('ELevels.list', compact('elevels'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            $elevels = EducationLevel::where('school_id','=',$school_id)->get();
+            return view('ELevels.list', compact('elevels'));
+        }
+    }
+    public function listLevelsm()
+    {
+        //
+        if(Auth::user()->role =="Superuser") {
+            $elevels = EducationLevel::all();
+            return view('ELevels.listm', compact('elevels'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            $elevels = EducationLevel::where('school_id','=',$school_id)->get();
+            return view('ELevels.listm', compact('elevels'));
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -41,6 +88,13 @@ class EducationLevelController extends Controller
         //
         $school_id=Auth::user()->school_id;
         return view('ELevels.create',compact('school_id'));
+    }
+
+    public function createm()
+    {
+        //
+        $school_id=Auth::user()->school_id;
+        return view('ELevels.createm',compact('school_id'));
     }
 
     /**

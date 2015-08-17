@@ -15,7 +15,7 @@ class CreateClassStreamsTable extends Migration
         Schema::create('class_streams', function (Blueprint $table) {
             $table->increments('id');
             $table->string('stream_name');
-            $table->integer('level_id');
+            $table->integer('class_id');
             $table->string('input_by');
             $table->string('authorized_by');
             $table->dateTime('authorized_date');

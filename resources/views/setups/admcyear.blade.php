@@ -5,12 +5,16 @@
 @section('pageScript')
     {!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
     {!!HTML::script("assets/js/pages/form-validation.js")!!}
+    {!!HTML::script("assets/libs/bootstrap-select/bootstrap-select.min.js" )!!}
+    {!!HTML::script("assets/libs/bootstrap-inputmask/inputmask.js" )!!}
+    {!!HTML::script("assets/libs/summernote/summernote.js" )!!}
+    {!!HTML::script("assets/js/pages/forms.js" )!!}
 <script>
     $("#school").change(function () {
         var id1 = this.value;
         if (id1 != ""){
             $.get("<?php echo url('getYear') ?>/" + id1, function (data) {
-                document.getElementById('current_year').value=data;
+                document.getElementById('admcyears').innerHTML=data;
             });
          }
     });
@@ -307,7 +311,7 @@
                             {!! Form::open(array('url' => 'academic/current-year','id'=>'formacyear','role'=>'form')) !!}
                            <div class="row">
                                <div class="form-group">
-                                   <div class="col-sm-2 text-right">
+                                   <div class="col-sm-2 col-sm-offset-2">
                                        <label>Select School</label>
                                    </div>
                                    <div class="col-sm-6">
@@ -320,26 +324,30 @@
                                    </div>
                                </div>
                            </div>
-                            <div class="row" style="margin-top: 20px">
-                                <div class="form-group">
-                                    <div class="col-sm-2 text-right">
-                                        <label>Academic Year</label>
+                            <div class="row">
+                                <div class="form-group" id="admcyears">
 
+                                    <div class="col-sm-2 col-sm-offset-2">
+                                        <label>Academic Year</label>
+                                        <input type="text" class="form-control" data-mask="9999" name="current_year" placeholder="Year (YYYY) eg 2015" value="" required="required">
                                     </div>
-                                    <div class="col-sm-6" id="getCYear">
-                                        <input type="text" class="form-control" name="current_year" id="current_year" placeholder="Year (YYYY) eg 2015">
+                                    <div class="col-sm-3">
+                                        <label>Start date</label>
+                                        <input type="text" name="startdate" class="form-control datepicker-input" required="required" value="">
                                     </div>
-                                    <div class="col-sm-4">
-                                        Current Academic year is settled once per year and can be automatically generated.
+                                    <div class="col-sm-3">
+                                        <label>End date</label>
+                                        <input type="text" name="enddate" class="form-control datepicker-input" required="required" value="">
                                     </div>
+
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 20px">
                                 <div class="form-group">
-                                    <div class="col-sm-4 col-sm-offset-2">
+                                    <div class="col-sm-4 col-sm-offset-4">
                                         <input type="submit" class="btn btn-blue-3 btn-block" value="Set Current Year">
                                     </div>
-                                    <div class="col-sm-6" id="output"></div>
+                                    <div class="col-sm-3" id="output"></div>
                                 </div>
                             </div>
                             {!!Form::close() !!}

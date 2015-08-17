@@ -14,7 +14,7 @@
 {!!HTML::script("assets/js/pages/form-validation.js")!!}
 
 <div class="container">
-    {!! Form::open(array('url' => 'academic/edu-levels/create','id'=>'classLevels','role'=>'form')) !!}
+    {!! Form::open(array('url' => 'academic/edu-levels/create','id'=>'eduLevels','role'=>'form')) !!}
         <div class="row" style="margin-top: 20px">
             <div class="col-sm-12">
                 <div class="form-group">

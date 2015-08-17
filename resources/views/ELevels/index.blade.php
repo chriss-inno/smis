@@ -372,7 +372,7 @@
                 </div>
                 <div class="widget-content">
                     <br>
-                    <div class="table-responsive">
+                    <div class="table-responsive" id="listLevels" name="{{url('academic/edu-levels/list')}}">
                         <form class='form-horizontal' role='form'>
                             <table id="datatables-4" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>

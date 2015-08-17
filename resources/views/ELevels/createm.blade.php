@@ -14,25 +14,16 @@
 {!!HTML::script("assets/js/pages/form-validation.js")!!}
 
 <div class="container">
-    {!! Form::open(array('url' => 'academic/classes/create','id'=>'classLevels','role'=>'form')) !!}
+    {!! Form::open(array('url' => 'academic/edu-levels/create','id'=>'eduLevelsm','role'=>'form')) !!}
         <div class="row" style="margin-top: 20px">
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label>Education Level</label>
-                    <select name="level_id" class="form-control" id="level_id">
-                        <option value="">----</option>
-                        @foreach($elevels as $el)
-                            <option value="{{$el->id}}">{{$el->level_name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Class Name</label>
-                    <input type="text" class="form-control" name="class_name">
+                    <label>Level Name</label>
+                    <input type="text" class="form-control" name="level_name">
                 </div>
                 <div class="form-group">
                     <label>Descriptions</label>
-                    <textarea class="form-control" name="class_descriptions"> </textarea>
+                    <textarea class="form-control" name="level_descriptions"> </textarea>
                 </div>
                 <div class="form-group">
                     <label>Remarks</label>
@@ -52,7 +43,7 @@
                     </div>
                     <div class="col-sm-2 pull-right">
                         <input type="submit" name="btnSubmit" value="Save" class="btn btn-blue-3 btn-block">
-
+                        <input  type="hidden" value="{{$school_id}}" name="school_id">
                     </div>
                     <div class="col-sm- pull-right" id="output">
 

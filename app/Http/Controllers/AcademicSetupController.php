@@ -189,8 +189,41 @@ class AcademicSetupController extends Controller
     {
         $academicsetup=AcademicSetup::where("school_id",'=',$id)->first();
         if(count($academicsetup)>0) {
-            echo $academicsetup->current_year;
-           } else { echo "";}
+
+            $school_id=$academicsetup->school_id;
+            $current_year=$academicsetup->current_year;
+            $end_date=$academicsetup->end_date;
+            $start_date=$academicsetup->start_date;
+
+
+            echo '  <div class="col-sm-2 col-sm-offset-2">
+                                        <label>Academic Year</label>
+                                        <input type="text" class="form-control" data-mask="9999" name="current_year" placeholder="Year (YYYY) eg 2015" value="'.$current_year.'" required="required">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>Start date</label>
+                                        <input type="text" name="startdate" class="form-control datepicker-input" required="required" value="'.$start_date.'">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>End date</label>
+                                        <input type="text" name="enddate" class="form-control datepicker-input" required="required" value="'.$end_date.'">
+                                    </div>';
+
+
+           } else {
+            echo '  <div class="col-sm-2 col-sm-offset-2">
+                                        <label>Academic Year</label>
+                                        <input type="text" class="form-control" data-mask="9999" name="current_year" placeholder="Year (YYYY) eg 2015" value="" required="required">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>Start date</label>
+                                        <input type="text" name="startdate" class="form-control datepicker-input" required="required" value="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>End date</label>
+                                        <input type="text" name="enddate" class="form-control datepicker-input" required="required" value="">
+                                    </div>';
+        }
     }
     public static function getCYear($id)
     {

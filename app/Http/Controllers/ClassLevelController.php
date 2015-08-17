@@ -11,6 +11,7 @@ use App\ClassStream;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\School;
+use App\EducationLevel;
 
 class ClassLevelController extends Controller
 {
@@ -22,10 +23,45 @@ class ClassLevelController extends Controller
     public function index()
     {
         //
-        $classes=ClassLevel::all();
-        return view('CLevels.index',compact('classes'));
+        if(Auth::user()->role =="Superuser") {
+            $classes = ClassLevel::all();
+            return view('CLevels.index', compact('classes'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            $classes = ClassLevel::where('school_id','=',$school_id)->get();
+            return view('CLevels.index', compact('classes'));
+        }
 
-
+    }
+    public function listClasses()
+    {
+        //
+        if(Auth::user()->role =="Superuser") {
+            $classes = ClassLevel::all();
+            return view('CLevels.list', compact('classes'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            $classes = ClassLevel::where('school_id','=',$school_id)->get();
+            return view('CLevels.list', compact('classes'));
+        }
+    }
+    public function listClassesm()
+    {
+        //
+        if(Auth::user()->role =="Superuser") {
+            $classes = ClassLevel::all();
+            return view('CLevels.listm', compact('classes'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            $classes = ClassLevel::where('school_id','=',$school_id)->get();
+            return view('CLevels.listm', compact('classes'));
+        }
     }
 
     /**
@@ -45,7 +81,8 @@ class ClassLevelController extends Controller
         else
         {
             $school_id=Auth::user()->school_id;
-            return view('CLevels.create',compact('school_id'));
+            $elevels=EducationLevel::where('school_id','=',$school_id)->get();
+            return view('CLevels.create',compact('elevels'));
         }
     }
 
@@ -59,7 +96,7 @@ class ClassLevelController extends Controller
     {
         //
         $validator = Validator::make($request->all(), [
-            'level_name' => 'required',
+            'class_name' => 'required',
             'status' => 'required',
         ]);
         if ($validator->fails()) {
@@ -80,18 +117,21 @@ class ClassLevelController extends Controller
         }
         else
         {
+            $school_id=Auth::user()->school_id;
+            $getYear =AcademicSetupController::getCYear($school_id);
             $cl=new ClassLevel;
-            $cl->school_id=$request->school_id;
+            $cl->school_id=$school_id;
+            $cl->level_id=$request->level_id;
             $cl->class_name=$request->class_name;
             $cl->class_descriptions=$request->class_descriptions;
             $cl->input_by=Auth::user()->id;
-            $cl->current_year=$request->current_year;
+            $cl->current_year=$getYear;
             $cl->remarks=$request->remarks;
             $cl->status=$request->status;
             $cl->save();
         }
 
-
+     return "Saved Successfully";
 
     }
 
