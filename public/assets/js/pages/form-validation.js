@@ -287,6 +287,60 @@ $(document).ready(function() {
         }
 
     });
+    $('#eLevelClasses').bootstrapValidator({
+        message: 'This value is not valid',
+        fields: {
+            class_name: {
+                message: 'The level name is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The Class name is required and can\'t be empty'
+                    }
+                }
+            },
+            status: {
+                message: 'The status is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The status is required and can\'t be empty'
+                    }
+                }
+            }
+        },
+        submitHandler: function(form) {
+            $("#output").html("<h3><span class='text-info'><i class='fa fa-spinner fa-spin'></i> Making changes please wait...</span><h3>");
+            var postData = $('#eLevelClasses').serializeArray();
+            var formURL = $('#eLevelClasses').attr("action");
+            $.ajax(
+                {
+                    url : formURL,
+                    type: "POST",
+                    data : postData,
+                    success:function(data)
+                    {
+                        console.log(data);
+                        //data: return data from server
+                        setTimeout(function() {
+                            $("#output").html(data);
+                            $("#myModal").modal("hide");
+                        }, 2000);
+
+                    },
+                    error: function(data)
+                    {
+                        console.log(data.responseJSON);
+                        //in the responseJSON you get the form validation back.
+                        $("#output").html("<h3><span class='text-info'> Error in processing data try again...</span><h3>");
+                        setTimeout(function() {
+                            $("#output").html(data);
+                            $("#myModal").modal("hide");
+                        }, 2000);
+
+                    }
+                });
+        }
+
+    });
     $('#classLevelsm').bootstrapValidator({
         message: 'This value is not valid',
         fields: {

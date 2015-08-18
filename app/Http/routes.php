@@ -53,6 +53,10 @@ Route::post('academic/edu-levels/edit',['middleware' => 'auth', 'uses' =>'Educat
 Route::get('academic/edu-levels/remove',['middleware' => 'auth', 'uses' =>'EducationLevelController@destroy']);
 Route::get('academic/edu-levels/list',['middleware' => 'auth', 'uses' =>'EducationLevelController@listLevels']);
 Route::get('academic/edu-levels/listm',['middleware' => 'auth', 'uses' =>'EducationLevelController@listLevelsm']);
+Route::get('academic/edu-levels/createClasses/{id}',['middleware' => 'auth', 'uses' =>'EducationLevelController@createClasses']);
+Route::get('getElevelClasses/{id}',['middleware' => 'auth', 'uses' =>'EducationLevelController@getElevelClasses']);
+
+
 
 
 //Classes sections

@@ -131,7 +131,7 @@ class ClassLevelController extends Controller
             $cl->save();
         }
 
-     return "Saved Successfully";
+     return "<h3><span class='text-info'>Data Successful saved</span><h3>";
 
     }
 

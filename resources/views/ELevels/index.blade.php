@@ -54,6 +54,32 @@
             })
 
         });
+        //Add classes
+        $(".addClasses").click(function(){
+
+            var id1 = $(this).parent().attr('id');
+            var modal = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
+            modal+= '<div class="modal-dialog" style="width:60%;margin-right: 20% ;margin-left: 20%">';
+            modal+= '<div class="modal-content">';
+            modal+= '<div class="modal-header">';
+            modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center"> Education Level Classes</span>';
+            modal+= '</div>';
+            modal+= '<div class="modal-body">';
+            modal+= ' </div>';
+            modal+= '</div>';
+            modal+= '</div>';
+            $('body').css('overflow','hidden');
+
+            $("body").append(modal);
+            $("#myModal").modal("show");
+            $(".modal-body").html("<h3><i class='fa fa-spin fa-spinner '></i><span>loading...</span><h3>");
+            $(".modal-body").load("<?php echo url("academic/edu-levels/createClasses") ?>/"+id1);
+            $("#myModal").on('hidden.bs.modal',function(){
+                $("#myModal").remove();
+            })
+
+        });
         //Edit class streams
         $(".editClass").click(function(){
             var id1 = $(this).parent().attr('id');
@@ -407,7 +433,7 @@
                                         <td>{{$sc->remarks}}</td>
                                         <td>{{$sc->status}}</td>
                                         <td  id="{{$sc->level_name}}" style="align-content: center"> <div class="col-md-12" id="{{$sc->id}}">
-                                                <a href="#" title="Add Streams" class="adduser "><i class="fa fa-users text-success"></i> View</a>&nbsp;&nbsp;&nbsp;
+                                                <a href="#" title="Add Classes" class="addClasses"><i class="fa fa-users text-success"></i> Level Classes</a>&nbsp;&nbsp;&nbsp;
                                             </div></td>
 
                                     </tr>

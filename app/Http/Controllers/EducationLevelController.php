@@ -186,4 +186,20 @@ class EducationLevelController extends Controller
     {
         //
     }
+
+    //Create classes
+    public function createClasses($id)
+    {
+        //
+        $el =EducationLevel::find($id);
+        return view('ELevels.classesCreate',compact('el'));
+    }
+
+    //Get list of classes from the level
+    public function getElevelClasses($id)
+    {
+        $el =EducationLevel::find($id);
+        return view('ELevels.listClasses',compact('el'));
+    }
+
 }
