@@ -15,7 +15,7 @@ class CreateClassLevelsTable extends Migration
         Schema::create('class_levels', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_id');
-             $table->integer('level_id');
+            $table->integer('level_id');
             $table->string('class_name');
             $table->string('class_descriptions')->nullable();
             $table->string('input_by');

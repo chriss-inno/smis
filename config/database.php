@@ -84,6 +84,16 @@ return [
             'charset'  => 'utf8',
             'prefix'   => '',
         ],
+        'oracle' =>[
+            'driver' => 'oracle',
+            'host' => 'oracle.host',
+            'port' => '1521',
+            'database' => 'xe',
+            'username' => 'hr',
+            'password' => 'hr',
+            'charset' => 'AL32UTF8',
+            'prefix' => '',
+        ]
 
     ],
 

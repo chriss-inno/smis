@@ -147,6 +147,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Bllim\Laravalid\LaravalidServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        yajra\Oci8\Oci8ServiceProvider::class,
 
     ],
 

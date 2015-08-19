@@ -29,7 +29,6 @@ Route::get('users/reports',['middleware' => 'auth', 'uses' =>'UserController@rep
 
 //Academic Main menu
 Route::get('academic/current-year',['middleware' => 'auth', 'uses' =>'AcademicSetupController@currentYear']);
-Route::get('academic/grade',['middleware' => 'auth', 'uses' =>'AcademicSetupController@grade']);
 Route::get('academic/examination-types',['middleware' => 'auth', 'uses' =>'AcademicSetupController@examinationTypes']);
 Route::get('academic/examination-period',['middleware' => 'auth', 'uses' =>'AcademicSetupController@examinationPeriod']);
 Route::get('academic/academic-calendar',['middleware' => 'auth', 'uses' =>'AcademicSetupController@academicCalendar']);
@@ -55,6 +54,11 @@ Route::get('academic/edu-levels/list',['middleware' => 'auth', 'uses' =>'Educati
 Route::get('academic/edu-levels/listm',['middleware' => 'auth', 'uses' =>'EducationLevelController@listLevelsm']);
 Route::get('academic/edu-levels/createClasses/{id}',['middleware' => 'auth', 'uses' =>'EducationLevelController@createClasses']);
 Route::get('getElevelClasses/{id}',['middleware' => 'auth', 'uses' =>'EducationLevelController@getElevelClasses']);
+
+//Grades setup
+Route::get('academic/grade',['middleware' => 'auth', 'uses' =>'GradeController@index']);
+Route::get('academic/grade/getLevelGrades/{id}',['middleware' => 'auth', 'uses' =>'GradeController@getGrades']);
+
 
 
 
