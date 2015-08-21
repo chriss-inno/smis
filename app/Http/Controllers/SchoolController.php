@@ -73,7 +73,7 @@ class SchoolController extends Controller
         $sc->save();
 
 
-        //Process Aud train
+        //Process Audit trail
         $audit=new Audit;
         $audit->user_id =Auth::user()->id;
         $audit->activity="Register new School named ".$request->school_name ." with school ID ". $sc->id;
@@ -142,7 +142,7 @@ class SchoolController extends Controller
         $sc->created_date=date('Y-m-d');
         $sc->save();
 
-        //Process Aud train
+        //Process Audit trail
         $audit=new Audit;
         $audit->user_id =Auth::user()->id;
         $audit->activity="Update School named ".$request->school_name ." with school ID ". $sc->id;

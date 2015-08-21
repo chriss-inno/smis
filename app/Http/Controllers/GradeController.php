@@ -10,6 +10,7 @@ use App\EducationLevel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\School;
+use App\Grade;
 
 class GradeController extends Controller
 {
@@ -44,23 +45,7 @@ class GradeController extends Controller
     public function getGrades($id)
     {
         $elevels= EducationLevel::find($id);
-        $c=1;
-        if(count($elevels) > 0)
-        {
-            foreach($elevels->grades as $g){
-
-                echo '<tr>
-                        <td>'.$c.'</td>
-                        <td>'.$g->grade_name.'</td>
-                        <td>'.$g->grade_from.'</td>
-                        <td>'.$g->grade_to.'</td>
-                        <td>'.$g->descriptions.'</td>
-                        <td>'.$g->remarks.'</td>
-                        <td>'.$g->status.'</td>
-                     </tr>';
-                $c++;
-            }
-        }
+        return view('grade.list',compact('elevels'));
 
     }
     /**
@@ -71,6 +56,17 @@ class GradeController extends Controller
     public function create()
     {
         //
+        if(Auth::user()->role =="Superuser")
+        {
+            $elevels=EducationLevel::all();
+            return view('grade.create',compact('elevels'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            $elevels=EducationLevel::where('school_id','=',$school_id)->get();
+            return view('grade.create',compact('elevels'));
+        }
     }
 
     /**
@@ -82,6 +78,16 @@ class GradeController extends Controller
     public function store(Request $request)
     {
         //
+        $g=new Grade;
+        $g->grade_name=$request->grade_name;
+        $g->grade_from=$request->grade_from;
+        $g->grade_to=$request->grade_to;
+        $g->descriptions=$request->descriptions;
+        $g->remarks=$request->remarks;
+        $g->status=$request->status;
+        $g->input_by=Auth::user()->id;
+        $g->auth_status='U';
+        $g->save();
     }
 
     /**
@@ -104,6 +110,8 @@ class GradeController extends Controller
     public function edit($id)
     {
         //
+        $gr= Grade::find($id);
+        return view('grade.edit',compact('gr'));
     }
 
     /**
@@ -113,9 +121,19 @@ class GradeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $g= Grade::find($request->id);
+        $g->grade_name=$request->grade_name;
+        $g->grade_from=$request->grade_from;
+        $g->grade_to=$request->grade_to;
+        $g->descriptions=$request->descriptions;
+        $g->remarks=$request->remarks;
+        $g->status=$request->status;
+        $g->input_by=Auth::user()->id;
+        $g->auth_status='U';
+        $g->save();
     }
 
     /**
@@ -127,5 +145,6 @@ class GradeController extends Controller
     public function destroy($id)
     {
         //
+        $g= Grade::find($id)->delete();
     }
 }

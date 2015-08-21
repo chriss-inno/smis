@@ -37,7 +37,7 @@
             modal+= '<div class="modal-content">';
             modal+= '<div class="modal-header">';
             modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Create Class</span>';
+            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Education Level Grades</span>';
             modal+= '</div>';
             modal+= '<div class="modal-body">';
             modal+= ' </div>';
@@ -48,7 +48,7 @@
             $("body").append(modal);
             $("#myModal").modal("show");
             $(".modal-body").html("<h3><i class='fa fa-spin fa-spinner '></i><span>loading...</span><h3>");
-            $(".modal-body").load("<?php echo url("academic/classes/create") ?>");
+            $(".modal-body").load("<?php echo url("academic/grade/create") ?>");
             $("#myModal").on('hidden.bs.modal',function(){
                 $("#myModal").remove();
             })
@@ -371,19 +371,19 @@
                 <div class="widget-header">
                     <h2>List of registered grades</h2>
                     <div class="additional-btn">
-                        <a class="addClass btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Class </a>
-                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/classes')}}"><i class="fa fa-th-list"></i> View Classes </a>
-                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/manage')}}"><i class="fa fa-cog"></i> Manage Classes </a>
-                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/reports')}}"><i class="fa fa-bar-chart-o"></i> Classes Reports </a>
+                        <a class="addGrade btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Grades </a>
+                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/grade')}}"><i class="fa fa-th-list"></i> View Grades </a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/grade/manage')}}"><i class="fa fa-cog"></i> Manage Grades </a>
+                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/grade/reports')}}"><i class="fa fa-bar-chart-o"></i> Grades Reports </a>
                     </div>
                 </div>
                 <div class="widget-content">
                     <br>
                     <div class="row">
-                        <div class="col-sm-3 col-sm-offset-1">
-                            <label>Select Education Level</label>
+                        <div class="col-sm-3 " style="margin-left: 20px;">
+                            <h3 class="text-info text-blue-3">Select Education Level</h3>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-4">
 
                             <select name="level_id" class="form-control" id="level_id">
                                 <option value="">----</option>

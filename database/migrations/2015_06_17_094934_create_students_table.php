@@ -27,6 +27,9 @@ class CreateStudentsTable extends Migration
             $table->string('telephone')->nullable();
             $table->string('fax')->nullable();
             $table->string('email')->nullable();
+            $table->integer('input_by');
+            $table->integer('auth_by');
+            $table->string('auth_status',1);
             $table->timestamps();
         });
     }

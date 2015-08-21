@@ -54,6 +54,31 @@
             })
 
         });
+        $(".addClassStreams").click(function(){
+
+            var id1 = $(this).parent().attr('id');
+            var modal = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
+            modal+= '<div class="modal-dialog" style="width:60%;margin-right: 20% ;margin-left: 20%">';
+            modal+= '<div class="modal-content">';
+            modal+= '<div class="modal-header">';
+            modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Create Class</span>';
+            modal+= '</div>';
+            modal+= '<div class="modal-body">';
+            modal+= ' </div>';
+            modal+= '</div>';
+            modal+= '</div>';
+            $('body').css('overflow','hidden');
+
+            $("body").append(modal);
+            $("#myModal").modal("show");
+            $(".modal-body").html("<h3><i class='fa fa-spin fa-spinner '></i><span>loading...</span><h3>");
+            $(".modal-body").load("<?php echo url("academic/classes/create") ?>");
+            $("#myModal").on('hidden.bs.modal',function(){
+                $("#myModal").remove();
+            })
+
+        });
         //Edit class streams
         $(".editClass").click(function(){
             var id1 = $(this).parent().attr('id');
@@ -79,11 +104,35 @@
             })
 
         });
+        //Add class streams
+        $(".editClass").click(function(){
+            var id1 = $(this).parent().attr('id');
+            var modal = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
+            modal+= '<div class="modal-dialog" style="width:80%;margin-right: 10% ;margin-left: 10%">';
+            modal+= '<div class="modal-content">';
+            modal+= '<div class="modal-header">';
+            modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Update School Class Level</span>';
+            modal+= '</div>';
+            modal+= '<div class="modal-body">';
+            modal+= ' </div>';
+            modal+= '</div>';
+            modal+= '</div>';
+            $('body').css('overflow','hidden');
 
+            $("body").append(modal);
+            $("#myModal").modal("show");
+            $(".modal-body").html("<h3><i class='fa fa-spin fa-spinner '></i><span>loading...</span><h3>");
+            $(".modal-body").load("<?php echo url("academic/classes/edit") ?>/"+id1);
+            $("#myModal").on('hidden.bs.modal',function(){
+                $("#myModal").remove();
+            })
+
+        });
         $("#level_id").change(function () {
             var id1 = this.value;
             $.get("<?php echo url('getElevelClasses') ?>/"+id1,function(data){
-                $("#district").html(data);
+                $("#classessList").html(data);
             });
         });
 
@@ -373,15 +422,17 @@
                     <div class="additional-btn">
                         <a class="addClass btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Class </a>
                         <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/classes')}}"><i class="fa fa-th-list"></i> View Classes </a>
-                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/manage')}}"><i class="fa fa-cog"></i> Manage Classes </a>
-                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/reports')}}"><i class="fa fa-bar-chart-o"></i> Classes Reports </a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/classes/manage')}}"><i class="fa fa-cog"></i> Manage Classes </a>
+                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/classes/reports')}}"><i class="fa fa-bar-chart-o"></i> Classes Reports </a>
                     </div>
                 </div>
                 <div class="widget-content">
                     <br>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <label>Education Level</label>
+                        <div class="col-sm-3 " style="margin-left: 20px;">
+                            <h3 class="text-info text-blue-3">Education Level</h3>
+                        </div>
+                        <div class="col-sm-4">
                             <select name="level_id" class="form-control" id="level_id">
                                 <option value="">----</option>
                                 @foreach($elevels as $el)
@@ -415,22 +466,8 @@
 
                                 </tfoot>
 
-                                <tbody>
-                                <?php $c=1;?>
-                                @foreach($classes as $sc)
-                                    <tr>
-                                        <td>{{$c}}</td>
-                                        <td>{{$sc->class_name}}</td>
-                                        <td><?php echo $sc->class_descriptions; ?></td>
-                                        <td>{{$sc->remarks}}</td>
-                                        <td>{{$sc->status}}</td>
-                                        <td  id="{{$sc->class_name}}" style="align-content: center"> <div class="col-md-12" id="{{$sc->id}}">
-                                                <a href="#" title="Add Streams" class="adduser "><i class="fa fa-users text-success"></i> View</a>&nbsp;&nbsp;&nbsp;
-                                            </div></td>
+                                <tbody id="classessList">
 
-                                    </tr>
-                                    <?php $c++;;?>
-                                @endforeach
                                 </tbody>
                             </table>
                         </form>

@@ -16,11 +16,11 @@ class CreateClassStreamsTable extends Migration
             $table->increments('id');
             $table->string('stream_name');
             $table->integer('class_id');
-            $table->string('input_by');
-            $table->string('authorized_by');
-            $table->dateTime('authorized_date');
             $table->string('remarks');
             $table->string('status')->nullable();
+            $table->integer('input_by');
+            $table->integer('auth_by');
+            $table->string('auth_status',1);
             $table->timestamps();
         });
     }

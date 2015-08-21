@@ -18,10 +18,12 @@ class CreateAcademicSetupsTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('school_id');
-            $table->string('input_by');
             $table->string('approved');
             $table->string('approved_by');
             $table->string('date_settled');
+            $table->integer('input_by');
+            $table->integer('auth_by');
+            $table->string('auth_status',1);
             $table->timestamps();
         });
     }

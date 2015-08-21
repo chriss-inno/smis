@@ -54,18 +54,26 @@ Route::get('academic/edu-levels/list',['middleware' => 'auth', 'uses' =>'Educati
 Route::get('academic/edu-levels/listm',['middleware' => 'auth', 'uses' =>'EducationLevelController@listLevelsm']);
 Route::get('academic/edu-levels/createClasses/{id}',['middleware' => 'auth', 'uses' =>'EducationLevelController@createClasses']);
 Route::get('getElevelClasses/{id}',['middleware' => 'auth', 'uses' =>'EducationLevelController@getElevelClasses']);
+Route::get('getElevelClassesmn/{id}',['middleware' => 'auth', 'uses' =>'EducationLevelController@getElevelClassesmn']);
 
 //Grades setup
 Route::get('academic/grade',['middleware' => 'auth', 'uses' =>'GradeController@index']);
 Route::get('academic/grade/getLevelGrades/{id}',['middleware' => 'auth', 'uses' =>'GradeController@getGrades']);
-
+Route::get('academic/grade/create',['middleware' => 'auth', 'uses' =>'GradeController@create']);
+Route::post('academic/grade/create',['middleware' => 'auth', 'uses' =>'GradeController@store']);
+Route::get('academic/grade/manage',['middleware' => 'auth', 'uses' =>'GradeController@manage']);
+Route::get('academic/grade/reports',['middleware' => 'auth', 'uses' =>'GradeController@reports']);
+Route::get('academic/grade/{id}',['middleware' => 'auth', 'uses' =>'GradeController@show']);
+Route::get('academic/grade/edit/{id}',['middleware' => 'auth', 'uses' =>'GradeController@edit']);
+Route::post('academic/grade/edit',['middleware' => 'auth', 'uses' =>'GradeController@update']);
+Route::get('academic/grade/remove/{id}',['middleware' => 'auth', 'uses' =>'GradeController@destroy']);
 
 
 
 
 //Classes sections
 Route::get('academic/classes',['middleware' => 'auth', 'uses' =>'ClassLevelController@index']);
-Route::get('academic/manage',['middleware' => 'auth', 'uses' =>'ClassLevelController@manage']);
+Route::get('academic/classes/manage',['middleware' => 'auth', 'uses' =>'ClassLevelController@manage']);
 Route::get('academic/classes/create',['middleware' => 'auth', 'uses' =>'ClassLevelController@create']);
 Route::post('academic/classes/create',['middleware' => 'auth', 'uses' =>'ClassLevelController@store']);
 Route::get('academic/classes/edit/{id}',['middleware' => 'auth', 'uses' =>'ClassLevelController@edit']);

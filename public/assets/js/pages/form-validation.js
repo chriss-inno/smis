@@ -406,6 +406,72 @@ $(document).ready(function() {
 
     });
 
+    //Grade form verifications  classLevelsGrade
+    $('#eduLevelsGrade').bootstrapValidator({
+        message: 'This value is not valid',
+        fields: {
+            level_name: {
+                message: 'The level name is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The level name is required and can\'t be empty'
+                    }
+                }
+            },
+            school_id: {
+                message: 'The school is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The school is required and can\'t be empty'
+                    }
+                }
+            },
+            status: {
+                message: 'The status is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The status is required and can\'t be empty'
+                    }
+                }
+            }
+        },
+        submitHandler: function(form) {
+            $("#output").html("<h3><span class='text-info'><i class='fa fa-spinner fa-spin'></i> Making changes please wait...</span><h3>");
+            var postData = $('#eduLevels').serializeArray();
+            var formURL = $('#eduLevels').attr("action");
+            var lname= $('#listLevels').attr("name");
+            $.ajax(
+                {
+                    url : formURL,
+                    type: "POST",
+                    data : postData,
+                    success:function(data)
+                    {
+                        console.log(data);
+                        //data: return data from server
+                        $("#output").html(data);
+                        setTimeout(function() {
+                            $("#output").html("");
+                            $("#listLevels").load(lname);
+                            $("#myModal").modal("hide");
+                        }, 2000);
+
+                    },
+                    error: function(data)
+                    {
+                        console.log(data.responseJSON);
+                        //in the responseJSON you get the form validation back.
+                        $("#output").html("<h3><span class='text-info'> Error in processing data try again...</span><h3>");
+                        setTimeout(function() {
+                            $("#output").html(data);
+                        }, 2000);
+
+                    }
+                });
+        }
+
+    });
+
     $('#formacyear').bootstrapValidator({
         message: 'This value is not valid',
         fields: {

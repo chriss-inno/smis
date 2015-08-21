@@ -23,8 +23,19 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users=User::all();
-        return view('user.index',compact('users'));
+
+
+        if(Auth::user()->role =="Superuser")
+        {
+            $users=User::all();
+            return view('user.index',compact('users'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            $users=User::where('school_id','=',$school_id)->get();
+            return view('user.index',compact('users'));
+        }
     }
 
     /**

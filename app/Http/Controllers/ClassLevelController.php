@@ -24,14 +24,14 @@ class ClassLevelController extends Controller
     {
         //
         if(Auth::user()->role =="Superuser") {
-            $classes = ClassLevel::all();
-            return view('CLevels.index', compact('classes'));
+            $elevels = EducationLevel::all();
+            return view('CLevels.index', compact('elevels'));
         }
         else
         {
             $school_id=Auth::user()->school_id;
-            $classes = ClassLevel::where('school_id','=',$school_id)->get();
-            return view('CLevels.index', compact('classes'));
+            $elevels = EducationLevel::where('school_id','=',$school_id)->get();
+            return view('CLevels.index', compact('elevels'));
         }
 
     }
@@ -217,7 +217,15 @@ class ClassLevelController extends Controller
 
     public function manage()
     {
-        $classes=ClassLevel::all();
-        return view('CLevels.manage',compact('classes'));
+        if(Auth::user()->role =="Superuser") {
+            $elevels = EducationLevel::all();
+            return view('CLevels.manage', compact('elevels'));
+        }
+        else
+        {
+            $school_id=Auth::user()->school_id;
+            $elevels = EducationLevel::where('school_id','=',$school_id)->get();
+            return view('CLevels.manage', compact('elevels'));
+        }
     }
 }

@@ -14,17 +14,17 @@
         //Delete Application
         $(".deleteClass").click(function(){
             var id1 = $(this).parent().attr('id');
-            $(".deleteuser").show("slow").parent().parent().find("span").remove();
+            $(".deleteClass").show("slow").parent().parent().find("span").remove();
             var btn = $(this).parent().parent();
             $(this).hide("slow").parent().append("<span><br>Are You Sure <br /> <a href='#s' id='yes' class='btn btn-success btn-xs'><i class='fa fa-check'></i> Yes</a> <a href='#s' id='no' class='btn btn-danger btn-xs'> <i class='fa fa-times'></i> No</a></span>");
             $("#no").click(function(){
-                $(this).parent().parent().find(".deleteapp").show("slow");
+                $(this).parent().parent().find(".deleteClass").show("slow");
                 $(this).parent().parent().find("span").remove();
             });
             $("#yes").click(function(){
                 $(this).parent().html("<br><i class='icon-spinner icon-spin'></i>deleting...");
                 $.get("<?php echo url('academic/classes/remove') ?>/"+id1,function(data){
-                    btn.hide("slow").next("hr").hide("slow");
+                    btn.hide("slow").next("tr").hide("slow");
                 });
             });
         });
@@ -79,7 +79,12 @@
             })
 
         });
-
+        $("#level_id").change(function () {
+            var id1 = this.value;
+            $.get("<?php echo url('getElevelClassesmn') ?>/"+id1,function(data){
+                $("#classessList").html(data);
+            });
+        });
     </script>
 @stop
 @section('menus')
@@ -366,12 +371,25 @@
                     <div class="additional-btn">
                         <a class="addClass btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Class </a>
                         <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/classes')}}"><i class="fa fa-th-list"></i> View Classes </a>
-                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/manage')}}"><i class="fa fa-cog"></i> Manage Classes </a>
-                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/reports')}}"><i class="fa fa-bar-chart-o"></i> Classes Reports </a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/classes/manage')}}"><i class="fa fa-cog"></i> Manage Classes </a>
+                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/classes/reports')}}"><i class="fa fa-bar-chart-o"></i> Classes Reports </a>
                     </div>
                 </div>
                 <div class="widget-content">
                     <br>
+                    <div class="row">
+                        <div class="col-sm-3 " style="margin-left: 20px;">
+                            <h3 class="text-info text-blue-3">Education Level</h3>
+                        </div>
+                        <div class="col-sm-4">
+                            <select name="level_id" class="form-control" id="level_id">
+                                <option value="">----</option>
+                                @foreach($elevels as $el)
+                                    <option value="{{$el->id}}">{{$el->level_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="table-responsive" id="listClasses" name="{{url('academic/classes/list')}}">
                         <form class='form-horizontal' role='form'>
                             <table id="datatables-4" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -397,29 +415,8 @@
                                     <th>Action</th>
                                 </tfoot>
 
-                                <tbody>
-                                <?php $c=1;?>
-                                @foreach($classes as $sc)
-                                    <tr>
-                                        <td>{{$c}}</td>
-                                        <td>{{$sc->class_name}}</td>
-                                        <td><?php echo $sc->class_descriptions; ?></td>
-                                        <td>{{$sc->remarks}}</td>
-                                        <td>{{$sc->status}}</td>
-                                        <td  id="{{$sc->level_name}}" style="align-content: center"> <div class="col-md-12" id="{{$sc->id}}">
-                                                <a href="#" title="Add Streams" class="adduser "><i class="fa fa-users text-success"></i> View</a>&nbsp;&nbsp;&nbsp;
-                                            </div></td>
-                                        <td id="{{$sc->id}}" style="align-content: center" >
-                                            <div class="col-md-6" id="{{$sc->id}}">
-                                                <a href="#" title="Edit" class="editClass "><i class="fa fa-pencil-square-o text-info"></i> edit</a>&nbsp;&nbsp;&nbsp;
-                                            </div>
-                                            <div class="col-md-6" id="{{$sc->id}}">
-                                                <a href="#b" title="Delete" class="deleteClass "><i class="fa fa-trash-o text-danger"></i> delete </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <?php $c++;;?>
-                                @endforeach
+                                <tbody id="classessList">
+
                                 </tbody>
                             </table>
                         </form>

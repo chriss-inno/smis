@@ -21,6 +21,9 @@ class CreateGradesTable extends Migration
             $table->string('remarks');
             $table->string('status');
             $table->integer('level_id');
+            $table->integer('input_by');
+            $table->integer('auth_by');
+            $table->string('auth_status',1);
             $table->timestamps();
         });
     }
