@@ -3,10 +3,9 @@
     School Information System| Accademic Setup
 @stop
 @section('pageScript')
-    {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
-    {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
-    {!!HTML::script("assets/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js")!!}
-    {!!HTML::script("assets/js/pages/datatables.js")!!}
+
+    {!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
+    {!!HTML::script("assets/js/pages/form-validation.js")!!}
 
 @stop
 @section('modals')
@@ -80,14 +79,19 @@
 
         });
 
-        $("#level_id").change(function () {
+        $("#eduLevel").change(function () {
             var id1 = this.value;
-            $.get("<?php echo url('getLevelGrades') ?>/"+id1,function(data){
-                $("#grades").html(data);
-            });
+            if(id1 != "")
+            {
+                $.get("<?php echo url('getLevelGrades') ?>/"+id1,function(data){
+                    $("#grades").html(data);
+                });
+
+            }else{$("#grades").html("");}
         });
 
     </script>
+
 @stop
 @section('menus')
     <div class="left side-menu">
@@ -362,7 +366,7 @@
     @section('contents')
             <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-table'></i> SCHOOLS EDUCATION LEVELS GRADES</h1>
+        <h1><i class='fa fa-table'></i> EXAMINATION GRADES SETTINGS</h1>
     </div>
     <div class="row">
 
@@ -385,7 +389,7 @@
                         </div>
                         <div class="col-sm-4">
 
-                            <select name="level_id" class="form-control" id="level_id">
+                            <select name="eduLevel" class="form-control" id="eduLevel">
                                 <option value="">----</option>
                                 @foreach($elevels as $el)
                                     <option value="{{$el->id}}">{{$el->level_name}}</option>
@@ -393,39 +397,8 @@
                             </select>
                         </div>
                     </div>
-                    <div class="table-responsive" id="listClasses" name="{{url('academic/classes/list')}}">
-                        <form class='form-horizontal' role='form'>
-                            <table id="datatables-4" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                <thead>
-                                <tr>
-                                    <th>SNO</th>
-                                    <th>Grade name</th>
-                                    <th>Range From</th>
-                                    <th>Range To</th>
-                                    <th>Descriptions</th>
-                                    <th>Remarks</th>
-                                    <th>Status</th>
-                                <tr>
-                                </thead>
+                    <div class="table-responsive" id="grades">
 
-                                <tfoot>
-                                <tr>
-                                    <th>SNO</th>
-                                    <th>Grade name</th>
-                                    <th>Range From</th>
-                                    <th>Range To</th>
-                                    <th>Descriptions</th>
-                                    <th>Remarks</th>
-                                    <th>Status</th>
-                                <tr>
-
-                                </tfoot>
-
-                                <tbody id="grades">
-
-                                </tbody>
-                            </table>
-                        </form>
                     </div>
                 </div>
             </div>

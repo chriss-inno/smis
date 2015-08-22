@@ -360,7 +360,7 @@
     @section('contents')
             <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-table'></i> MANAGE SCHOOLS CLASSES</h1>
+        <h1><i class='fa fa-table'></i>CLASSES SETTINGS</h1>
     </div>
     <div class="row">
 
@@ -392,7 +392,7 @@
                     </div>
                     <div class="table-responsive" id="listClasses" name="{{url('academic/classes/list')}}">
                         <form class='form-horizontal' role='form'>
-                            <table id="datatables-4" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <table id="datatables-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
                                     <th>SNO</th>

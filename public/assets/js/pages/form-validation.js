@@ -226,11 +226,19 @@ $(document).ready(function() {
     $('#classLevels').bootstrapValidator({
         message: 'This value is not valid',
         fields: {
-            level_name: {
+            level_id: {
                 message: 'The level name is not valid',
                 validators: {
                     notEmpty: {
                         message: 'The level name is required and can\'t be empty'
+                    }
+                }
+            },
+            class_name: {
+                message: 'The Class name is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The Class name is required and can\'t be empty'
                     }
                 }
             },
@@ -341,6 +349,79 @@ $(document).ready(function() {
         }
 
     });
+
+    ///Examination Validations
+    $('#examsCreate').bootstrapValidator({
+        message: 'This value is not valid',
+        fields: {
+            level_id: {
+                message: 'The Education Level name is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The Education Level  is required and can\'t be empty'
+                    }
+                }
+            },
+            ExamCode: {
+                message: 'The ExamCode is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The ExamCode  is required and can\'t be empty'
+                    }
+                }
+            },
+            Exam_Name: {
+                message: 'The Exam_Name name is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The Exam_Name  is required and can\'t be empty'
+                    }
+                }
+            },
+            status: {
+                message: 'The status is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The status is required and can\'t be empty'
+                    }
+                }
+            }
+        },
+        submitHandler: function(form) {
+            $("#output").html("<h3><span class='text-info'><i class='fa fa-spinner fa-spin'></i> Making changes please wait...</span><h3>");
+            var postData = $('#examsCreate').serializeArray();
+            var formURL = $('#examsCreate').attr("action");
+            $.ajax(
+                {
+                    url : formURL,
+                    type: "POST",
+                    data : postData,
+                    success:function(data)
+                    {
+                        console.log(data);
+                        //data: return data from server
+                        setTimeout(function() {
+                            $("#output").html(data);
+                            $("#myModal").modal("hide");
+                        }, 2000);
+
+                    },
+                    error: function(data)
+                    {
+                        console.log(data.responseJSON);
+                        //in the responseJSON you get the form validation back.
+                        $("#output").html("<h3><span class='text-info'> Error in processing data try again...</span><h3>");
+                        setTimeout(function() {
+                            $("#output").html(data);
+                            $("#myModal").modal("hide");
+                        }, 2000);
+
+                    }
+                });
+        }
+
+    });
+
     $('#classLevelsm').bootstrapValidator({
         message: 'This value is not valid',
         fields: {
@@ -408,21 +489,58 @@ $(document).ready(function() {
 
     //Grade form verifications  classLevelsGrade
     $('#eduLevelsGrade').bootstrapValidator({
-        message: 'This value is not valid',
         fields: {
-            level_name: {
-                message: 'The level name is not valid',
+            level_id: {
+                message: 'The Education level is not valid',
                 validators: {
                     notEmpty: {
-                        message: 'The level name is required and can\'t be empty'
+                        message: 'The Education level is required and can\'t be empty'
                     }
                 }
             },
-            school_id: {
-                message: 'The school is not valid',
+            grade_name: {
+                message: 'The grade name is not valid',
                 validators: {
                     notEmpty: {
-                        message: 'The school is required and can\'t be empty'
+                        message: 'The grade name is required and can\'t be empty'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 3,
+                        message: 'The field can have maximum 3 characters long'
+                    }
+                }
+            },
+            grade_from: {
+                message: 'The grade from is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The grade from is required and can\'t be empty'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 3,
+                        message: 'The field can have maximum 3 characters long'
+                    },
+                    digits: {
+                        message: 'The value can contain only digits'
+                    }
+
+                }
+            },
+            grade_to: {
+                message: 'The grade_to is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The grade_to is required and can\'t be empty'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 3,
+                        message: 'The field can have maximum 3 characters long'
+                    },
+                    digits: {
+                        message: 'The value can contain only digits'
                     }
                 }
             },
@@ -437,9 +555,9 @@ $(document).ready(function() {
         },
         submitHandler: function(form) {
             $("#output").html("<h3><span class='text-info'><i class='fa fa-spinner fa-spin'></i> Making changes please wait...</span><h3>");
-            var postData = $('#eduLevels').serializeArray();
-            var formURL = $('#eduLevels').attr("action");
-            var lname= $('#listLevels').attr("name");
+            var postData = $('#eduLevelsGrade').serializeArray();
+            var formURL = $('#eduLevelsGrade').attr("action");
+            var lname= $('#grades').attr("name");
             $.ajax(
                 {
                     url : formURL,
@@ -450,9 +568,9 @@ $(document).ready(function() {
                         console.log(data);
                         //data: return data from server
                         $("#output").html(data);
+                        $("#grades").load(lname);
                         setTimeout(function() {
                             $("#output").html("");
-                            $("#listLevels").load(lname);
                             $("#myModal").modal("hide");
                         }, 2000);
 
@@ -464,6 +582,7 @@ $(document).ready(function() {
                         $("#output").html("<h3><span class='text-info'> Error in processing data try again...</span><h3>");
                         setTimeout(function() {
                             $("#output").html(data);
+                            $("#grades").load(lname);
                         }, 2000);
 
                     }

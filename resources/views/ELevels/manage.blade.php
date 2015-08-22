@@ -37,7 +37,7 @@
             modal+= '<div class="modal-content">';
             modal+= '<div class="modal-header">';
             modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Create Class</span>';
+            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Education Level settings</span>';
             modal+= '</div>';
             modal+= '<div class="modal-body">';
             modal+= ' </div>';
@@ -62,7 +62,7 @@
             modal+= '<div class="modal-content">';
             modal+= '<div class="modal-header">';
             modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Update School Class Level</span>';
+            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Education Level settings</span>';
             modal+= '</div>';
             modal+= '<div class="modal-body">';
             modal+= ' </div>';
@@ -79,7 +79,14 @@
             })
 
         });
-
+        $("#level_id").change(function () {
+            var id1 = this.value;
+            if(id1 !="") {
+                $.get("<?php echo url('getElevelClasses') ?>/" + id1, function (data) {
+                    $("#listClasses").html(data);
+                });
+            }else{ $("#listClasses").html("");}
+        });
     </script>
 @stop
 @section('menus')

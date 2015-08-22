@@ -1,3 +1,35 @@
+{!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
+{!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
+{!!HTML::script("assets/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js")!!}
+{!!HTML::script("assets/js/pages/datatables.js")!!}
+
+<form class='form-horizontal' role='form'>
+    <table id="datatables-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>SNO</th>
+            <th>Grade name</th>
+            <th>Start From</th>
+            <th>End</th>
+            <th>Descriptions</th>
+            <th>Remarks</th>
+            <th>Status</th>
+
+        </thead>
+
+        <tfoot>
+        <tr>
+            <th>SNO</th>
+            <th>Grade name</th>
+            <th>Start From</th>
+            <th>End</th>
+            <th>Descriptions</th>
+            <th>Remarks</th>
+            <th>Status</th>
+
+        </tfoot>
+
+        <tbody>
 <?php
 /**
  * Created by PhpStorm.
@@ -22,4 +54,7 @@ if(count($elevels) > 0)
                      </tr>';
         $c++;
     }
-}
+}?>
+        </tbody>
+    </table>
+</form>

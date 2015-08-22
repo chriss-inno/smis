@@ -1,10 +1,3 @@
-{!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
-{!!HTML::script("assets/js/pages/form-validation.js")!!}
-{!!HTML::script("assets/libs/bootstrap-select/bootstrap-select.min.js" )!!}
-{!!HTML::script("assets/libs/bootstrap-inputmask/inputmask.js" )!!}
-{!!HTML::script("assets/libs/summernote/summernote.js" )!!}
-{!!HTML::script("assets/js/pages/forms.js" )!!}
-
 {!!HTML::script("assets/js/tinymce/tinymce.min.js")!!}
 <script type="text/javascript">
     tinymce.init({
@@ -17,13 +10,14 @@
     });
 </script>
 
+{!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
+{!!HTML::script("assets/js/pages/form-validation.js")!!}
 
 <div class="container">
-    {!! Form::open(array('url' => 'academic/grade/create','id'=>'eduLevelsGrade','role'=>'form')) !!}
+    {!! Form::open(array('url' => 'academic/classes/create','id'=>'examsCreate','role'=>'form')) !!}
     <div class="row" style="margin-top: 20px">
         <div class="col-sm-12">
             <div class="form-group">
-
                 <label>Education Level</label>
                 <select name="level_id" class="form-control" id="level_id">
                     <option value="">----</option>
@@ -33,28 +27,16 @@
                 </select>
             </div>
             <div class="form-group">
-                <div class="row">
-                     <div class="col-sm-4">
-                        <label>Grade Initials</label>
-                        <input type="text" class="form-control"  name="grade_name">
-                     </div>
-                    <div class="col-sm-4">
-                        <label>Start From</label>
-                        <input type="text" class="form-control"  name="grade_from">
-                    </div>
-                    <div class="col-sm-4">
-                        <label>End Range</label>
-                        <input type="text" class="form-control" name="grade_to">
-                    </div>
-                </div>
+                <label>Exam Code</label>
+                <input type="text" class="form-control" name="ExamCode">
+            </div>
+            <div class="form-group">
+                <label>Exam Name</label>
+                <input type="text" class="form-control" name="Exam_Name">
             </div>
             <div class="form-group">
                 <label>Descriptions</label>
-                <textarea class="form-control" name="descriptions"> </textarea>
-            </div>
-            <div class="form-group">
-                <label>Remarks</label>
-                <input type="text" class="form-control" name="remarks">
+                <textarea class="form-control" name="Exam_Description"> </textarea>
             </div>
             <div class="form-group">
                 <label>Status</label>

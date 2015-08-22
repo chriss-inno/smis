@@ -3,10 +3,7 @@
     School Information System| Accademic Setup
 @stop
 @section('pageScript')
-    {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
-    {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
-    {!!HTML::script("assets/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js")!!}
-    {!!HTML::script("assets/js/pages/datatables.js")!!}
+
 
 @stop
 @section('modals')
@@ -131,9 +128,11 @@
         });
         $("#level_id").change(function () {
             var id1 = this.value;
-            $.get("<?php echo url('getElevelClasses') ?>/"+id1,function(data){
-                $("#classessList").html(data);
-            });
+            if(id1 !="") {
+                $.get("<?php echo url('getElevelClasses') ?>/" + id1, function (data) {
+                    $("#listClasses").html(data);
+                });
+            }else{ $("#listClasses").html("");}
         });
 
     </script>
@@ -411,7 +410,7 @@
     @section('contents')
             <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-table'></i> SCHOOLS CLASSES</h1>
+        <h1><i class='fa fa-table'></i> CLASSES SETTINGS</h1>
     </div>
     <div class="row">
 
@@ -442,35 +441,7 @@
                         </div>
                     </div>
                     <div class="table-responsive" id="listClasses" name="{{url('academic/classes/list')}}">
-                        <form class='form-horizontal' role='form'>
-                            <table id="datatables-4" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                <thead>
-                                <tr>
-                                    <th>SNO</th>
-                                    <th>Class name</th>
-                                    <th>Descriptions</th>
-                                    <th>Remarks</th>
-                                    <th>Status</th>
-                                    <th>Class streams</th>
 
-                                </thead>
-
-                                <tfoot>
-                                <tr>
-                                    <th>SNO</th>
-                                    <th>Class name</th>
-                                    <th>Descriptions</th>
-                                    <th>Remarks</th>
-                                    <th>Status</th>
-                                    <th>Class streams</th>
-
-                                </tfoot>
-
-                                <tbody id="classessList">
-
-                                </tbody>
-                            </table>
-                        </form>
                     </div>
                 </div>
             </div>

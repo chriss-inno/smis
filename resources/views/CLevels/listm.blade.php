@@ -1,5 +1,5 @@
 <form class='form-horizontal' role='form'>
-    <table id="datatables-4" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <table id="datatables-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
         <tr>
             <th>SNO</th>

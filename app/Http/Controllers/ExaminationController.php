@@ -10,9 +10,9 @@ use App\EducationLevel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\School;
-use App\Grade;
+use App\Examination;
 
-class GradeController extends Controller
+class ExaminationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,57 +22,36 @@ class GradeController extends Controller
     public function index()
     {
         //
-
         if(Auth::user()->role =="Superuser")
         {
             $elevels=EducationLevel::all();
-            return view('grade.index',compact('elevels'));
+            return view('exams.index',compact('elevels'));
         }
         else
         {
             $school_id=Auth::user()->school_id;
             $elevels=EducationLevel::where('school_id','=',$school_id)->get();
 
-            return view('grade.index',compact('elevels'));
+            return view('exams.index',compact('elevels'));
         }
     }
     public function manage()
     {
         //
-
         if(Auth::user()->role =="Superuser")
         {
             $elevels=EducationLevel::all();
-            return view('grade.manage',compact('elevels'));
+            return view('exams.manage',compact('elevels'));
         }
         else
         {
             $school_id=Auth::user()->school_id;
             $elevels=EducationLevel::where('school_id','=',$school_id)->get();
 
-            return view('grade.manage',compact('elevels'));
+            return view('exams.manage',compact('elevels'));
         }
     }
 
-
-
-    /**
-     * Get list of grades.
-     *
-     * @return Response
-     */
-    public function getGrades($id)
-    {
-        $elevels= EducationLevel::find($id);
-        return view('grade.list',compact('elevels'));
-
-    }
-    public function getGradesm($id)
-    {
-        $elevels= EducationLevel::find($id);
-        return view('grade.listmanage',compact('elevels'));
-
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -84,16 +63,23 @@ class GradeController extends Controller
         if(Auth::user()->role =="Superuser")
         {
             $elevels=EducationLevel::all();
-            return view('grade.create',compact('elevels'));
+            return view('exams.create',compact('elevels'));
         }
         else
         {
             $school_id=Auth::user()->school_id;
             $elevels=EducationLevel::where('school_id','=',$school_id)->get();
-            return view('grade.create',compact('elevels'));
+
+            return view('exams.create',compact('elevels'));
         }
     }
 
+
+    ///Reports
+    public function reports()
+    {
+        //
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -103,18 +89,15 @@ class GradeController extends Controller
     public function store(Request $request)
     {
         //
-        $g=new Grade;
-
-        $g->grade_name=$request->grade_name;
-        $g->level_id=$request->level_id;
-        $g->grade_from=$request->grade_from;
-        $g->grade_to=$request->grade_to;
-        $g->descriptions=$request->descriptions;
-        $g->remarks=$request->remarks;
-        $g->status=$request->status;
-        $g->input_by=Auth::user()->id;
-        $g->auth_status='U';
-        $g->save();
+        $ex=new Examination;
+        $ex->ExamCode=$request->ExamCode;
+        $ex->Exam_Name=$request->Exam_Name;
+        $ex->Exam_Description=$request->Exam_Description;
+        $ex->level_id=$request->level_id;
+        $ex->input_by=Auth::user()->id;
+        $ex->auth_status="U";
+        $ex->status=$request->status;
+        $ex->save();
     }
 
     /**
@@ -137,8 +120,6 @@ class GradeController extends Controller
     public function edit($id)
     {
         //
-        $gr= Grade::find($id);
-        return view('grade.edit',compact('gr'));
     }
 
     /**
@@ -148,22 +129,9 @@ class GradeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         //
-        $g= Grade::find($request->id);
-        $g->level_id=$request->level_id;
-        $g->grade_name=$request->grade_name;
-        $g->grade_from=$request->grade_from;
-        $g->grade_to=$request->grade_to;
-        $g->descriptions=$request->descriptions;
-        $g->remarks=$request->remarks;
-        $g->status=$request->status;
-        $g->input_by=Auth::user()->id;
-        $g->auth_status='U';
-        $g->save();
-
-        return "<h2 class='text-info'>Data saved successful</h2>h2>";
     }
 
     /**
@@ -175,6 +143,12 @@ class GradeController extends Controller
     public function destroy($id)
     {
         //
-        $g= Grade::find($id)->delete();
     }
+    public function getLevelExams($id)
+    {
+        //
+        $el =EducationLevel::find($id);
+        return view('exams.list',compact('el'));
+    }
+
 }

@@ -8,41 +8,47 @@
         <thead>
         <tr>
             <th>SNO</th>
-            <th>Class name</th>
+            <th>Exam Code</th>
+            <th>Exam Name</th>
             <th>Descriptions</th>
-            <th>Remarks</th>
             <th>Status</th>
-            <th>Class streams</th>
 
         </thead>
 
         <tfoot>
         <tr>
             <th>SNO</th>
-            <th>Class name</th>
+            <th>Exam Code</th>
+            <th>Exam Name</th>
             <th>Descriptions</th>
-            <th>Remarks</th>
             <th>Status</th>
-            <th>Class streams</th>
 
         </tfoot>
 
-        <tbody >
-        <?php $c=1;?>
-        @if(count($el) >0 )
-            @foreach($el->classes as $sc)
-                <tr>
-                    <td>{{$c}}</td>
-                    <td>{{$sc->class_name}}</td>
-                    <td><?php echo $sc->class_descriptions; ?></td>
-                    <td>{{$sc->remarks}}</td>
-                    <td>{{$sc->status}}</td>
-                    <td id="{{$sc->id}}"><a class="addClassStreams" href="#">Add/View/Update</a></td>
-                </tr>
-                <?php $c++;;?>
-            @endforeach
-        @endif
+        <tbody>
+        <?php
+        /**
+         * Created by PhpStorm.
+         * User: innocent.christopher
+         * Date: 8/19/2015
+         * Time: 10:53 AM
+         */
+
+        $c=1;
+        if(count($elevels) > 0)
+        {
+            foreach($elevels->exams as $ex){
+
+                echo '<tr>
+                        <td>'.$c.'</td>
+                        <td>'.$ex->ExamCode.'</td>
+                        <td>'.$ex->Exam_Name.'</td>
+                        <td>'.$ex->Exam_Description.'</td>
+                        <td>'.$g->status.'</td>
+                     </tr>';
+                $c++;
+            }
+        }?>
         </tbody>
     </table>
 </form>
-

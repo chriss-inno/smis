@@ -3,18 +3,17 @@
     School Information System| Accademic Setup
 @stop
 @section('pageScript')
-    {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
-    {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
-    {!!HTML::script("assets/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js")!!}
-    {!!HTML::script("assets/js/pages/datatables.js")!!}
+
+    {!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
+    {!!HTML::script("assets/js/pages/form-validation.js")!!}
 
 @stop
 @section('modals')
     <script>
         //Delete Application
-        $(".deleteClass").click(function(){
+        $(".deleteGrade").click(function(){
             var id1 = $(this).parent().attr('id');
-            $(".deleteuser").show("slow").parent().parent().find("span").remove();
+            $(".deleteGrade").show("slow").parent().parent().find("span").remove();
             var btn = $(this).parent().parent();
             $(this).hide("slow").parent().append("<span><br>Are You Sure <br /> <a href='#s' id='yes' class='btn btn-success btn-xs'><i class='fa fa-check'></i> Yes</a> <a href='#s' id='no' class='btn btn-danger btn-xs'> <i class='fa fa-times'></i> No</a></span>");
             $("#no").click(function(){
@@ -23,13 +22,13 @@
             });
             $("#yes").click(function(){
                 $(this).parent().html("<br><i class='icon-spinner icon-spin'></i>deleting...");
-                $.get("<?php echo url('academic/edu-levels/remove') ?>/"+id1,function(data){
+                $.get("<?php echo url('academic/classes/remove') ?>/"+id1,function(data){
                     btn.hide("slow").next("hr").hide("slow");
                 });
             });
         });
         //adding school user
-        $(".addClass").click(function(){
+        $(".addExam").click(function(){
 
             var id1 = $(this).parent().attr('id');
             var modal = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
@@ -37,7 +36,7 @@
             modal+= '<div class="modal-content">';
             modal+= '<div class="modal-header">';
             modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Education Level settings</span>';
+            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Examination Setup</span>';
             modal+= '</div>';
             modal+= '<div class="modal-body">';
             modal+= ' </div>';
@@ -48,47 +47,21 @@
             $("body").append(modal);
             $("#myModal").modal("show");
             $(".modal-body").html("<h3><i class='fa fa-spin fa-spinner '></i><span>loading...</span><h3>");
-            $(".modal-body").load("<?php echo url("academic/edu-levels/create") ?>");
-            $("#myModal").on('hidden.bs.modal',function(){
-                $("#myModal").remove();
-            })
-
-        });
-        //Add classes
-        $(".addClasses").click(function(){
-
-            var id1 = $(this).parent().attr('id');
-            var modal = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
-            modal+= '<div class="modal-dialog" style="width:60%;margin-right: 20% ;margin-left: 20%">';
-            modal+= '<div class="modal-content">';
-            modal+= '<div class="modal-header">';
-            modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Education Level settings</span>';
-            modal+= '</div>';
-            modal+= '<div class="modal-body">';
-            modal+= ' </div>';
-            modal+= '</div>';
-            modal+= '</div>';
-            $('body').css('overflow','hidden');
-
-            $("body").append(modal);
-            $("#myModal").modal("show");
-            $(".modal-body").html("<h3><i class='fa fa-spin fa-spinner '></i><span>loading...</span><h3>");
-            $(".modal-body").load("<?php echo url("academic/edu-levels/createClasses") ?>/"+id1);
+            $(".modal-body").load("<?php echo url("academic/exams/create") ?>");
             $("#myModal").on('hidden.bs.modal',function(){
                 $("#myModal").remove();
             })
 
         });
         //Edit class streams
-        $(".editClass").click(function(){
+        $(".editGrade").click(function(){
             var id1 = $(this).parent().attr('id');
             var modal = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
             modal+= '<div class="modal-dialog" style="width:80%;margin-right: 10% ;margin-left: 10%">';
             modal+= '<div class="modal-content">';
             modal+= '<div class="modal-header">';
             modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Education Level settings</span>';
+            modal+= '<span id="myModalLabel" class="h2 modal-title text-center text-info" style="text-align: center">Update School Class Level</span>';
             modal+= '</div>';
             modal+= '<div class="modal-body">';
             modal+= ' </div>';
@@ -99,14 +72,26 @@
             $("body").append(modal);
             $("#myModal").modal("show");
             $(".modal-body").html("<h3><i class='fa fa-spin fa-spinner '></i><span>loading...</span><h3>");
-            $(".modal-body").load("<?php echo url("academic/edu-levels/edit") ?>/"+id1);
+            $(".modal-body").load("<?php echo url("academic/classes/edit") ?>/"+id1);
             $("#myModal").on('hidden.bs.modal',function(){
                 $("#myModal").remove();
             })
 
         });
 
+        $("#eduLevel").change(function () {
+            var id1 = this.value;
+            if(id1 != "")
+            {
+                $.get("<?php echo url('getLevelExams') ?>/"+id1,function(data){
+                    $("#grades").html(data);
+                });
+
+            }else{$("#exams").html("");}
+        });
+
     </script>
+
 @stop
 @section('menus')
     <div class="left side-menu">
@@ -230,10 +215,10 @@
                             </a>
                             <ul>
                                 <li><a href='{{url('academic/current-year')}}'><span><i class="fa fa-arrow-right"></i>Current Year</span></a></li>
-                                <li><a href='{{url('academic/edu-levels')}}' class='active'><span><i class="fa fa-arrow-right"></i>Education Levels</span></a></li>
-                                <li><a href='{{url('academic/classes')}}'><span><i class="fa fa-arrow-right"></i>Classes and Streams</span></a></li>
-                                <li><a href='{{url('academic/grade')}}'><span><i class="fa fa-arrow-right"></i>Grade setup</span></a></li>
-                                <li><a href='{{url('academic/examination-types')}}'><i class="fa fa-arrow-right"></i><span>Examination types</span></a></li>
+                                <li><a href='{{url('academic/edu-levels')}}' ><span><i class="fa fa-arrow-right"></i>Education Levels</span></a></li>
+                                <li><a href='{{url('academic/classes')}}' ><span><i class="fa fa-arrow-right"></i>Classes and Streams</span></a></li>
+                                <li><a href='{{url('academic/grade')}}' ><span><i class="fa fa-arrow-right"></i>Grade setup</span></a></li>
+                                <li><a href='{{url('academic/examination-types')}}' class='active'><i class="fa fa-arrow-right"></i><span>Examination types</span></a></li>
                                 <li><a href='{{url('academic/examination-period')}}'><span><i class="fa fa-arrow-right"></i>Examination Period</span></a></li>
                                 <li><a href='{{url('academic/academic-calendar')}}'><span><i class="fa fa-arrow-right"></i>Academic Calendar</span></a></li>
                                 <li><a href='{{url('academic/subject-allocation')}}'><span><i class="fa fa-arrow-right"></i>Subject Allocation</span></a></li>
@@ -381,67 +366,39 @@
     @section('contents')
             <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-table'></i> EDUCATION LEVELS SETTINGS </h1>
+        <h1><i class='fa fa-table'></i> EXAMINATION SETTINGS</h1>
     </div>
     <div class="row">
 
         <div class="col-md-12">
             <div class="widget">
                 <div class="widget-header">
-                    <h2>List of Education Levels</h2>
+                    <h2>List of registered exams</h2>
                     <div class="additional-btn">
-                        <a class="addClass btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Education Level </a>
-                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/edu-levels')}}"><i class="fa fa-th-list"></i> View Levels </a>
-                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/edu-levels/manage')}}"><i class="fa fa-cog"></i> Manage Levels </a>
-                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/edu-levels/reports')}}"><i class="fa fa-bar-chart-o"></i> Levels Reports </a>
+                        <a class="addExam btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Examination </a>
+                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/exams')}}"><i class="fa fa-th-list"></i> View Examination </a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/exams/manage')}}"><i class="fa fa-cog"></i> Manage Examination </a>
+                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/exams/reports')}}"><i class="fa fa-bar-chart-o"></i> Examination Reports </a>
                     </div>
                 </div>
                 <div class="widget-content">
                     <br>
-                    <div class="table-responsive" id="listLevels" name="{{url('academic/edu-levels/list')}}">
-                        <form class='form-horizontal' role='form'>
-                            <table id="datatables-4" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                <thead>
-                                <tr>
-                                    <th>SNO</th>
-                                    <th>Level name</th>
-                                    <th>Descriptions</th>
-                                    <th>Remarks</th>
-                                    <th>Status</th>
-                                    <th>Classes</th>
+                    <div class="row">
+                        <div class="col-sm-3 " style="margin-left: 20px;">
+                            <h3 class="text-info text-blue-3">Select Education Level</h3>
+                        </div>
+                        <div class="col-sm-4">
 
-                                </thead>
-
-                                <tfoot>
-                                <tr>
-                                    <th>SNO</th>
-                                    <th>Level name</th>
-                                    <th>Descriptions</th>
-                                    <th>Remarks</th>
-                                    <th>Status</th>
-                                    <th>Classes</th>
-
-                                </tfoot>
-
-                                <tbody>
-                                <?php $c=1;?>
-                                @foreach($elevels as $sc)
-                                    <tr>
-                                        <td>{{$c}}</td>
-                                        <td>{{$sc->level_name}}</td>
-                                        <td><?php echo $sc->level_descriptions;?></td>
-                                        <td>{{$sc->remarks}}</td>
-                                        <td>{{$sc->status}}</td>
-                                        <td  id="{{$sc->level_name}}" style="align-content: center"> <div class="col-md-12" id="{{$sc->id}}">
-                                                <a href="#" title="Add Classes" class="addClasses"><i class="fa fa-users text-success"></i> Level Classes</a>&nbsp;&nbsp;&nbsp;
-                                            </div></td>
-
-                                    </tr>
-                                    <?php $c++;;?>
+                            <select name="eduLevel" class="form-control" id="eduLevel">
+                                <option value="">----</option>
+                                @foreach($elevels as $el)
+                                    <option value="{{$el->id}}">{{$el->level_name}}</option>
                                 @endforeach
-                                </tbody>
-                            </table>
-                        </form>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive" id="exams">
+
                     </div>
                 </div>
             </div>

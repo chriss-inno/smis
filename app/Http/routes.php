@@ -29,7 +29,6 @@ Route::get('users/reports',['middleware' => 'auth', 'uses' =>'UserController@rep
 
 //Academic Main menu
 Route::get('academic/current-year',['middleware' => 'auth', 'uses' =>'AcademicSetupController@currentYear']);
-Route::get('academic/examination-types',['middleware' => 'auth', 'uses' =>'AcademicSetupController@examinationTypes']);
 Route::get('academic/examination-period',['middleware' => 'auth', 'uses' =>'AcademicSetupController@examinationPeriod']);
 Route::get('academic/academic-calendar',['middleware' => 'auth', 'uses' =>'AcademicSetupController@academicCalendar']);
 Route::get('academic/subject-allocation',['middleware' => 'auth', 'uses' =>'AcademicSetupController@subjectAllocation']);
@@ -58,7 +57,8 @@ Route::get('getElevelClassesmn/{id}',['middleware' => 'auth', 'uses' =>'Educatio
 
 //Grades setup
 Route::get('academic/grade',['middleware' => 'auth', 'uses' =>'GradeController@index']);
-Route::get('academic/grade/getLevelGrades/{id}',['middleware' => 'auth', 'uses' =>'GradeController@getGrades']);
+Route::get('getLevelGrades/{id}',['middleware' => 'auth', 'uses' =>'GradeController@getGrades']);
+Route::get('getLevelGradesm/{id}',['middleware' => 'auth', 'uses' =>'GradeController@getGradesm']);
 Route::get('academic/grade/create',['middleware' => 'auth', 'uses' =>'GradeController@create']);
 Route::post('academic/grade/create',['middleware' => 'auth', 'uses' =>'GradeController@store']);
 Route::get('academic/grade/manage',['middleware' => 'auth', 'uses' =>'GradeController@manage']);
@@ -67,6 +67,16 @@ Route::get('academic/grade/{id}',['middleware' => 'auth', 'uses' =>'GradeControl
 Route::get('academic/grade/edit/{id}',['middleware' => 'auth', 'uses' =>'GradeController@edit']);
 Route::post('academic/grade/edit',['middleware' => 'auth', 'uses' =>'GradeController@update']);
 Route::get('academic/grade/remove/{id}',['middleware' => 'auth', 'uses' =>'GradeController@destroy']);
+
+//Exams setup
+Route::get('academic/examination-types',['middleware' => 'auth', 'uses' =>'ExaminationController@index']);
+Route::get('getLevelExams/{id}',['middleware' => 'auth', 'uses' =>'ExaminationController@getLevelExams']);
+Route::get('academic/exams/create',['middleware' => 'auth', 'uses' =>'ExaminationController@create']);
+Route::post('academic/exams/create',['middleware' => 'auth', 'uses' =>'ExaminationController@store']);
+Route::get('academic/exams',['middleware' => 'auth', 'uses' =>'ExaminationController@index']);
+Route::get('academic/exams/manage',['middleware' => 'auth', 'uses' =>'ExaminationController@manage']);
+Route::get('academic/exams/reports',['middleware' => 'auth', 'uses' =>'ExaminationController@reports']);
+Route::get('academic/exams',['middleware' => 'auth', 'uses' =>'ExaminationController@index']);
 
 
 
@@ -103,4 +113,5 @@ Route::get('school/user/edit/{id}',['middleware' => 'auth', 'uses' =>'SchoolCont
 
 //Region and districts controller
 Route::get('getDistricts/{id}',['middleware' => 'auth', 'uses' =>'RegionController@getDistricts']);
+
 

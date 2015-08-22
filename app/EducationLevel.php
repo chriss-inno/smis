@@ -15,5 +15,9 @@ class EducationLevel extends Model
     {
         return $this::hasMany('\App\Grade','level_id','id');
     }
+    public function exams()
+    {
+        return $this::hasMany('\App\Examination','level_id','id');
+    }
 
 }
