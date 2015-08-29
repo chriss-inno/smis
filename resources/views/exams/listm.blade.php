@@ -12,7 +12,7 @@
             <th>Exam Name</th>
             <th>Descriptions</th>
             <th>Status</th>
-
+            <th>Action</th>
         </thead>
 
         <tfoot>
@@ -22,6 +22,7 @@
             <th>Exam Name</th>
             <th>Descriptions</th>
             <th>Status</th>
+            <th>Action</th>
 
         </tfoot>
 
@@ -35,16 +36,24 @@
          */
 
         $c=1;
-        if(count($elevels) > 0)
+        if(count($el) > 0)
         {
-            foreach($elevels->exams as $ex){
+            foreach($el->exams as $ex){
 
                 echo '<tr>
                         <td>'.$c.'</td>
                         <td>'.$ex->ExamCode.'</td>
                         <td>'.$ex->Exam_Name.'</td>
                         <td>'.$ex->Exam_Description.'</td>
-                        <td>'.$g->status.'</td>
+                        <td>'.$ex->status.'</td>
+                        <td id='.$ex->id.' style="align-content: center" >
+                          <span id='.$ex->id.'>
+                            <a href="#" title="Edit" class="editExam "><i class="fa fa-pencil-square-o text-info"></i> edit</a>&nbsp;&nbsp;&nbsp;
+                          </span>
+                          <span id='.$ex->id.'>
+                             <a href="#b" title="Delete" class="deleteExam "><i class="fa fa-trash-o text-danger"></i> delete </a>
+                           </span>
+                </td>
                      </tr>';
                 $c++;
             }

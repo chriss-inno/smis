@@ -120,6 +120,8 @@ class ExaminationController extends Controller
     public function edit($id)
     {
         //
+        $ex=Examination::find($id);
+        return view('exams.edit',compact('el'));
     }
 
     /**
@@ -149,6 +151,12 @@ class ExaminationController extends Controller
         //
         $el =EducationLevel::find($id);
         return view('exams.list',compact('el'));
+    }
+    public function getLevelExamsm($id)
+    {
+        //
+        $el =EducationLevel::find($id);
+        return view('exams.listm',compact('el'));
     }
 
 }

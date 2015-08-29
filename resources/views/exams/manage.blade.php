@@ -11,14 +11,14 @@
 @section('modals')
     <script>
         //Delete Application
-        $(".deleteGrade").click(function(){
+        $(".deleteExam").click(function(){
             var id1 = $(this).parent().attr('id');
-            $(".deleteGrade").show("slow").parent().parent().find("span").remove();
+            $(".deleteExam").show("slow").parent().find("span").remove();
             var btn = $(this).parent().parent();
             $(this).hide("slow").parent().append("<span><br>Are You Sure <br /> <a href='#s' id='yes' class='btn btn-success btn-xs'><i class='fa fa-check'></i> Yes</a> <a href='#s' id='no' class='btn btn-danger btn-xs'> <i class='fa fa-times'></i> No</a></span>");
             $("#no").click(function(){
-                $(this).parent().parent().find(".deleteapp").show("slow");
-                $(this).parent().parent().find("span").remove();
+                $(this).parent().find(".deleteExam").show("slow");
+                $(this).parent().find("span").remove();
             });
             $("#yes").click(function(){
                 $(this).parent().html("<br><i class='icon-spinner icon-spin'></i>deleting...");
@@ -54,7 +54,7 @@
 
         });
         //Edit class streams
-        $(".editGrade").click(function(){
+        $(".editExam").click(function(){
             var id1 = $(this).parent().attr('id');
             var modal = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
             modal+= '<div class="modal-dialog" style="width:80%;margin-right: 10% ;margin-left: 10%">';
@@ -72,7 +72,7 @@
             $("body").append(modal);
             $("#myModal").modal("show");
             $(".modal-body").html("<h3><i class='fa fa-spin fa-spinner '></i><span>loading...</span><h3>");
-            $(".modal-body").load("<?php echo url("academic/classes/edit") ?>/"+id1);
+            $(".modal-body").load("<?php echo url("academic/exams/edit") ?>/"+id1);
             $("#myModal").on('hidden.bs.modal',function(){
                 $("#myModal").remove();
             })
@@ -83,11 +83,11 @@
             var id1 = this.value;
             if(id1 != "")
             {
-                $.get("<?php echo url('getLevelExams') ?>/"+id1,function(data){
-                    $("#grades").html(data);
+                $.get("<?php echo url('getLevelExamsm') ?>/"+id1,function(data){
+                    $("#exams").html(data);
                 });
 
-            }else{$("#grades").html("");}
+            }else{$("#exams").html("");}
         });
 
     </script>

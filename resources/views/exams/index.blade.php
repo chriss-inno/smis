@@ -84,7 +84,7 @@
             if(id1 != "")
             {
                 $.get("<?php echo url('getLevelExams') ?>/"+id1,function(data){
-                    $("#grades").html(data);
+                    $("#exams").html(data);
                 });
 
             }else{$("#exams").html("");}
@@ -366,19 +366,19 @@
     @section('contents')
             <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-table'></i> EXAMINATION SETTINGS</h1>
+        <h1><i class='fa fa-table'></i> EXAMINATION TYPES SETTINGS </h1>
     </div>
     <div class="row">
 
         <div class="col-md-12">
             <div class="widget">
                 <div class="widget-header">
-                    <h2>List of registered exams</h2>
+                    <h2>List of registered exams types</h2>
                     <div class="additional-btn">
-                        <a class="addExam btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Examination </a>
-                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/exams')}}"><i class="fa fa-th-list"></i> View Examination </a>
-                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/exams/manage')}}"><i class="fa fa-cog"></i> Manage Examination </a>
-                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/exams/reports')}}"><i class="fa fa-bar-chart-o"></i> Examination Reports </a>
+                        <a class="addExam btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Examination type </a>
+                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/exams')}}"><i class="fa fa-th-list"></i> View Examination types</a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/exams/manage')}}"><i class="fa fa-cog"></i> Manage Examination types </a>
+                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/exams/reports')}}"><i class="fa fa-bar-chart-o"></i> Examination types Reports </a>
                     </div>
                 </div>
                 <div class="widget-content">

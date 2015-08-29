@@ -35,16 +35,16 @@
          */
 
         $c=1;
-        if(count($elevels) > 0)
+        if(count($el) > 0)
         {
-            foreach($elevels->exams as $ex){
+            foreach($el->exams as $ex){
 
                 echo '<tr>
                         <td>'.$c.'</td>
                         <td>'.$ex->ExamCode.'</td>
                         <td>'.$ex->Exam_Name.'</td>
                         <td>'.$ex->Exam_Description.'</td>
-                        <td>'.$g->status.'</td>
+                        <td>'.$ex->status.'</td>
                      </tr>';
                 $c++;
             }
