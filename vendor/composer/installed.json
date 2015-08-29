@@ -1148,138 +1148,6 @@
         ]
     },
     {
-        "name": "maatwebsite/excel",
-        "version": "v2.0.6",
-        "version_normalized": "2.0.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
-            "reference": "52bcd0873decff570e965dfc4d7351ff956b700f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/52bcd0873decff570e965dfc4d7351ff956b700f",
-            "reference": "52bcd0873decff570e965dfc4d7351ff956b700f",
-            "shasum": ""
-        },
-        "require": {
-            "illuminate/cache": "~5.0",
-            "illuminate/config": "~5.0",
-            "illuminate/filesystem": "~5.0",
-            "illuminate/support": "~5.0",
-            "nesbot/carbon": "~1.0",
-            "php": ">=5.3.0",
-            "phpoffice/phpexcel": "~1.8.0",
-            "tijsverkoyen/css-to-inline-styles": "~1.5"
-        },
-        "require-dev": {
-            "mockery/mockery": "~0.9",
-            "orchestra/testbench": "~3.0.0",
-            "phpseclib/phpseclib": ">=0.3.7",
-            "phpunit/phpunit": "~4.0"
-        },
-        "suggest": {
-            "illuminate/http": "~5.0",
-            "illuminate/routing": "~5.0",
-            "illuminate/view": "~5.0"
-        },
-        "time": "2015-06-04 15:32:17",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/Maatwebsite/Excel",
-                "tests/TestCase.php"
-            ],
-            "psr-0": {
-                "Maatwebsite\\Excel\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL"
-        ],
-        "authors": [
-            {
-                "name": "Maatwebsite.nl",
-                "email": "patrick@maatwebsite.nl"
-            }
-        ],
-        "description": "An eloquent way of importing and exporting Excel and CSV in Laravel 4 with the power of PHPExcel",
-        "keywords": [
-            "PHPExcel",
-            "batch",
-            "csv",
-            "excel",
-            "export",
-            "import",
-            "laravel"
-        ]
-    },
-    {
-        "name": "knplabs/knp-snappy",
-        "version": "0.4",
-        "version_normalized": "0.4.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/KnpLabs/snappy.git",
-            "reference": "f29edc4e53429deec2b394926a8f743a0ad2e28e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/f29edc4e53429deec2b394926a8f743a0ad2e28e",
-            "reference": "f29edc4e53429deec2b394926a8f743a0ad2e28e",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "symfony/process": "~2.1"
-        },
-        "suggest": {
-            "h4cc/wkhtmltopdf-amd64": "Provide wkhtmltopdf-amd64 binary, use version `0.12.0` as dependency",
-            "h4cc/wkhtmltopdf-i386": "Provide wkhtmltopdf-i386 binary, use version `0.12.0` as dependency"
-        },
-        "time": "2015-05-07 07:43:07",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "0.3.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Knp\\Snappy": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "KnpLabs Team",
-                "homepage": "http://knplabs.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://github.com/KnpLabs/snappy/contributors"
-            }
-        ],
-        "description": "PHP5 library allowing thumbnail, snapshot or PDF generation from a url or a html page. Wrapper for wkhtmltopdf/wkhtmltoimage.",
-        "homepage": "http://github.com/KnpLabs/snappy",
-        "keywords": [
-            "knp",
-            "knplabs",
-            "pdf",
-            "snapshot",
-            "thumbnail",
-            "wkhtmltopdf"
-        ]
-    },
-    {
         "name": "barryvdh/laravel-snappy",
         "version": "v0.2.1",
         "version_normalized": "0.2.1.0",
@@ -1999,63 +1867,6 @@
             "laravel5",
             "validation"
         ]
-    },
-    {
-        "name": "nette/utils",
-        "version": "v2.3.3",
-        "version_normalized": "2.3.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/nette/utils.git",
-            "reference": "ff80fce39fdc381e7e0db6cc5ffc82162e59f6bb"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/nette/utils/zipball/ff80fce39fdc381e7e0db6cc5ffc82162e59f6bb",
-            "reference": "ff80fce39fdc381e7e0db6cc5ffc82162e59f6bb",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.1"
-        },
-        "conflict": {
-            "nette/nette": "<2.2"
-        },
-        "require-dev": {
-            "nette/tester": "~1.0"
-        },
-        "suggest": {
-            "ext-gd": "to use Image",
-            "ext-iconv": "to use Strings::webalize() and toAscii()",
-            "ext-intl": "for script transliteration in Strings::webalize() and toAscii()",
-            "ext-mbstring": "to use Strings::lower() etc..."
-        },
-        "time": "2015-07-13 22:30:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause",
-            "GPL-2.0",
-            "GPL-3.0"
-        ],
-        "authors": [
-            {
-                "name": "David Grudl",
-                "homepage": "http://davidgrudl.com"
-            },
-            {
-                "name": "Nette Community",
-                "homepage": "http://nette.org/contributors"
-            }
-        ],
-        "description": "Nette Utility Classes",
-        "homepage": "http://nette.org"
     },
     {
         "name": "justinrainbow/json-schema",
@@ -3825,154 +3636,6 @@
         ]
     },
     {
-        "name": "phpunit/phpunit",
-        "version": "4.8.5",
-        "version_normalized": "4.8.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/phpunit.git",
-            "reference": "9b7417edaf28059ea63d86be941e6004dbfcc0cc"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9b7417edaf28059ea63d86be941e6004dbfcc0cc",
-            "reference": "9b7417edaf28059ea63d86be941e6004dbfcc0cc",
-            "shasum": ""
-        },
-        "require": {
-            "ext-dom": "*",
-            "ext-json": "*",
-            "ext-pcre": "*",
-            "ext-reflection": "*",
-            "ext-spl": "*",
-            "php": ">=5.3.3",
-            "phpspec/prophecy": "^1.3.1",
-            "phpunit/php-code-coverage": "~2.1",
-            "phpunit/php-file-iterator": "~1.4",
-            "phpunit/php-text-template": "~1.2",
-            "phpunit/php-timer": ">=1.0.6",
-            "phpunit/phpunit-mock-objects": "~2.3",
-            "sebastian/comparator": "~1.1",
-            "sebastian/diff": "~1.2",
-            "sebastian/environment": "~1.3",
-            "sebastian/exporter": "~1.2",
-            "sebastian/global-state": "~1.0",
-            "sebastian/version": "~1.0",
-            "symfony/yaml": "~2.1|~3.0"
-        },
-        "suggest": {
-            "phpunit/php-invoker": "~1.1"
-        },
-        "time": "2015-08-19 09:20:57",
-        "bin": [
-            "phpunit"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "4.8.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de",
-                "role": "lead"
-            }
-        ],
-        "description": "The PHP Unit Testing framework.",
-        "homepage": "https://phpunit.de/",
-        "keywords": [
-            "phpunit",
-            "testing",
-            "xunit"
-        ]
-    },
-    {
-        "name": "composer/composer",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/composer/composer.git",
-            "reference": "9859859f1082d94e546aa75746867df127aa0d9e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/composer/composer/zipball/9859859f1082d94e546aa75746867df127aa0d9e",
-            "reference": "9859859f1082d94e546aa75746867df127aa0d9e",
-            "shasum": ""
-        },
-        "require": {
-            "composer/spdx-licenses": "~1.0",
-            "justinrainbow/json-schema": "^1.4.4",
-            "php": ">=5.3.2",
-            "seld/cli-prompt": "~1.0",
-            "seld/jsonlint": "~1.0",
-            "seld/phar-utils": "~1.0",
-            "symfony/console": "~2.5",
-            "symfony/finder": "~2.2",
-            "symfony/process": "~2.1"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.5",
-            "phpunit/phpunit-mock-objects": "2.3.0"
-        },
-        "suggest": {
-            "ext-openssl": "Enabling the openssl extension allows you to access https URLs for repositories and packages",
-            "ext-zip": "Enabling the zip extension allows you to unzip archives, and allows gzip compression of all internet traffic"
-        },
-        "time": "2015-08-17 14:57:00",
-        "bin": [
-            "bin/composer"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Composer": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nils Adermann",
-                "email": "naderman@naderman.de",
-                "homepage": "http://www.naderman.de"
-            },
-            {
-                "name": "Jordi Boggiano",
-                "email": "j.boggiano@seld.be",
-                "homepage": "http://seld.be"
-            }
-        ],
-        "description": "Composer helps you declare, manage and install dependencies of PHP projects, ensuring you have the right stack everywhere.",
-        "homepage": "https://getcomposer.org/",
-        "keywords": [
-            "autoload",
-            "dependency",
-            "package"
-        ]
-    },
-    {
         "name": "yajra/laravel-pdo-via-oci8",
         "version": "0.12.0",
         "version_normalized": "0.12.0.0",
@@ -4061,6 +3724,345 @@
             "oci8",
             "oracle",
             "pdo_oci"
+        ]
+    },
+    {
+        "name": "maatwebsite/excel",
+        "version": "2.0.7",
+        "version_normalized": "2.0.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
+            "reference": "8657c9ae76fe95a9e7b936fa20eaa953de751347"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/8657c9ae76fe95a9e7b936fa20eaa953de751347",
+            "reference": "8657c9ae76fe95a9e7b936fa20eaa953de751347",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/cache": "~5.0|~5.1",
+            "illuminate/config": "~5.0|~5.1",
+            "illuminate/filesystem": "~5.0|~5.1",
+            "illuminate/support": "~5.0|~5.1",
+            "nesbot/carbon": "~1.0",
+            "php": ">=5.3.0",
+            "phpoffice/phpexcel": "~1.8.0",
+            "tijsverkoyen/css-to-inline-styles": "~1.5"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9",
+            "orchestra/testbench": "~3.0.0",
+            "phpseclib/phpseclib": ">=0.3.7",
+            "phpunit/phpunit": "~4.0"
+        },
+        "suggest": {
+            "illuminate/http": "~5.0|~5.1",
+            "illuminate/routing": "~5.0|~5.1",
+            "illuminate/view": "~5.0|~5.1"
+        },
+        "time": "2015-08-20 15:23:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/Maatwebsite/Excel",
+                "tests/TestCase.php"
+            ],
+            "psr-0": {
+                "Maatwebsite\\Excel\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL"
+        ],
+        "authors": [
+            {
+                "name": "Maatwebsite.nl",
+                "email": "patrick@maatwebsite.nl"
+            }
+        ],
+        "description": "An eloquent way of importing and exporting Excel and CSV in Laravel 4 with the power of PHPExcel",
+        "keywords": [
+            "PHPExcel",
+            "batch",
+            "csv",
+            "excel",
+            "export",
+            "import",
+            "laravel"
+        ]
+    },
+    {
+        "name": "phpunit/phpunit",
+        "version": "4.8.6",
+        "version_normalized": "4.8.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/phpunit.git",
+            "reference": "2246830f4a1a551c67933e4171bf2126dc29d357"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2246830f4a1a551c67933e4171bf2126dc29d357",
+            "reference": "2246830f4a1a551c67933e4171bf2126dc29d357",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "ext-json": "*",
+            "ext-pcre": "*",
+            "ext-reflection": "*",
+            "ext-spl": "*",
+            "php": ">=5.3.3",
+            "phpspec/prophecy": "^1.3.1",
+            "phpunit/php-code-coverage": "~2.1",
+            "phpunit/php-file-iterator": "~1.4",
+            "phpunit/php-text-template": "~1.2",
+            "phpunit/php-timer": ">=1.0.6",
+            "phpunit/phpunit-mock-objects": "~2.3",
+            "sebastian/comparator": "~1.1",
+            "sebastian/diff": "~1.2",
+            "sebastian/environment": "~1.3",
+            "sebastian/exporter": "~1.2",
+            "sebastian/global-state": "~1.0",
+            "sebastian/version": "~1.0",
+            "symfony/yaml": "~2.1|~3.0"
+        },
+        "suggest": {
+            "phpunit/php-invoker": "~1.1"
+        },
+        "time": "2015-08-24 04:09:38",
+        "bin": [
+            "phpunit"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.8.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }
+        ],
+        "description": "The PHP Unit Testing framework.",
+        "homepage": "https://phpunit.de/",
+        "keywords": [
+            "phpunit",
+            "testing",
+            "xunit"
+        ]
+    },
+    {
+        "name": "knplabs/knp-snappy",
+        "version": "0.4.1",
+        "version_normalized": "0.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KnpLabs/snappy.git",
+            "reference": "cada5a1ddcf6dc7d4c848b257c2bab580f99e542"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/cada5a1ddcf6dc7d4c848b257c2bab580f99e542",
+            "reference": "cada5a1ddcf6dc7d4c848b257c2bab580f99e542",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "symfony/process": "~2.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.7.*"
+        },
+        "suggest": {
+            "h4cc/wkhtmltopdf-amd64": "Provides wkhtmltopdf-amd64 binary for Linux-compatible machines, use version `~0.12` as dependency",
+            "h4cc/wkhtmltopdf-i386": "Provides wkhtmltopdf-i386 binary for Linux-compatible machines, use version `~0.12` as dependency",
+            "wemersonjanuario/wkhtmltopdf-windows": "Provides wkhtmltopdf executable for Windows, use version `~0.12` as dependency"
+        },
+        "time": "2015-08-10 10:24:04",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.5.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Knp\\Snappy": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "KnpLabs Team",
+                "homepage": "http://knplabs.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://github.com/KnpLabs/snappy/contributors"
+            }
+        ],
+        "description": "PHP5 library allowing thumbnail, snapshot or PDF generation from a url or a html page. Wrapper for wkhtmltopdf/wkhtmltoimage.",
+        "homepage": "http://github.com/KnpLabs/snappy",
+        "keywords": [
+            "knp",
+            "knplabs",
+            "pdf",
+            "snapshot",
+            "thumbnail",
+            "wkhtmltopdf"
+        ]
+    },
+    {
+        "name": "nette/utils",
+        "version": "v2.3.4",
+        "version_normalized": "2.3.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nette/utils.git",
+            "reference": "89a7973a4da73b47a13e23f13207d53d18c4de32"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nette/utils/zipball/89a7973a4da73b47a13e23f13207d53d18c4de32",
+            "reference": "89a7973a4da73b47a13e23f13207d53d18c4de32",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.1"
+        },
+        "conflict": {
+            "nette/nette": "<2.2"
+        },
+        "require-dev": {
+            "nette/tester": "~1.0"
+        },
+        "suggest": {
+            "ext-gd": "to use Image",
+            "ext-iconv": "to use Strings::webalize() and toAscii()",
+            "ext-intl": "for script transliteration in Strings::webalize() and toAscii()",
+            "ext-mbstring": "to use Strings::lower() etc..."
+        },
+        "time": "2015-08-23 12:31:04",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "David Grudl",
+                "homepage": "http://davidgrudl.com"
+            },
+            {
+                "name": "Nette Community",
+                "homepage": "http://nette.org/contributors"
+            }
+        ],
+        "description": "Nette Utility Classes",
+        "homepage": "http://nette.org"
+    },
+    {
+        "name": "composer/composer",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/composer/composer.git",
+            "reference": "f1aa655e6113e0efa979b8b09d7951a762eaa04c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/composer/composer/zipball/f1aa655e6113e0efa979b8b09d7951a762eaa04c",
+            "reference": "f1aa655e6113e0efa979b8b09d7951a762eaa04c",
+            "shasum": ""
+        },
+        "require": {
+            "composer/spdx-licenses": "~1.0",
+            "justinrainbow/json-schema": "^1.4.4",
+            "php": ">=5.3.2",
+            "seld/cli-prompt": "~1.0",
+            "seld/jsonlint": "~1.0",
+            "seld/phar-utils": "~1.0",
+            "symfony/console": "~2.5",
+            "symfony/finder": "~2.2",
+            "symfony/process": "~2.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.5",
+            "phpunit/phpunit-mock-objects": "2.3.0"
+        },
+        "suggest": {
+            "ext-openssl": "Enabling the openssl extension allows you to access https URLs for repositories and packages",
+            "ext-zip": "Enabling the zip extension allows you to unzip archives, and allows gzip compression of all internet traffic"
+        },
+        "time": "2015-08-20 11:59:54",
+        "bin": [
+            "bin/composer"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Composer": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nils Adermann",
+                "email": "naderman@naderman.de",
+                "homepage": "http://www.naderman.de"
+            },
+            {
+                "name": "Jordi Boggiano",
+                "email": "j.boggiano@seld.be",
+                "homepage": "http://seld.be"
+            }
+        ],
+        "description": "Composer helps you declare, manage and install dependencies of PHP projects, ensuring you have the right stack everywhere.",
+        "homepage": "https://getcomposer.org/",
+        "keywords": [
+            "autoload",
+            "dependency",
+            "package"
         ]
     }
 ]

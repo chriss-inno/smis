@@ -19,7 +19,7 @@ $ composer require knplabs/knp-snappy
 ```php
 <?php
 
-require_once '/path/to/snappy/src/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use Knp\Snappy\Pdf;
 
@@ -58,6 +58,7 @@ $snappy->setOption('cover', 'pathToCover.html');
 // .. or pass a cover as html
 $snappy->setOption('cover', '<h1>Bill cover</h1>');
 $snappy->setOption('toc', true);
+$snappy->setOption('cache-dir', '/path/to/cache/dir');
 ```
 
 ## wkhtmltopdf binary as composer dependencies
@@ -100,6 +101,19 @@ $snappy = new Pdf($myProjectDirectory . '/vendor/h4cc/wkhtmltopdf-i386/bin/wkhtm
 $snappy = new Pdf($myProjectDirectory . '/vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64');
 ```
 
+## Some use cases
+
+If you want to generate table of contents and you want to use custom XSL stylesheet, do the following:
+
+```php
+<?php
+$snappy = new Pdf('/path/to/binary');
+
+$snappy->setOption('toc', true);
+$snappy->setOption('xsl-style-sheet', 'http://path/to/stylesheet.xsl') //or local file;
+
+$snappy->generateFromHtml('<p>Some content</p>', 'test.pdf');
+```
 
 ## Credits
 

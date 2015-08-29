@@ -170,12 +170,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "9859859f1082d94e546aa75746867df127aa0d9e"
+                "reference": "f1aa655e6113e0efa979b8b09d7951a762eaa04c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/9859859f1082d94e546aa75746867df127aa0d9e",
-                "reference": "9859859f1082d94e546aa75746867df127aa0d9e",
+                "url": "https://api.github.com/repos/composer/composer/zipball/f1aa655e6113e0efa979b8b09d7951a762eaa04c",
+                "reference": "f1aa655e6113e0efa979b8b09d7951a762eaa04c",
                 "shasum": ""
             },
             "require": {
@@ -234,7 +234,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2015-08-17 14:57:00"
+            "time": "2015-08-20 11:59:54"
         },
         {
             "name": "composer/spdx-licenses",
@@ -711,32 +711,34 @@
         },
         {
             "name": "knplabs/knp-snappy",
-            "version": "0.4",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/snappy.git",
-                "reference": "f29edc4e53429deec2b394926a8f743a0ad2e28e"
+                "reference": "cada5a1ddcf6dc7d4c848b257c2bab580f99e542"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/f29edc4e53429deec2b394926a8f743a0ad2e28e",
-                "reference": "f29edc4e53429deec2b394926a8f743a0ad2e28e",
+                "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/cada5a1ddcf6dc7d4c848b257c2bab580f99e542",
+                "reference": "cada5a1ddcf6dc7d4c848b257c2bab580f99e542",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
+                "php": ">=5.3.3",
                 "symfony/process": "~2.1"
             },
+            "require-dev": {
+                "phpunit/phpunit": "4.7.*"
+            },
             "suggest": {
-                "h4cc/wkhtmltopdf-amd64": "Provide wkhtmltopdf-amd64 binary, use version `0.12.0` as dependency",
-                "h4cc/wkhtmltopdf-i386": "Provide wkhtmltopdf-i386 binary, use version `0.12.0` as dependency"
+                "h4cc/wkhtmltopdf-amd64": "Provides wkhtmltopdf-amd64 binary for Linux-compatible machines, use version `~0.12` as dependency",
+                "h4cc/wkhtmltopdf-i386": "Provides wkhtmltopdf-i386 binary for Linux-compatible machines, use version `~0.12` as dependency",
+                "wemersonjanuario/wkhtmltopdf-windows": "Provides wkhtmltopdf executable for Windows, use version `~0.12` as dependency"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.3.x-dev"
+                    "dev-master": "0.5.x-dev"
                 }
             },
             "autoload": {
@@ -768,7 +770,7 @@
                 "thumbnail",
                 "wkhtmltopdf"
             ],
-            "time": "2015-05-07 07:43:07"
+            "time": "2015-08-10 10:24:04"
         },
         {
             "name": "laravel/framework",
@@ -981,23 +983,23 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "v2.0.6",
+            "version": "2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
-                "reference": "52bcd0873decff570e965dfc4d7351ff956b700f"
+                "reference": "8657c9ae76fe95a9e7b936fa20eaa953de751347"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/52bcd0873decff570e965dfc4d7351ff956b700f",
-                "reference": "52bcd0873decff570e965dfc4d7351ff956b700f",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/8657c9ae76fe95a9e7b936fa20eaa953de751347",
+                "reference": "8657c9ae76fe95a9e7b936fa20eaa953de751347",
                 "shasum": ""
             },
             "require": {
-                "illuminate/cache": "~5.0",
-                "illuminate/config": "~5.0",
-                "illuminate/filesystem": "~5.0",
-                "illuminate/support": "~5.0",
+                "illuminate/cache": "~5.0|~5.1",
+                "illuminate/config": "~5.0|~5.1",
+                "illuminate/filesystem": "~5.0|~5.1",
+                "illuminate/support": "~5.0|~5.1",
                 "nesbot/carbon": "~1.0",
                 "php": ">=5.3.0",
                 "phpoffice/phpexcel": "~1.8.0",
@@ -1010,9 +1012,9 @@
                 "phpunit/phpunit": "~4.0"
             },
             "suggest": {
-                "illuminate/http": "~5.0",
-                "illuminate/routing": "~5.0",
-                "illuminate/view": "~5.0"
+                "illuminate/http": "~5.0|~5.1",
+                "illuminate/routing": "~5.0|~5.1",
+                "illuminate/view": "~5.0|~5.1"
             },
             "type": "library",
             "autoload": {
@@ -1044,7 +1046,7 @@
                 "import",
                 "laravel"
             ],
-            "time": "2015-06-04 15:32:17"
+            "time": "2015-08-20 15:23:00"
         },
         {
             "name": "monolog/monolog",
@@ -1270,16 +1272,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v2.3.3",
+            "version": "v2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "ff80fce39fdc381e7e0db6cc5ffc82162e59f6bb"
+                "reference": "89a7973a4da73b47a13e23f13207d53d18c4de32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/ff80fce39fdc381e7e0db6cc5ffc82162e59f6bb",
-                "reference": "ff80fce39fdc381e7e0db6cc5ffc82162e59f6bb",
+                "url": "https://api.github.com/repos/nette/utils/zipball/89a7973a4da73b47a13e23f13207d53d18c4de32",
+                "reference": "89a7973a4da73b47a13e23f13207d53d18c4de32",
                 "shasum": ""
             },
             "require": {
@@ -1321,7 +1323,7 @@
             ],
             "description": "Nette Utility Classes",
             "homepage": "http://nette.org",
-            "time": "2015-07-13 22:30:00"
+            "time": "2015-08-23 12:31:04"
         },
         {
             "name": "nikic/php-parser",
@@ -3386,16 +3388,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.5",
+            "version": "4.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "9b7417edaf28059ea63d86be941e6004dbfcc0cc"
+                "reference": "2246830f4a1a551c67933e4171bf2126dc29d357"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9b7417edaf28059ea63d86be941e6004dbfcc0cc",
-                "reference": "9b7417edaf28059ea63d86be941e6004dbfcc0cc",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2246830f4a1a551c67933e4171bf2126dc29d357",
+                "reference": "2246830f4a1a551c67933e4171bf2126dc29d357",
                 "shasum": ""
             },
             "require": {
@@ -3454,7 +3456,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-08-19 09:20:57"
+            "time": "2015-08-24 04:09:38"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
