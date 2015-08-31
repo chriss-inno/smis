@@ -170,12 +170,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "f1aa655e6113e0efa979b8b09d7951a762eaa04c"
+                "reference": "afd98b74f13b9def1b2447f16fd0bfd4d96dff94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/f1aa655e6113e0efa979b8b09d7951a762eaa04c",
-                "reference": "f1aa655e6113e0efa979b8b09d7951a762eaa04c",
+                "url": "https://api.github.com/repos/composer/composer/zipball/afd98b74f13b9def1b2447f16fd0bfd4d96dff94",
+                "reference": "afd98b74f13b9def1b2447f16fd0bfd4d96dff94",
                 "shasum": ""
             },
             "require": {
@@ -234,7 +234,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2015-08-20 11:59:54"
+            "time": "2015-08-31 09:58:50"
         },
         {
             "name": "composer/spdx-licenses",
@@ -774,16 +774,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.1.10",
+            "version": "v5.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d47ccc8de10ccb6f328cc90f901ca5e47e077c93"
+                "reference": "76a9816f37a58383f6ba093ccf08f253e5488555"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d47ccc8de10ccb6f328cc90f901ca5e47e077c93",
-                "reference": "d47ccc8de10ccb6f328cc90f901ca5e47e077c93",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/76a9816f37a58383f6ba093ccf08f253e5488555",
+                "reference": "76a9816f37a58383f6ba093ccf08f253e5488555",
                 "shasum": ""
             },
             "require": {
@@ -898,7 +898,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-08-12 18:16:08"
+            "time": "2015-08-30 23:25:48"
         },
         {
             "name": "league/flysystem",
@@ -1050,16 +1050,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.16.0",
+            "version": "1.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "c0c0b4bee3aabce7182876b0d912ef2595563db7"
+                "reference": "0524c87587ab85bc4c2d6f5b41253ccb930a5422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c0c0b4bee3aabce7182876b0d912ef2595563db7",
-                "reference": "c0c0b4bee3aabce7182876b0d912ef2595563db7",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/0524c87587ab85bc4c2d6f5b41253ccb930a5422",
+                "reference": "0524c87587ab85bc4c2d6f5b41253ccb930a5422",
                 "shasum": ""
             },
             "require": {
@@ -1076,7 +1076,7 @@
                 "php-console/php-console": "^3.1.3",
                 "phpunit/phpunit": "~4.5",
                 "phpunit/phpunit-mock-objects": "2.3.0",
-                "raven/raven": "~0.8",
+                "raven/raven": "~0.11",
                 "ruflin/elastica": ">=0.90 <3.0",
                 "swiftmailer/swiftmailer": "~5.3",
                 "videlalvaro/php-amqplib": "~2.4"
@@ -1122,7 +1122,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2015-08-09 17:44:44"
+            "time": "2015-08-31 09:17:37"
         },
         {
             "name": "mtdowling/cron-expression",
@@ -1433,12 +1433,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PHPWord.git",
-                "reference": "3f136501b3dfea94766a704e17782c8a942a7b9b"
+                "reference": "38cb04d322007dd522cbdd8ba3cd50ab67ced0db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/3f136501b3dfea94766a704e17782c8a942a7b9b",
-                "reference": "3f136501b3dfea94766a704e17782c8a942a7b9b",
+                "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/38cb04d322007dd522cbdd8ba3cd50ab67ced0db",
+                "reference": "38cb04d322007dd522cbdd8ba3cd50ab67ced0db",
                 "shasum": ""
             },
             "require": {
@@ -1521,7 +1521,7 @@
                 "word",
                 "writer"
             ],
-            "time": "2015-01-03 09:42:48"
+            "time": "2015-08-30 14:30:44"
         },
         {
             "name": "psr/log",
