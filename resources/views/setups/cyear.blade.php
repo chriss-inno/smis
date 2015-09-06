@@ -53,7 +53,8 @@
                                 <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List Schools</span></a></li>
                                 <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
                                 <li><a href='{{url('users')}}'><span><i class="fa fa-arrow-right"></i>School Users</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
+                                 <li><a href='{{url('schools/department/list')}}'><span><i class="fa fa-arrow-right"></i>Departments</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>General reports</span></a></li>
 
                             </ul>
                         </li>

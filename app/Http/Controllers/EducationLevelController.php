@@ -206,4 +206,12 @@ class EducationLevelController extends Controller
         $el =EducationLevel::find($id);
         return view('ELevels.listClassesmn',compact('el'));
     }
+
+    public static function getElevelById($id)
+    {
+        $el =EducationLevel::find($id);
+        if(count($el)>0) {
+            return $el;
+        } else { return "";}
+    }
 }

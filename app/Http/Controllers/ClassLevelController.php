@@ -118,14 +118,14 @@ class ClassLevelController extends Controller
         else
         {
             $school_id=Auth::user()->school_id;
-            $getYear =AcademicSetupController::getCYear($school_id);
+           // $getYear =AcademicSetupController::getCYear($school_id);
+
             $cl=new ClassLevel;
             $cl->school_id=$school_id;
             $cl->level_id=$request->level_id;
             $cl->class_name=$request->class_name;
             $cl->class_descriptions=$request->class_descriptions;
             $cl->input_by=Auth::user()->id;
-            $cl->current_year=$getYear;
             $cl->remarks=$request->remarks;
             $cl->status=$request->status;
             $cl->save();
@@ -166,7 +166,7 @@ class ClassLevelController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
         //
@@ -183,7 +183,7 @@ class ClassLevelController extends Controller
                 echo '<ul>' ;
                 foreach ($errors->all() as $error)
                 {
-                    echo ' <li>{{ $error }}</li>';
+                    echo ' <li>$error</li>';
                 }
 
                 echo '</ul>';
@@ -192,16 +192,21 @@ class ClassLevelController extends Controller
         }
         else
         {
-            $cl=ClassLevel::find($request->id);
-            $cl->school_id=$request->school_id;
+            $school_id=Auth::user()->school_id;
+            //$getYear =AcademicSetupController::getCYear($school_id); Get year
+            $id=$request->id;
+            $cl= ClassLevel::find($id);
+            $cl->school_id=$school_id;
+            $cl->level_id=$request->level_id;
             $cl->class_name=$request->class_name;
             $cl->class_descriptions=$request->class_descriptions;
             $cl->input_by=Auth::user()->id;
-            $cl->current_year=$request->current_year;
             $cl->remarks=$request->remarks;
             $cl->status=$request->status;
             $cl->save();
         }
+
+        return "<h3><span class='text-info'>Data Successful saved</span><h3>";
     }
 
     /**

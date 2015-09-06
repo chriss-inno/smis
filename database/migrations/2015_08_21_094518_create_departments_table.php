@@ -14,9 +14,14 @@ class CreateDepartmentsTable extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('school_id');
+            $table->string('dept_code')->nullable();
+            $table->string('dept_name');
+            $table->string('descriptions')->nullable();
+            $table->string('status')->nullable();
             $table->integer('input_by');
             $table->integer('auth_by');
-            $table->string('auth_status',1);
+            $table->string('auth_status',1)->default('U');
             $table->timestamps();
         });
     }

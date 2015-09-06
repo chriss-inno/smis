@@ -23,7 +23,7 @@ class CreateAcademicSetupsTable extends Migration
             $table->string('date_settled');
             $table->integer('input_by');
             $table->integer('auth_by');
-            $table->string('auth_status',1);
+            $table->string('auth_status',1)->default('U');
             $table->timestamps();
         });
     }

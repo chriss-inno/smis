@@ -132,7 +132,8 @@
                                 <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List Schools</span></a></li>
                                 <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
                                 <li><a href='{{url('users')}}'><span><i class="fa fa-arrow-right"></i>School Users</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
+                                 <li><a href='{{url('schools/department/list')}}'><span><i class="fa fa-arrow-right"></i>Departments</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>General reports</span></a></li>
 
                             </ul>
                         </li>
@@ -362,26 +363,26 @@
     @section('contents')
             <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-table'></i> MANAGE SCHOOLS CLASSES</h1>
+        <h1><i class='fa fa-table'></i> EDUCATION LEVELS SETTINGS</h1>
     </div>
     <div class="row">
 
         <div class="col-md-12">
             <div class="widget">
                 <div class="widget-header">
-                    <h2>List of registered classes</h2>
+                    <h2>List of Education Levels</h2>
                     <div class="additional-btn">
-                        <a class="addClass btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Class </a>
-                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/classes')}}"><i class="fa fa-th-list"></i> View Classes </a>
-                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/manage')}}"><i class="fa fa-cog"></i> Manage Classes </a>
-                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/reports')}}"><i class="fa fa-bar-chart-o"></i> Classes Reports </a>
+                        <a class="addClass btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New </a>
+                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/edu-levels')}}"><i class="fa fa-th-list"></i> View </a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/edu-levels/manage')}}"><i class="fa fa-cog"></i> Manage  </a>
+                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/edu-levels/reports')}}"><i class="fa fa-bar-chart-o"></i> Reports </a>
                     </div>
                 </div>
                 <div class="widget-content">
                     <br>
                     <div class="table-responsive" id="listLevels" name="{{url('academic/edu-levels/listm')}}">
                         <form class='form-horizontal' role='form'>
-                            <table id="datatables-4" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <table id="datatables-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
                                     <th>SNO</th>

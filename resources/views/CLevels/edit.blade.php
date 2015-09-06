@@ -20,10 +20,23 @@
         <div class="col-sm-12">
             <div class="form-group">
                 <label>Education Level</label>
-                <select name="school_id" class="form-control" id="school_id">
-                    <option value="">----</option>
-                    @foreach($schools->educationLevels as $sc)
-                        <option value="{{$sc->id}}">{{$sc->level_name}}</option>
+                <select name="level_id" class="form-control" id="level_id">
+                 @if($class->level_id != 0 )
+                      <?php $edu=\App\Http\Controllers\EducationLevelController::getElevelById($class->level_id);?>
+                       @if($edu !="")
+                        <option selected="selected" value="{{$edu->id}}">{{$edu->level_name}}</option>
+                           @endif
+                    @else
+                        <option selected="selected" value="">----</option>
+
+                    @endif
+                   <?php
+                    $school_id=\Auth::user()->school_id;
+                    $elevels=\App\EducationLevel::where('school_id','=',$school_id)->get();
+
+                    ?>
+                    @foreach($elevels as $el)
+                        <option value="{{$el->id}}">{{$el->level_name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -42,7 +55,11 @@
             <div class="form-group">
                 <label>Status</label>
                 <select name="status" id="status" class="form-control">
-                    <option selected="selected" value="">----</option>
+                    @if($class->status != null|| $class->status != "" )
+                    <option selected="selected">{{$class->status}}</option>
+                    @else
+                        <option selected="selected" value="">----</option>
+                        @endif
                     <option>Enabled</option>
                     <option>Disabled</option>
                 </select>

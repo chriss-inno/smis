@@ -4,8 +4,10 @@
 @stop
 @section('pageScript')
 
-    {!!HTML::script("assets/libs/bootstrap-validator/js/bootstrapValidator.min.js")!!}
-    {!!HTML::script("assets/js/pages/form-validation.js")!!}
+    {!!HTML::script("assets/libs/jquery-datatables/js/jquery.dataTables.min.js")!!}
+    {!!HTML::script("assets/libs/jquery-datatables/js/dataTables.bootstrap.js")!!}
+    {!!HTML::script("assets/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js")!!}
+    {!!HTML::script("assets/js/pages/datatables.js")!!}
 
 @stop
 @section('modals')
@@ -136,7 +138,8 @@
                                 <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List Schools</span></a></li>
                                 <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
                                 <li><a href='{{url('users')}}'><span><i class="fa fa-arrow-right"></i>School Users</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
+                                 <li><a href='{{url('schools/department/list')}}'><span><i class="fa fa-arrow-right"></i>Departments</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>General reports</span></a></li>
 
                             </ul>
                         </li>
@@ -366,7 +369,7 @@
     @section('contents')
             <!-- Page Heading Start -->
     <div class="page-heading">
-        <h1><i class='fa fa-table'></i> EXAMINATION TYPES SETTINGS </h1>
+        <h1><i class='fa fa-table'></i> EXAMINATION TYPES </h1>
     </div>
     <div class="row">
 
@@ -375,29 +378,79 @@
                 <div class="widget-header">
                     <h2>List of registered exams types</h2>
                     <div class="additional-btn">
-                        <a class="addExam btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Examination type </a>
-                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/exams')}}"><i class="fa fa-th-list"></i> View Examination types</a>
-                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/exams/manage')}}"><i class="fa fa-cog"></i> Manage Examination types </a>
-                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/exams/reports')}}"><i class="fa fa-bar-chart-o"></i> Examination types Reports </a>
+                        <a class="addExam btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New</a>
+                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/exams')}}"><i class="fa fa-th-list"></i> View</a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/exams/manage')}}"><i class="fa fa-cog"></i> Manage</a>
+                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/exams/reports')}}"><i class="fa fa-bar-chart-o"></i>Reports </a>
                     </div>
                 </div>
                 <div class="widget-content">
                     <br>
-                    <div class="row">
-                        <div class="col-sm-3 " style="margin-left: 20px;">
-                            <h3 class="text-info text-blue-3">Select Education Level</h3>
-                        </div>
-                        <div class="col-sm-4">
 
-                            <select name="eduLevel" class="form-control" id="eduLevel">
-                                <option value="">----</option>
-                                @foreach($elevels as $el)
-                                    <option value="{{$el->id}}">{{$el->level_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
                     <div class="table-responsive" id="exams">
+
+                        <form class='form-horizontal' role='form'>
+                            <table id="datatables-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th>SNO</th>
+                                    <th>Level name</th>
+                                    <th>Exam Code</th>
+                                    <th>Exam Name</th>
+                                    <th>Descriptions</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </thead>
+
+                                <tfoot>
+                                <tr>
+                                    <th>SNO</th>
+                                    <th>Level name</th>
+                                    <th>Exam Code</th>
+                                    <th>Exam Name</th>
+                                    <th>Descriptions</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+
+                                </tfoot>
+
+                                <tbody>
+                                <?php
+                                /**
+                                 * Created by PhpStorm.
+                                 * User: innocent.christopher
+                                 * Date: 8/19/2015
+                                 * Time: 10:53 AM
+                                 */
+
+                                $c=1;
+                                foreach ($elevels as $el)
+                                if(count($el->exams) > 0)
+                                {
+                                    foreach($el->exams as $ex){
+
+                                        echo '<tr>
+                        <td>'.$c.'</td>
+                        <td>'.$el->level_name.'</td>
+                        <td>'.$ex->ExamCode.'</td>
+                        <td>'.$ex->Exam_Name.'</td>
+                        <td>'.$ex->Exam_Description.'</td>
+                        <td>'.$ex->status.'</td>
+                        <td id='.$ex->id.' style="align-content: center" >
+                          <span id='.$ex->id.'>
+                            <a href="#" title="Edit" class="editExam "><i class="fa fa-pencil-square-o text-info"></i> edit</a>&nbsp;&nbsp;&nbsp;
+                          </span>
+                          <span id='.$ex->id.'>
+                             <a href="#b" title="Delete" class="deleteExam "><i class="fa fa-trash-o text-danger"></i> delete </a>
+                           </span>
+                </td>
+                     </tr>';
+                                        $c++;
+                                    }
+                                }?>
+                                </tbody>
+                            </table>
+                        </form>
 
                     </div>
                 </div>

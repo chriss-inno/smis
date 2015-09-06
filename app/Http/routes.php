@@ -114,6 +114,16 @@ Route::post('school/user/add',['middleware' => 'auth', 'uses' =>'SchoolControlle
 Route::post('school/user/edit',['middleware' => 'auth', 'uses' =>'SchoolController@updateUser']);
 Route::get('school/user/edit/{id}',['middleware' => 'auth', 'uses' =>'SchoolController@showUserEdit']);
 
+
+//Departments
+Route::get('schools/department/list',['middleware' => 'auth', 'uses' =>'DepartmentController@index']);
+Route::get('schools/department/create',['middleware' => 'auth', 'uses' =>'DepartmentController@create']);
+Route::post('schools/department/create',['middleware' => 'auth', 'uses' =>'DepartmentController@index']);
+Route::get('schools/department/edit',['middleware' => 'auth', 'uses' =>'DepartmentController@edit']);
+Route::post('schools/department/edit',['middleware' => 'auth', 'uses' =>'DepartmentController@update']);
+Route::get('schools/department/remove/{id}',['middleware' => 'auth', 'uses' =>'DepartmentController@destroy']);
+Route::get('schools/department/reports',['middleware' => 'auth', 'uses' =>'DepartmentController@reports']);
+
 //Region and districts controller
 Route::get('getDistricts/{id}',['middleware' => 'auth', 'uses' =>'RegionController@getDistricts']);
 

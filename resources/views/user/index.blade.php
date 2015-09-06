@@ -51,7 +51,8 @@
                                 <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List Schools</span></a></li>
                                 <li><a href='{{url('schools-manage')}}' ><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
                                 <li><a href='{{url('users')}}' class='active'><span><i class="fa fa-arrow-right"></i>School Users</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
+                                 <li><a href='{{url('schools/department/list')}}'><span><i class="fa fa-arrow-right"></i>Departments</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>General reports</span></a></li>
 
                             </ul>
                         </li>
@@ -363,7 +364,7 @@
                     <h2>List of registered users</h2>
                     <div class="additional-btn">
                         <a class="adduser btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New User </a>
-                        <a class="btn btn-red-1" style="color: #fff" href="{{url('users')}}"><i class="fa fa-cog"></i> Manage Users </a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('users')}}"><i class="fa fa-cog"></i> Manage </a>
                         <a class="btn btn-green-3" style="color: #fff" href="{{url('users/reports')}}"><i class="fa fa-bar-chart-o"></i> User Reports </a>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ class CreateSchoolsTable extends Migration
             $table->dateTime('created_date')->nullable();
             $table->integer('input_by');
             $table->integer('auth_by');
-            $table->string('auth_status',1);
+            $table->string('auth_status',1)->default('U');
             $table->timestamps();
         });
     }

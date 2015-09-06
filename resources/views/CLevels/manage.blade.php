@@ -130,7 +130,8 @@
                                 <li><a href='{{url('schools')}}'><span><i class="fa fa-arrow-right"></i>List Schools</span></a></li>
                                 <li><a href='{{url('schools-manage')}}'><span><i class="fa fa-arrow-right"></i>Manage Schools</span></a></li>
                                 <li><a href='{{url('users')}}'><span><i class="fa fa-arrow-right"></i>School Users</span></a></li>
-                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>School general reports</span></a></li>
+                                 <li><a href='{{url('schools/department/list')}}'><span><i class="fa fa-arrow-right"></i>Departments</span></a></li>
+                                <li><a href='{{url('schools-reports/')}}'><span><i class="fa fa-arrow-right"></i>General reports</span></a></li>
 
                             </ul>
                         </li>
@@ -369,33 +370,21 @@
                 <div class="widget-header">
                     <h2>List of registered classes</h2>
                     <div class="additional-btn">
-                        <a class="addClass btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New Class </a>
-                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/classes')}}"><i class="fa fa-th-list"></i> View Classes </a>
-                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/classes/manage')}}"><i class="fa fa-cog"></i> Manage Classes </a>
-                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/classes/reports')}}"><i class="fa fa-bar-chart-o"></i> Classes Reports </a>
+                        <a class="addClass btn btn-blue-1" style="color: #fff" href="#"><i class="fa fa-file-text-o"></i> New  </a>
+                        <a class="btn btn-blue-3" style="color: #fff" href="{{url('academic/classes')}}"><i class="fa fa-th-list"></i> View </a>
+                        <a class="btn btn-red-1" style="color: #fff" href="{{url('academic/classes/manage')}}"><i class="fa fa-cog"></i> Manage  </a>
+                        <a class="btn btn-green-3" style="color: #fff" href="{{url('academic/classes/reports')}}"><i class="fa fa-bar-chart-o"></i>  Reports </a>
                     </div>
                 </div>
                 <div class="widget-content">
                     <br>
-                    <div class="row">
-                        <div class="col-sm-3 " style="margin-left: 20px;">
-                            <h3 class="text-info text-blue-3">Education Level</h3>
-                        </div>
-                        <div class="col-sm-4">
-                            <select name="level_id" class="form-control" id="level_id">
-                                <option value="">----</option>
-                                @foreach($elevels as $el)
-                                    <option value="{{$el->id}}">{{$el->level_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
                     <div class="table-responsive" id="listClasses" name="{{url('academic/classes/list')}}">
                         <form class='form-horizontal' role='form'>
                             <table id="datatables-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
                                     <th>SNO</th>
+                                    <th>Level name</th>
                                     <th>Class name</th>
                                     <th>Descriptions</th>
                                     <th>Remarks</th>
@@ -407,6 +396,7 @@
                                 <tfoot>
                                 <tr>
                                     <th>SNO</th>
+                                    <th>Level name</th>
                                     <th>Class name</th>
                                     <th>Descriptions</th>
                                     <th>Remarks</th>
@@ -416,7 +406,33 @@
                                 </tfoot>
 
                                 <tbody id="classessList">
-
+                                <?php $c=1;?>
+                                @foreach($elevels as $el)
+                                    @if(count($el->classes) >0 && $el->classes != null)
+                                        @foreach($el->classes as $sc)
+                                            <tr>
+                                                <td>{{$c}}</td>
+                                                <td>{{$el->level_name}}</td>
+                                                <td>{{$sc->class_name}}</td>
+                                                <td><?php echo $sc->class_descriptions; ?></td>
+                                                <td>{{$sc->remarks}}</td>
+                                                <td>{{$sc->status}}</td>
+                                                <td  id="{{$sc->level_name}}" style="align-content: center"> <div class="col-md-12" id="{{$sc->id}}">
+                                                        <a href="#" title="Add Streams" class="adduser "><i class="fa fa-users text-success"></i> View</a>&nbsp;&nbsp;&nbsp;
+                                                    </div></td>
+                                                <td id="{{$sc->id}}" style="align-content: center" >
+                                                    <div class="col-md-6" id="{{$sc->id}}">
+                                                        <a href="#" title="Edit" class="editClass "><i class="fa fa-pencil-square-o text-info"></i> edit</a>&nbsp;&nbsp;&nbsp;
+                                                    </div>
+                                                    <div class="col-md-6" id="{{$sc->id}}">
+                                                        <a href="#b" title="Delete" class="deleteClass "><i class="fa fa-trash-o text-danger"></i> delete </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php $c++;;?>
+                                        @endforeach
+                                    @endif
+                                @endforeach
                                 </tbody>
                             </table>
                         </form>
